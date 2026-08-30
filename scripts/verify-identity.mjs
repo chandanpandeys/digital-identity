@@ -98,6 +98,13 @@ for (const marker of ["Chandan Pandey — Digital Identity", "display: \"standal
 const notFound = await text("app/not-found.tsx");
 if (!notFound.includes("CONTEXT MISS") || !notFound.includes("/ask")) throw new Error("Branded not-found route lost its identity/navigation contract.");
 
+const robots = await text("app/robots.ts");
+for (const marker of ["OAI-SearchBot", "GPTBot", "Claude-SearchBot", "Claude-User", "ClaudeBot"]) {
+  if (!robots.includes(marker)) throw new Error(`robots.txt policy is missing crawler: ${marker}`);
+}
+if (!robots.includes('{ userAgent: "GPTBot", disallow: "/" }')) throw new Error("GPTBot training opt-out is missing.");
+if (!robots.includes('{ userAgent: "ClaudeBot", disallow: "/" }')) throw new Error("ClaudeBot training opt-out is missing.");
+
 const sitemap = await text("app/sitemap.ts");
 for (const route of ["/work", "/lab", "/timeline", "/about", "/content", "/now", "/resume", "/credentials", "/ask"]) {
   if (!sitemap.includes(`\"${route}\"`)) throw new Error(`Sitemap is missing required route: ${route}`);
