@@ -21,7 +21,8 @@ export default function AskChandan() {
       .map((node) => ({ node, score: scoreNode(submitted, node) }))
       .sort((a, b) => b.score - a.score);
     const positive = ranked.filter((item) => item.score > 0).slice(0, 3);
-    return positive.length ? positive.map((item) => item.node) : [evidenceNodes[0], evidenceNodes[5]];
+    const fallback = evidenceNodes.filter((node) => node.id === "infrastructure" || node.id === "public").slice(0, 2);
+    return positive.length ? positive.map((item) => item.node) : fallback;
   }, [submitted]);
 
   function submit(event: FormEvent) {
@@ -43,7 +44,7 @@ export default function AskChandan() {
         <small id="ask-help">No generative answer layer yet. Results resolve to curated evidence nodes.</small>
       </div>
       <form className="ask-form" onSubmit={submit}>
-        <label htmlFor="ask-query">Ask about projects, research, experience, or public evidence.</label>
+        <label htmlFor="ask-query">Ask about projects, research, experience, credentials, resumes, or public evidence.</label>
         <div>
           <input
             id="ask-query"
