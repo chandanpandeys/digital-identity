@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { site } from "@/lib/profile";
 import "./globals.css";
 import "./expansion.css";
@@ -10,6 +10,13 @@ import "./narrative.css";
 import "./now.css";
 import "./production.css";
 import "./credentials.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "light",
+  themeColor: "#2457ff",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.canonicalUrl),

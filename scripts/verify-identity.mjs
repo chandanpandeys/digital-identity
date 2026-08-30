@@ -4,6 +4,10 @@ import path from "node:path";
 const root = process.cwd();
 
 const requiredFiles = [
+  "app/icon.tsx",
+  "app/manifest.ts",
+  "app/not-found.tsx",
+  "app/layout.tsx",
   "app/robots.ts",
   "app/sitemap.ts",
   "app/llms.txt/route.ts",
@@ -80,6 +84,19 @@ for (const file of scanFiles) {
 const profile = await text("lib/profile.ts");
 if (!profile.includes("NEXT_PUBLIC_SITE_URL")) throw new Error("Canonical URL is no longer environment-driven.");
 if (!profile.includes("https://chandanpandey.dev")) throw new Error("Expected canonical fallback chandanpandey.dev is missing.");
+
+const layout = await text("app/layout.tsx");
+for (const marker of ["export const viewport", "themeColor: \"#2457ff\"", "Person", "ProfilePage"]) {
+  if (!layout.includes(marker)) throw new Error(`Root identity metadata is missing marker: ${marker}`);
+}
+
+const manifest = await text("app/manifest.ts");
+for (const marker of ["Chandan Pandey — Digital Identity", "display: \"standalone\"", "src: \"/icon\""]) {
+  if (!manifest.includes(marker)) throw new Error(`Web manifest is missing marker: ${marker}`);
+}
+
+const notFound = await text("app/not-found.tsx");
+if (!notFound.includes("CONTEXT MISS") || !notFound.includes("/ask")) throw new Error("Branded not-found route lost its identity/navigation contract.");
 
 const sitemap = await text("app/sitemap.ts");
 for (const route of ["/work", "/lab", "/timeline", "/about", "/content", "/now", "/resume", "/credentials", "/ask"]) {
