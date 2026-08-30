@@ -3,33 +3,34 @@ export const site = {
   handle: "chandanpandeys",
   canonicalUrl: "https://chandanpandeys.me",
   description:
-    "Chandan Pandey is an AI engineer and builder working across applied AI research, LLM systems, developer tooling, open source, and technical content.",
+    "Chandan Pandey is an AI engineer and builder working across applied AI research, LLM systems, developer tooling, open source, accessibility, automation, and technical content.",
   location: "India",
   links: {
     github: "https://github.com/chandanpandeys",
     linkedin: "https://www.linkedin.com/in/chandanpandeys/",
+    instagram: "https://www.instagram.com/Chandan__/",
   },
 } as const;
 
 export const disciplines = [
   {
     title: "Build",
-    text: "AI systems, agent workflows, developer tools, automation, and product prototypes designed to become usable software—not just demos.",
+    text: "AI systems, agent workflows, developer tools, automation, and product prototypes designed to survive beyond the demo.",
   },
   {
     title: "Research",
-    text: "Applied machine learning across computational biology, cancer genomics, neoantigen discovery, sequence modelling, and evaluation-heavy workflows.",
+    text: "Applied machine learning across computational biology, neoantigen discovery, sequence modelling, evaluation, and research tooling.",
   },
   {
     title: "Explain",
-    text: "Technical content, education, workshops, and narratives that make complex systems legible to the people who need to use them.",
+    text: "Technical content, education, workshops, and narratives that make difficult systems understandable enough to use.",
   },
 ] as const;
 
 export const now = [
   "Building AI systems and open-source developer infrastructure",
   "Leading AI and technology content at YAAS",
-  "Documenting research, experiments, and public software",
+  "Turning private experiments into public, documented software",
 ] as const;
 
 export const timeline = [
@@ -40,8 +41,8 @@ export const timeline = [
       "Researching AI tools and use cases, shaping strategy and scripts, and building repeatable workflows from research through publishing and performance analysis.",
   },
   {
-    period: "SINCE 2025",
-    title: "AI Research Associate · Amity University",
+    period: "2025 — 2026",
+    title: "AI Research · Amity University",
     description:
       "Applied ML and computational workflows around cancer genomics, neoantigen prediction, immunogenicity, and vaccine-discovery research.",
   },
@@ -59,10 +60,47 @@ export const timeline = [
   },
 ] as const;
 
-export const proofPoints = [
-  "BCA in Computer Science & IT from Dr. Ram Manohar Lohia Avadh University",
-  "IBM SkillsBuild AI & ML virtual internship with a project-based machine-learning workflow",
-  "Selected as a Google Gemini Student Ambassador for the 2025 campus program",
-  "Campus ambassador experience with E-Cell IIT Bombay and E-Cell IIT Guwahati",
-  "1,000+ student questions answered as a Brainly subject-matter expert",
+export const proofSignals = [
+  {
+    label: "Public code identity",
+    detail: "Open-source repositories, developer tooling, experiments, and implementation history.",
+    source: "GitHub",
+    href: site.links.github,
+    strength: "PUBLIC",
+  },
+  {
+    label: "Professional record",
+    detail: "Career roles, research experience, campus programs, education, and professional narrative.",
+    source: "LinkedIn",
+    href: site.links.linkedin,
+    strength: "PUBLIC PROFILE",
+  },
+  {
+    label: "ByteToken",
+    detail: "Tokenizer-aware transport and context optimization work with implementation and benchmark material.",
+    source: "Repository",
+    href: "https://github.com/chandanpandeys/bytetoken",
+    strength: "INSPECTABLE",
+  },
+  {
+    label: "DekhoSuno",
+    detail: "Public Flutter accessibility project combining Gemini, OCR, speech, computer vision, sensors, and accessible interaction flows.",
+    source: "Repository",
+    href: "https://github.com/chandanpandeys/DekhoSuno",
+    strength: "INSPECTABLE",
+  },
+  {
+    label: "OneClickAllResultsBot",
+    detail: "Public automation project for batch academic-result retrieval and comparative analysis.",
+    source: "Repository",
+    href: "https://github.com/chandanpandeys/OneClickAllResultsBot",
+    strength: "INSPECTABLE",
+  },
+  {
+    label: "IBM internship work",
+    detail: "Public project repository associated with applied AI/ML internship work.",
+    source: "Repository",
+    href: "https://github.com/chandanpandeys/IBMInternshipProjects",
+    strength: "PUBLIC",
+  },
 ] as const;
