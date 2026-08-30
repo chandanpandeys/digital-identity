@@ -4,7 +4,7 @@ import { site } from "@/lib/profile";
 
 export const metadata: Metadata = {
   title: "Content & Education",
-  description: "The creator and educator chapter of Chandan Pandey: early YouTube work, teaching, technical explanation, and AI content.",
+  description: "The creator and educator chapter of Chandan Pandey: early education content, teaching, technical explanation, and AI/technology storytelling.",
   alternates: { canonical: "/content" },
 };
 
@@ -33,16 +33,23 @@ const chapters = [
     title: "Technical storytelling became part of the job.",
     body: "Today the same skill is applied to AI and technology: researching tools and use cases, finding the useful angle, writing scripts and narratives, designing workflows, and using audience feedback to improve what gets explained next.",
   },
-];
+] as const;
+
+const communicationModes = [
+  ["Research synthesis", "Turn a large technical surface into the few distinctions, assumptions, and trade-offs that actually matter."],
+  ["Documentation", "Leave enough structure behind that another person can understand how the system works and what supports the claims."],
+  ["Teaching", "Notice where understanding breaks, then rebuild the explanation around the learner rather than around the expert."],
+  ["Product narrative", "Make interfaces, demos, scripts, and technical content communicate what the system does without hiding its limits."],
+] as const;
 
 export default function ContentPage() {
   return (
-    <main id="main" className="inner-page creator-page">
+    <main id="main" className="inner-page creator-page creator-page-v2">
       <header className="site-shell subnav"><Link href="/">← Chandan Pandey</Link><span>CONTENT / EXPLAIN</span></header>
       <section className="site-shell page-hero creator-hero">
-        <p className="eyebrow">CONTENT / EDUCATION / STORYTELLING</p>
-        <h1>I was explaining<br/><em>before I was engineering.</em></h1>
-        <p>This is not a separate creator persona. It is the communication layer behind the engineering work: understand something, structure it, and make it useful to someone else.</p>
+        <p className="eyebrow">CONTENT / EDUCATION / TECHNICAL COMMUNICATION</p>
+        <h1>Explanation is<br/><em>part of the engineering.</em></h1>
+        <p>The creator history is not a separate influencer persona. It is where I learned a skill that still shows up in research, documentation, product UX, technical content, and developer tooling: make the difficult thing legible without making it shallow.</p>
       </section>
 
       <section className="site-shell creator-ledger">
@@ -57,18 +64,26 @@ export default function ContentPage() {
 
       <section className="creator-quote-band">
         <div className="site-shell">
-          <p className="eyebrow light">THE CONNECTING SKILL</p>
+          <p className="eyebrow light">THE CONNECTING QUESTION</p>
           <blockquote>“Can I make the difficult thing legible without making it shallow?”</blockquote>
-          <p>That question connects teaching, research communication, technical content, product UX, documentation, and developer tooling.</p>
+          <p>That question connects teaching, research communication, technical content, product interfaces, documentation, and tools built for other developers.</p>
+        </div>
+      </section>
+
+      <section className="site-shell communication-section">
+        <div className="about-section-head"><p className="eyebrow">WHAT COMMUNICATION DOES INSIDE THE WORK</p><h2>Not promotion. An engineering surface.</h2></div>
+        <div className="communication-grid">
+          {communicationModes.map(([title, body], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{body}</p></article>)}
         </div>
       </section>
 
       <section className="site-shell creator-links">
         <div><p className="eyebrow">CURRENT CHANNELS</p><h2>The archive becomes evidence, not nostalgia.</h2></div>
         <div>
-          <p>Older creator material will be indexed selectively as links and source artifacts are cleaned up. The goal is to preserve the origin story without turning the portfolio into a social-media dump.</p>
+          <p>Older creator material will be indexed selectively after channel naming, links, and source artifacts are verified. The goal is to preserve the origin story without turning the portfolio into a social-media dump.</p>
           <a className="button secondary" href={site.links.instagram} target="_blank" rel="noreferrer">Instagram ↗</a>
           <a className="button secondary" href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <Link className="button secondary" href="/timeline">Full timeline ↗</Link>
         </div>
       </section>
     </main>
