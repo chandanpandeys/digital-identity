@@ -120,6 +120,13 @@ for (const marker of ["## Targeted resume PDFs", "## Selected credentials", "## 
   if (!llms.includes(marker)) throw new Error(`llms.txt contract is missing section: ${marker}`);
 }
 
+for (const machineRoute of ["app/profile.json/route.ts", "app/evidence.json/route.ts", "app/llms.txt/route.ts"]) {
+  const contents = await text(machineRoute);
+  if (!contents.includes('"x-robots-tag": "noindex, noarchive"')) {
+    throw new Error(`Machine endpoint must remain crawlable but non-indexable: ${machineRoute}`);
+  }
+}
+
 const resumeRoute = await text("app/resume/pdf/[variant]/route.ts");
 if (!resumeRoute.includes("x-robots-tag")) throw new Error("Generated resume PDFs must keep their noindex response header.");
 

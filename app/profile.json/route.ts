@@ -50,5 +50,5 @@ export function GET() {
       evidence: `${site.canonicalUrl}/evidence.json`,
       llms: `${site.canonicalUrl}/llms.txt`,
     },
-  }, { headers: { "cache-control": "public, max-age=3600" } });
+  }, { headers: { "cache-control": "public, max-age=3600", "x-robots-tag": "noindex, noarchive" } });
 }

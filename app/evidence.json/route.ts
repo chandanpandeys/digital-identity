@@ -14,5 +14,5 @@ export function GET() {
       publicProfile: "Claim is represented in a public professional/profile record.",
       firstParty: "Documented first-party context that is not presented as independent verification.",
     },
-  }, { headers: { "cache-control": "public, max-age=3600" } });
+  }, { headers: { "cache-control": "public, max-age=3600", "x-robots-tag": "noindex, noarchive" } });
 }
