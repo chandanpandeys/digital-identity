@@ -17,7 +17,7 @@ function Header() {
         <Link href="/work">Work</Link>
         <Link href="/timeline">Timeline</Link>
         <Link href="/about">About</Link>
-        <Link href="/now">Now</Link>
+        <Link href="/ask">Ask</Link>
       </nav>
       <a className="header-link" href={site.links.github} target="_blank" rel="noreferrer">
         GitHub <Arrow />
@@ -53,7 +53,7 @@ export default function Home() {
         <div className="hero-signal">
           <span className="signal-dot" />
           <span>Chandan Pandey / AI engineer / India</span>
-          <span className="hero-signal-right">Identity graph v0.2</span>
+          <span className="hero-signal-right">Identity graph v0.3</span>
         </div>
 
         <div className="hero-grid">
@@ -70,6 +70,7 @@ export default function Home() {
             </p>
             <div className="hero-actions">
               <Link className="button primary" href="/work">Inspect the work <span>↓</span></Link>
+              <Link className="button secondary" href="/ask">Ask the evidence <Arrow /></Link>
               <a className="button secondary" href={site.links.linkedin} target="_blank" rel="noreferrer">
                 LinkedIn <Arrow />
               </a>
@@ -209,7 +210,7 @@ export default function Home() {
 
       <footer className="site-shell footer">
         <div><strong>Chandan Pandey</strong><span>AI Engineer · Researcher · Builder</span></div>
-        <div><Link href="/resume">Resume</Link><Link href="/content">Content</Link><a href={site.links.github}>GitHub ↗</a></div>
+        <div><Link href="/resume">Resume</Link><Link href="/ask">Ask</Link><Link href="/content">Content</Link><a href={site.links.github}>GitHub ↗</a></div>
         <span>Structured for humans, search engines, and AI systems.</span>
       </footer>
     </main>
