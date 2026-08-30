@@ -1,7 +1,9 @@
+const canonicalUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://chandanpandey.dev").replace(/\/$/, "");
+
 export const site = {
   name: "Chandan Pandey",
   handle: "chandanpandeys",
-  canonicalUrl: "https://chandanpandeys.me",
+  canonicalUrl,
   description:
     "Chandan Pandey is an AI engineer and builder working across applied AI research, LLM systems, developer tooling, open source, accessibility, automation, and technical content.",
   location: "India",
