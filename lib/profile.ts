@@ -27,11 +27,37 @@ export const disciplines = [
   },
 ] as const;
 
-export const now = [
-  "Building AI systems and open-source developer infrastructure",
-  "Leading AI and technology content at YAAS",
-  "Turning private experiments into public, documented software",
+export const currentFocus = [
+  {
+    code: "01",
+    label: "OPEN SOURCE / AI INFRA",
+    title: "ByteToken + InferBench",
+    signal: "Shipping ByteToken and InferBench in public",
+    status: "PUBLIC / ACTIVE",
+    detail: "Turning two technical questions into inspectable developer tools: denser tokenizer-aware transport for agent payloads, and practical local-LLM evaluation across fit, speed, memory, power, and quality.",
+    links: [{ label: "ByteToken", href: "/work/bytetoken" }, { label: "InferBench", href: "/work/inferbench" }],
+  },
+  {
+    code: "02",
+    label: "CURRENT ROLE / AI × CONTENT",
+    title: "YAAS",
+    signal: "Leading AI and technology content at YAAS",
+    status: "CURRENT ROLE",
+    detail: "Researching AI tools, technologies, and practical use cases; shaping scripts and narratives; and building repeatable workflows from research through publishing and performance analysis.",
+    links: [{ label: "Career record", href: "/timeline" }, { label: "Communication layer", href: "/content" }],
+  },
+  {
+    code: "03",
+    label: "PUBLIC RECORD / PROJECT CLEANUP",
+    title: "Digital Identity",
+    signal: "Turning private experiments into public, documented software",
+    status: "IN PROGRESS",
+    detail: "Cleaning the project history, separating flagship work from experiments, publishing evidence-backed case studies, and making the public identity readable by recruiters, developers, search engines, and AI systems.",
+    links: [{ label: "Work", href: "/work" }, { label: "Lab", href: "/lab" }, { label: "Evidence graph", href: "/ask" }],
+  },
 ] as const;
+
+export const now = currentFocus.map((item) => item.signal);
 
 export const timeline = [
   {

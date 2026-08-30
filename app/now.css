@@ -1,0 +1,31 @@
+.now-hero-v2 { padding-bottom: 4.5rem; }
+.now-focus-ledger { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.now-focus-ledger article { display: grid; grid-template-columns: 150px minmax(0,1fr) 180px; gap: 2.5rem; padding: 2.6rem 0; border-bottom: 1px solid var(--line); }
+.now-focus-ledger article:last-child { border-bottom: 0; }
+.now-focus-meta { display: flex; flex-direction: column; gap: .7rem; font: 700 .56rem/1.25 monospace; color: var(--muted); }
+.now-focus-meta b { width: fit-content; padding: .35rem .45rem; border: 1px solid var(--line); color: var(--blue); font-size: .5rem; letter-spacing: .06em; }
+.now-focus-copy > p { margin: 0 0 .7rem; color: var(--muted); font: 700 .55rem/1 monospace; letter-spacing: .08em; }
+.now-focus-copy h2 { margin: 0; font: 400 clamp(2.2rem,3.6vw,4rem)/.95 Georgia,serif; letter-spacing: -.05em; }
+.now-focus-copy strong { display: block; margin-top: 1rem; font-size: 1rem; line-height: 1.45; }
+.now-focus-copy > span { display: block; max-width: 760px; margin-top: .75rem; color: var(--muted); font-size: .84rem; line-height: 1.65; }
+.now-focus-links { display: grid; align-content: end; gap: .6rem; }
+.now-focus-links a { padding-top: .55rem; border-top: 1px solid var(--line); font: 700 .57rem/1.3 monospace; }
+.now-focus-links a:hover { color: var(--blue); }
+.now-boundary { display: grid; grid-template-columns: .75fr 1fr; gap: 5rem; padding: 7rem 0; }
+.now-boundary h2 { max-width: 550px; margin: 0; font: 400 clamp(2.8rem,4.5vw,5rem)/.95 Georgia,serif; letter-spacing: -.05em; }
+.now-boundary > div:last-child { align-self: end; }
+.now-boundary > div:last-child p { margin: 0; color: var(--muted); line-height: 1.7; }
+.now-boundary p a { color: var(--ink); border-bottom: 1px solid var(--ink); }
+.now-boundary small { display: block; margin-top: 1.5rem; color: var(--muted); font: 700 .55rem/1 monospace; }
+
+@media (max-width: 900px) {
+  .now-focus-ledger article { grid-template-columns: 90px 1fr; }
+  .now-focus-links { grid-column: 2; }
+  .now-boundary { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+@media (max-width: 620px) {
+  .now-focus-ledger article { grid-template-columns: 1fr; gap: 1.2rem; }
+  .now-focus-meta { flex-direction: row; justify-content: space-between; align-items: center; }
+  .now-focus-links { grid-column: 1; }
+}
