@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "verify:identity": "node scripts/verify-identity.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
