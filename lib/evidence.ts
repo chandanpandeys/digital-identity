@@ -12,6 +12,8 @@ export const evidencePrompts = [
   "What research has he done?",
   "Show me accessibility work",
   "What is publicly inspectable?",
+  "What credentials are documented?",
+  "Which resume should I use?",
   "Does he have teaching experience?",
 ] as const;
 
@@ -73,6 +75,31 @@ export const evidenceNodes: EvidenceNode[] = [
       { label: "Creator chapter", href: "/content" },
       { label: "Timeline", href: "/timeline" },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/chandanpandeys/" },
+    ],
+  },
+  {
+    id: "credentials",
+    title: "Selected documented credentials",
+    answer: "The credential layer is intentionally selective rather than a badge wall. Current source-backed records include a SkillsBuild/Edunet Artificial Intelligence completion certificate dated 19 July 2025 and a TechVidya Career Artificial Intelligence certificate covering 9 September–20 December 2024 with grade A. The source documents remain first-party evidence and are not exposed as public artifacts until sharing is intentionally reviewed.",
+    tags: ["credential", "credentials", "certificate", "certificates", "skillsbuild", "edunet", "techvidya", "course", "training", "grade"],
+    strength: "FIRST-PARTY",
+    links: [
+      { label: "Credential ledger", href: "/credentials" },
+      { label: "Resume", href: "/resume" },
+      { label: "Timeline", href: "/timeline" },
+    ],
+  },
+  {
+    id: "resumes",
+    title: "Role-specific resume views",
+    answer: "The website keeps one canonical web resume and generates three one-page hiring variants from structured data: AI/LLM Engineer, AI Research/ML, and AI Content/Developer Educator. The PDFs are downloadable recruiter views, while the web resume remains the canonical indexable record.",
+    tags: ["resume", "resumes", "cv", "job", "hiring", "recruiter", "llm engineer", "ai research", "machine learning", "ai content", "developer educator"],
+    strength: "FIRST-PARTY",
+    links: [
+      { label: "Resume hub", href: "/resume" },
+      { label: "AI / LLM Engineer PDF", href: "/resume/pdf/ai-llm-engineer" },
+      { label: "AI Research / ML PDF", href: "/resume/pdf/ai-research-ml" },
+      { label: "AI Content / Developer Educator PDF", href: "/resume/pdf/ai-content-developer-educator" },
     ],
   },
   {
