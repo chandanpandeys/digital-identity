@@ -3,6 +3,7 @@ import { site } from "@/lib/profile";
 import "./globals.css";
 import "./expansion.css";
 import "./case-depth.css";
+import "./curation.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.canonicalUrl),
