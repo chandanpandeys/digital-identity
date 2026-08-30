@@ -15,6 +15,27 @@ const selectedExperience = experiences.filter(item => selectedOrganizations.has(
 const education = experiences.filter(item => item.kind === "education" && item.title.includes("Bachelor"));
 const selectedProjects = projects.filter(project => ["bytetoken", "inferbench", "epitopepred", "dekhosuno"].includes(project.slug));
 
+const resumeDownloads = [
+  {
+    label: "AI / LLM ENGINEER",
+    title: "Systems, agents & developer tools",
+    note: "Prioritizes ByteToken, InferBench, applied ML, backend systems, and public technical evidence.",
+    href: "/resume/pdf/ai-llm-engineer",
+  },
+  {
+    label: "AI RESEARCH / ML",
+    title: "Applied ML & computational biology",
+    note: "Prioritizes Amity research, EpitopePred, model evaluation, scientific workflows, and research engineering.",
+    href: "/resume/pdf/ai-research-ml",
+  },
+  {
+    label: "AI CONTENT / EDUCATION",
+    title: "Technical storytelling with engineering depth",
+    note: "Prioritizes YAAS, education/community work, research synthesis, AI workflows, and developer-facing communication.",
+    href: "/resume/pdf/ai-content-developer-educator",
+  },
+] as const;
+
 const capabilities = [
   {
     title: "LLM infrastructure & evaluation",
@@ -59,7 +80,25 @@ export default function ResumePage() {
         <p className="eyebrow">AI ENGINEERING / APPLIED RESEARCH / DEVELOPER TOOLS</p>
         <h1>Build the system.<br/><em>Measure the result.</em></h1>
         <p>AI engineer and builder working across LLM infrastructure, local-model evaluation, computational research, automation, accessibility, and technical communication. This page is intentionally selective; the complete chronology lives in the timeline.</p>
-        <div className="resume-contact-row"><a href={site.links.github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><Link href="/ask">Ask the evidence ↗</Link></div>
+        <div className="resume-contact-row"><a href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><Link href="/ask">Ask the evidence ↗</Link></div>
+      </section>
+
+      <section className="site-shell resume-download-section" aria-labelledby="targeted-resumes-title">
+        <div className="resume-download-heading">
+          <div><p className="eyebrow">TARGETED PDF RESUMES</p><h2 id="targeted-resumes-title">One record. Three hiring lenses.</h2></div>
+          <p>The website preserves the full story. Each one-page PDF filters that record for a different role without inflating evidence or resolving source conflicts silently.</p>
+        </div>
+        <div className="resume-download-grid">
+          {resumeDownloads.map((item, index) => (
+            <a className="resume-download-card" href={item.href} key={item.href}>
+              <span>0{index + 1} / {item.label}</span>
+              <h3>{item.title}</h3>
+              <p>{item.note}</p>
+              <strong>Download PDF ↓</strong>
+            </a>
+          ))}
+        </div>
+        <p className="resume-download-policy"><strong>EVIDENCE POLICY</strong> Public projects are marked inspectable. First-party project or career claims remain labelled as such. Conflicting source dates are represented conservatively.</p>
       </section>
 
       <section className="site-shell resume-grid resume-grid-v2">
