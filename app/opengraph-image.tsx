@@ -14,8 +14,8 @@ export default function Image() {
         <div style={{ display: "flex", flex: 1, alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", flexDirection: "column", width: "70%" }}>
             <span style={{ fontSize: 18, letterSpacing: 3, color: "#575750", marginBottom: 26 }}>AI ENGINEERING · APPLIED RESEARCH · OPEN SOURCE</span>
-            <div style={{ fontSize: 82, lineHeight: .92, letterSpacing: -5, fontWeight: 700 }}>Chandan<br/>Pandey</div>
-            <div style={{ fontSize: 30, marginTop: 30, color: "#3d3d38" }}>I turn AI research into systems that ship.</div>
+            <div style={{ display: "flex", flexDirection: "column", fontSize: 82, lineHeight: .92, letterSpacing: -5, fontWeight: 700 }}><span>Chandan</span><span>Pandey</span></div>
+            <div style={{ display: "flex", fontSize: 30, marginTop: 30, color: "#3d3d38" }}>I turn AI research into systems that ship.</div>
           </div>
           <div style={{ width: 250, height: 250, border: "2px solid #141411", borderRadius: 999, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", background: "#2557ff", color: "white" }}>
             <div style={{ width: 126, height: 126, border: "2px solid white", borderRadius: 999, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 38, fontWeight: 700 }}>CP</div>
