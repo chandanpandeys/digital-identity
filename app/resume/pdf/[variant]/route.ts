@@ -19,6 +19,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ var
       "content-disposition": `attachment; filename="${data.filename}"`,
       "cache-control": "public, max-age=3600, stale-while-revalidate=86400",
       "x-content-type-options": "nosniff",
+      "x-robots-tag": "noindex, noarchive",
     },
   });
 }
