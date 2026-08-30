@@ -5,6 +5,7 @@ import "./expansion.css";
 import "./case-depth.css";
 import "./curation.css";
 import "./evidence.css";
+import "./interaction.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.canonicalUrl),
