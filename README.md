@@ -33,6 +33,7 @@ The permanent production topology will use one clean Vercel project after the fi
 - Selected credential records in `lib/credentials.ts`
 - Role-specific resume data in `lib/resume-data.ts`
 - Server-side PDF generation with `pdf-lib`
+- Branded metadata surfaces: generated app icon, web manifest, theme viewport, custom 404
 - GitHub Actions install → identity checks → typecheck → production build
 
 ## Information architecture
@@ -56,6 +57,7 @@ The permanent production topology will use one clean Vercel project after the fi
 - `/llms.txt`
 - `/profile.json`
 - `/evidence.json`
+- `/manifest.webmanifest`
 
 `/profile.json` is the structured identity contract. `/evidence.json` is the retrieval/provenance contract behind Ask Chandan.
 
@@ -99,7 +101,9 @@ The site includes:
 - project-level `SoftwareSourceCode` / `CreativeWork` JSON-LD
 - credential `EducationalOccupationalCredential` JSON-LD
 - per-project Open Graph metadata
-- branded social preview image
+- branded social preview image + generated app icon
+- web manifest + theme viewport metadata
+- custom 404 that routes visitors back into the identity graph
 - explicit crawler/search surfaces
 - evidence and curation semantics in machine-readable JSON
 
@@ -130,7 +134,7 @@ Before v1 is merged into `main`:
 
 - final domain must be purchased/attached explicitly
 - one clean Vercel project must be created
-- production machine routes and Open Graph output must be verified
+- production machine routes, app metadata, and Open Graph output must be verified
 - any credential artifact made public must have intentional sharing permissions
 - EpitopePred must either gain sanitized public artifacts or keep its first-party label
 - Search Console / Bing setup happens only after the final domain resolves
