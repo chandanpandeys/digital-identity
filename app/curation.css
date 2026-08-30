@@ -1,0 +1,7 @@
+.inline-text-link { border-bottom: 1px solid currentColor; padding-bottom: .05rem; }
+.flagship-card { position: relative; }
+.flagship-card::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 3px 0 0 var(--blue); opacity: .9; }
+.work-to-lab { display: grid; grid-template-columns: 1.15fr .85fr; gap: 6rem; align-items: end; padding: 7rem 0 3rem; border-top: 1px solid var(--line); margin-top: 5rem; }
+.work-to-lab h2 { margin: 0; max-width: 680px; font: 400 clamp(2.8rem, 4.8vw, 5rem)/.97 Georgia, 'Times New Roman', serif; letter-spacing: -.05em; }
+.work-to-lab > div:last-child > p { margin: 0 0 1.5rem; color: var(--muted); line-height: 1.65; max-width: 520px; }
+@media (max-width: 800px) { .work-to-lab { grid-template-columns: 1fr; gap: 2rem; padding-top: 5rem; } }
