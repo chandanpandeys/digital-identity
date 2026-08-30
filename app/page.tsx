@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { ContextMap } from "@/components/ContextMap";
 import { disciplines, now, proofPoints, site, timeline } from "@/lib/profile";
 import { projects } from "@/lib/projects";
 
@@ -11,7 +11,7 @@ function Header() {
   return (
     <header className="site-shell header">
       <Link className="brand" href="/" aria-label="Chandan Pandey home">
-        Chandan Pandey<span>.</span>
+        CP<span>/</span>ID
       </Link>
       <nav aria-label="Primary navigation">
         <Link href="/work">Work</Link>
@@ -27,90 +27,88 @@ function Header() {
 }
 
 export default function Home() {
+  const [leadProject, ...supportingProjects] = projects;
+
   return (
     <main id="main">
       <Header />
 
-      <section className="site-shell hero">
+      <section className="site-shell hero" aria-labelledby="hero-title">
         <div className="hero-signal">
           <span className="signal-dot" />
-          <span>AI engineer · applied research · open source · technical storytelling</span>
+          <span>Chandan Pandey / AI engineer / India</span>
+          <span className="hero-signal-right">Identity graph v0.1</span>
         </div>
 
         <div className="hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">CHANDAN PANDEY / DIGITAL IDENTITY</p>
-            <h1>
-              I build AI systems,
-              <br /> then <em>make them useful.</em>
+            <p className="eyebrow">AI ENGINEERING · APPLIED RESEARCH · OPEN SOURCE</p>
+            <h1 id="hero-title">
+              I turn AI research into
+              <em> systems that ship.</em>
             </h1>
             <p className="hero-deck">
-              I work across AI engineering, computational research, developer tooling,
-              automation, and technical content. This site is the evidence layer behind the title.
+              I am Chandan Pandey—an AI engineer and builder working across LLM infrastructure,
+              computational biology, automation, accessibility, and technical storytelling.
+              This site is the evidence layer behind that sentence.
             </p>
             <div className="hero-actions">
-              <Link className="button primary" href="/work">Explore the work <span>↓</span></Link>
+              <Link className="button primary" href="/work">Inspect the work <span>↓</span></Link>
               <a className="button secondary" href={site.links.linkedin} target="_blank" rel="noreferrer">
-                Connect on LinkedIn <Arrow />
+                LinkedIn <Arrow />
               </a>
             </div>
           </div>
 
-          <aside className="portrait-card" aria-label="Chandan Pandey identity card">
-            <div className="portrait-frame">
-              <Image
-                src="https://avatars.githubusercontent.com/u/126047460?v=4"
-                alt="Chandan Pandey"
-                fill
-                priority
-                sizes="(max-width: 900px) 75vw, 340px"
-                className="portrait"
-              />
-              <span className="portrait-tag">PRIMARY IDENTITY / 01</span>
-            </div>
-            <div className="portrait-meta">
-              <div><strong>@{site.handle}</strong><span>{site.location}</span></div>
-              <span>AI / BUILD / RESEARCH</span>
-            </div>
-          </aside>
+          <ContextMap />
         </div>
 
-        <div className="ticker" aria-label="Current focus">
-          <span className="ticker-label">NOW</span>
+        <div className="signal-rail" aria-label="Current focus">
+          <span className="signal-rail-label">NOW</span>
           {now.map((item, index) => (
-            <span className="ticker-item" key={item}><b>{String(index + 1).padStart(2, "0")}</b>{item}</span>
+            <span className="signal-rail-item" key={item}>
+              <b>{String(index + 1).padStart(2, "0")}</b>{item}
+            </span>
           ))}
         </div>
       </section>
 
-      <section className="site-shell section operating-system">
-        <div className="section-intro">
-          <p className="eyebrow">01 / OPERATING SYSTEM</p>
-          <h2>Three modes. One body of work.</h2>
-        </div>
-        <div className="discipline-grid">
-          {disciplines.map((discipline, index) => (
-            <article key={discipline.title} className="discipline">
-              <span>0{index + 1}</span>
-              <h3>{discipline.title}</h3>
-              <p>{discipline.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="site-shell section selected-work">
+      <section className="site-shell section work-section" id="work">
         <div className="section-intro split">
-          <div><p className="eyebrow">02 / SELECTED WORK</p><h2>Projects with a reason to exist.</h2></div>
+          <div>
+            <p className="eyebrow">01 / SELECTED WORK</p>
+            <h2>Proof before polish.</h2>
+          </div>
           <p>
-            Each project is being turned into a technical case study: problem, architecture,
-            decisions, evidence, trade-offs, and what changed because the work existed.
+            The projects are documented as systems: problem, architecture, decisions, evidence,
+            trade-offs, and what is public enough to inspect.
           </p>
         </div>
-        <div className="project-list">
-          {projects.map((project, index) => (
+
+        {leadProject && (
+          <Link className="lead-project" href={`/work/${leadProject.slug}`}>
+            <div className="lead-project-index">
+              <span>FLAGSHIP / 01</span>
+              <span>{leadProject.year}</span>
+            </div>
+            <div className="lead-project-copy">
+              <p>{leadProject.category}</p>
+              <h3>{leadProject.name}</h3>
+              <strong>{leadProject.strapline}</strong>
+              <span>{leadProject.summary}</span>
+            </div>
+            <div className="lead-project-system" aria-hidden="true">
+              <div className="token-stream"><span>101101</span><span>001011</span><span>111000</span></div>
+              <div className="compression-mark">CONTEXT<br />↘ DENSITY</div>
+              <span className="lead-arrow">↗</span>
+            </div>
+          </Link>
+        )}
+
+        <div className="project-list compact-projects">
+          {supportingProjects.map((project, index) => (
             <Link className="project-row" href={`/work/${project.slug}`} key={project.slug}>
-              <span className="project-number">0{index + 1}</span>
+              <span className="project-number">0{index + 2}</span>
               <div className="project-title"><span>{project.category}</span><h3>{project.name}</h3></div>
               <p>{project.strapline}</p>
               <span className="project-year">{project.year}</span>
@@ -118,17 +116,52 @@ export default function Home() {
             </Link>
           ))}
         </div>
-        <Link className="text-link" href="/work">View the complete work index <Arrow /></Link>
+        <Link className="text-link" href="/work">Open the complete work index <Arrow /></Link>
       </section>
 
-      <section className="story-band">
+      <section className="operating-band">
+        <div className="site-shell section operating-system">
+          <div className="section-intro inverse-intro">
+            <p className="eyebrow light">02 / OPERATING SYSTEM</p>
+            <h2>Build. Research. Explain.</h2>
+            <p>Different outputs. The same loop: understand deeply, make the system real, then make the reasoning legible.</p>
+          </div>
+          <div className="discipline-grid">
+            {disciplines.map((discipline, index) => (
+              <article key={discipline.title} className="discipline">
+                <span>MODE / 0{index + 1}</span>
+                <h3>{discipline.title}</h3>
+                <p>{discipline.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="site-shell section proof-section">
+        <div className="section-intro split">
+          <div><p className="eyebrow">03 / EVIDENCE GRAPH</p><h2>A claim should resolve somewhere.</h2></div>
+          <p>
+            Repositories, public profiles, project records, credentials, and first-party artifacts
+            are treated as nodes in one identity graph—not decorative logo wallpaper.
+          </p>
+        </div>
+        <ol className="proof-ledger">
+          {proofPoints.map((point, index) => (
+            <li key={point}><span>{String(index + 1).padStart(2, "0")}</span><p>{point}</p><i>VERIFIED SOURCE →</i></li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="story-band" id="story">
         <div className="site-shell story-grid">
           <div className="story-copy">
-            <p className="eyebrow light">03 / THE THREAD</p>
-            <h2>Researcher. Builder. Educator. Still one story.</h2>
+            <p className="eyebrow light">04 / THE THREAD</p>
+            <h2>The work changed. The pattern did not.</h2>
             <p>
-              The point of this portfolio is not to hide the different chapters. It is to show the
-              connecting pattern: learn deeply, build something, explain it, then do it again at a higher level.
+              Education content, student communities, applied ML, cancer-vaccine research,
+              AI systems, open source, and product experiments are not separate identities.
+              They are iterations of the same habit: learn, build, explain, repeat.
             </p>
             <Link className="button inverse" href="/about">Read the full story <Arrow /></Link>
           </div>
@@ -143,26 +176,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="site-shell section proof-section">
-        <div className="section-intro split">
-          <div><p className="eyebrow">04 / PROOF, NOT DECORATION</p><h2>The portfolio is an evidence graph.</h2></div>
-          <p>
-            Every substantial claim should eventually resolve to a repository, credential,
-            case study, artifact, public post, certificate, or first-party project record.
-          </p>
-        </div>
-        <ul className="proof-grid">
-          {proofPoints.map((point) => <li key={point}>{point}</li>)}
-        </ul>
-      </section>
-
       <section className="site-shell closing">
         <p className="eyebrow">05 / OPEN LOOP</p>
-        <h2>Building the canonical version of Chandan Pandey on the web.</h2>
+        <h2>Useful AI is the standard.</h2>
         <div>
           <p>
-            For engineering, AI research, product experiments, technical content,
-            collaborations, or conversations about difficult problems.
+            I care about systems that survive beyond the demo: useful interfaces,
+            inspectable reasoning, strong evaluation, and software people can actually use.
           </p>
           <a className="button primary" href={site.links.linkedin} target="_blank" rel="noreferrer">Start a conversation <Arrow /></a>
         </div>

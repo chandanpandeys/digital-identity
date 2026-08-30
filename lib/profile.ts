@@ -14,55 +14,55 @@ export const site = {
 export const disciplines = [
   {
     title: "Build",
-    text: "AI systems, agent workflows, developer tools, automation, and product prototypes that are meant to survive beyond the demo.",
+    text: "AI systems, agent workflows, developer tools, automation, and product prototypes designed to become usable software—not just demos.",
   },
   {
     title: "Research",
-    text: "Applied machine learning across computational biology, neoantigen discovery, sequence modelling, and evaluation-heavy research workflows.",
+    text: "Applied machine learning across computational biology, cancer genomics, neoantigen discovery, sequence modelling, and evaluation-heavy workflows.",
   },
   {
     title: "Explain",
-    text: "Technical content, education, workshops, and narratives that make AI useful to people who need to apply it—not just admire it.",
+    text: "Technical content, education, workshops, and narratives that make complex systems legible to the people who need to use them.",
   },
 ] as const;
 
 export const now = [
   "Building AI systems and open-source developer infrastructure",
   "Leading AI and technology content at YAAS",
-  "Turning private experiments into public, documented software",
+  "Documenting research, experiments, and public software",
 ] as const;
 
 export const timeline = [
   {
-    period: "2026 — now",
+    period: "2026 — NOW",
     title: "AI Content Lead · YAAS",
     description:
-      "Leading research, strategy, scripting, workflows, and performance thinking for AI and technology content.",
+      "Researching AI tools and use cases, shaping strategy and scripts, and building repeatable workflows from research through publishing and performance analysis.",
   },
   {
-    period: "2025 — 2026",
+    period: "SINCE 2025",
     title: "AI Research Associate · Amity University",
     description:
-      "Worked on applied ML and computational workflows around cancer genomics, neoantigen prediction, immunogenicity, and vaccine-discovery research.",
+      "Applied ML and computational workflows around cancer genomics, neoantigen prediction, immunogenicity, and vaccine-discovery research.",
   },
   {
-    period: "2024 — now",
+    period: "2024 — NOW",
     title: "Founder · Notansun",
     description:
-      "Started as a student-focused programming, AI, and career initiative and is evolving toward AI-powered products and learning systems.",
+      "A student-focused programming and AI initiative evolving toward practical AI products, learning systems, workshops, and community experiments.",
   },
   {
     period: "2020 — 2022",
-    title: "Education creator · Charak Education Center",
+    title: "Early education creator",
     description:
-      "An early chapter in building in public: educational videos, exam preparation, visual explanations, and student-focused content.",
+      "The first public-building chapter: educational videos, exam preparation, visual explanations, and student-focused content while still in school.",
   },
 ] as const;
 
 export const proofPoints = [
-  "BCA graduate with an 8.8/10 GPA and top-1% academic standing",
-  "IBM SkillsBuild AI & ML internship and project-based ML work",
-  "Google Gemini Student Ambassador (2025 program)",
+  "BCA in Computer Science & IT from Dr. Ram Manohar Lohia Avadh University",
+  "IBM SkillsBuild AI & ML virtual internship with a project-based machine-learning workflow",
+  "Selected as a Google Gemini Student Ambassador for the 2025 campus program",
   "Campus ambassador experience with E-Cell IIT Bombay and E-Cell IIT Guwahati",
   "1,000+ student questions answered as a Brainly subject-matter expert",
 ] as const;
