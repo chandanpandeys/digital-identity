@@ -26,6 +26,22 @@ function Header() {
   );
 }
 
+function FlagshipEvidence() {
+  return (
+    <div className="lead-project-system flagship-evidence" aria-label="ByteToken JSON benchmark snapshot">
+      <div className="flagship-evidence-head"><span>MEASURED / JSON API</span><small>o200k_base</small></div>
+      <div className="flagship-bars">
+        <div><span>BASE64</span><b>18,574</b><i><em style={{ width: "100%" }} /></i></div>
+        <div><span>BT-15</span><b>11,919</b><i><em className="blue" style={{ width: "64.2%" }} /></i></div>
+        <div><span>LZMA + BT</span><b>728</b><i><em className="signal" style={{ width: "5%" }} /></i></div>
+      </div>
+      <div className="flagship-evidence-note"><strong>35.8%</strong><span>raw encoding reduction vs Base64</span></div>
+      <div className="compression-mark">RAW ≠<br />COMPRESSED</div>
+      <span className="lead-arrow">↗</span>
+    </div>
+  );
+}
+
 export default function Home() {
   const [leadProject, ...supportingProjects] = projects;
 
@@ -97,11 +113,7 @@ export default function Home() {
               <strong>{leadProject.strapline}</strong>
               <span>{leadProject.summary}</span>
             </div>
-            <div className="lead-project-system" aria-hidden="true">
-              <div className="token-stream"><span>101101</span><span>001011</span><span>111000</span></div>
-              <div className="compression-mark">CONTEXT<br />↘ DENSITY</div>
-              <span className="lead-arrow">↗</span>
-            </div>
+            {leadProject.slug === "bytetoken" ? <FlagshipEvidence /> : <div className="lead-project-system"><span className="lead-arrow">↗</span></div>}
           </Link>
         )}
 
