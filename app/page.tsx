@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ContextMap } from "@/components/ContextMap";
-import { disciplines, now, proofPoints, site, timeline } from "@/lib/profile";
+import { disciplines, now, proofSignals, site, timeline } from "@/lib/profile";
 import { projects } from "@/lib/projects";
 
 function Arrow() {
@@ -15,9 +15,9 @@ function Header() {
       </Link>
       <nav aria-label="Primary navigation">
         <Link href="/work">Work</Link>
+        <Link href="/timeline">Timeline</Link>
         <Link href="/about">About</Link>
         <Link href="/now">Now</Link>
-        <Link href="/resume">Resume</Link>
       </nav>
       <a className="header-link" href={site.links.github} target="_blank" rel="noreferrer">
         GitHub <Arrow />
@@ -37,7 +37,7 @@ export default function Home() {
         <div className="hero-signal">
           <span className="signal-dot" />
           <span>Chandan Pandey / AI engineer / India</span>
-          <span className="hero-signal-right">Identity graph v0.1</span>
+          <span className="hero-signal-right">Identity graph v0.2</span>
         </div>
 
         <div className="hero-grid">
@@ -142,13 +142,17 @@ export default function Home() {
         <div className="section-intro split">
           <div><p className="eyebrow">03 / EVIDENCE GRAPH</p><h2>A claim should resolve somewhere.</h2></div>
           <p>
-            Repositories, public profiles, project records, credentials, and first-party artifacts
-            are treated as nodes in one identity graph—not decorative logo wallpaper.
+            Evidence has different strengths. Public repositories are inspectable; professional profiles are public records;
+            first-party material is useful context. The site labels the difference instead of flattening everything into “verified.”
           </p>
         </div>
         <ol className="proof-ledger">
-          {proofPoints.map((point, index) => (
-            <li key={point}><span>{String(index + 1).padStart(2, "0")}</span><p>{point}</p><i>VERIFIED SOURCE →</i></li>
+          {proofSignals.map((signal, index) => (
+            <li key={signal.label}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <div><p>{signal.label}</p><small>{signal.detail}</small></div>
+              <a href={signal.href} target="_blank" rel="noreferrer">{signal.strength} / {signal.source} <Arrow /></a>
+            </li>
           ))}
         </ol>
       </section>
@@ -163,7 +167,10 @@ export default function Home() {
               AI systems, open source, and product experiments are not separate identities.
               They are iterations of the same habit: learn, build, explain, repeat.
             </p>
-            <Link className="button inverse" href="/about">Read the full story <Arrow /></Link>
+            <div className="story-actions">
+              <Link className="button inverse" href="/timeline">Inspect the timeline <Arrow /></Link>
+              <Link className="button inverse muted-button" href="/content">Creator chapter <Arrow /></Link>
+            </div>
           </div>
           <ol className="timeline">
             {timeline.map((item) => (
@@ -190,7 +197,7 @@ export default function Home() {
 
       <footer className="site-shell footer">
         <div><strong>Chandan Pandey</strong><span>AI Engineer · Researcher · Builder</span></div>
-        <div><a href={site.links.github}>GitHub ↗</a><a href={site.links.linkedin}>LinkedIn ↗</a></div>
+        <div><Link href="/resume">Resume</Link><Link href="/content">Content</Link><a href={site.links.github}>GitHub ↗</a></div>
         <span>Structured for humans, search engines, and AI systems.</span>
       </footer>
     </main>
