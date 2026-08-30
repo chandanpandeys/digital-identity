@@ -83,6 +83,13 @@ export const proofSignals = [
     strength: "INSPECTABLE",
   },
   {
+    label: "InferBench",
+    detail: "Public local-LLM evaluation tooling covering hardware preflight, speed, memory, power/energy, quality, comparison, and reporting.",
+    source: "Repository",
+    href: "https://github.com/chandanpandeys/inferbench",
+    strength: "INSPECTABLE",
+  },
+  {
     label: "DekhoSuno",
     detail: "Public Flutter accessibility project combining Gemini, OCR, speech, computer vision, sensors, and accessible interaction flows.",
     source: "Repository",
