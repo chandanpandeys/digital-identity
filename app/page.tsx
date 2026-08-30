@@ -211,7 +211,7 @@ export default function Home() {
 
       <footer className="site-shell footer">
         <div><strong>Chandan Pandey</strong><span>AI Engineer · Researcher · Builder</span></div>
-        <div><Link href="/resume">Resume</Link><Link href="/ask">Ask</Link><Link href="/content">Content</Link><a href={site.links.github}>GitHub ↗</a></div>
+        <div><Link href="/resume">Resume</Link><Link href="/credentials">Credentials</Link><Link href="/ask">Ask</Link><Link href="/content">Content</Link><a href={site.links.github}>GitHub ↗</a></div>
         <span>Structured for humans, search engines, and AI systems.</span>
       </footer>
     </main>
