@@ -71,9 +71,9 @@ export default function ProjectMedia({ slug }: { slug: string }) {
       <div className={`project-media-grid ${items.length === 1 ? "single" : ""}`}>
         {items.map((item) => (
           <figure className={`project-media-card ${item.kind}`} key={item.src}>
-            <a href={item.href} target="_blank" rel="noreferrer" aria-label={`Open source artifact: ${item.title}`}>
+            <a href={item.href} target="_blank" rel="noopener noreferrer" aria-label={`Open source artifact: ${item.title}`}>
               <div className="project-media-frame">
-                <img src={item.src} alt={item.alt} loading="lazy" />
+                <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
               </div>
               <figcaption>
                 <div><span>PUBLIC ARTIFACT</span><strong>{item.title}</strong></div>

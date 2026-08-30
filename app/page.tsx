@@ -18,8 +18,9 @@ function Header() {
         <Link href="/timeline">Timeline</Link>
         <Link href="/about">About</Link>
         <Link href="/ask">Ask</Link>
+        <Link href="/now">Now</Link>
       </nav>
-      <a className="header-link" href={site.links.github} target="_blank" rel="noreferrer">
+      <a className="header-link" href={site.links.github} target="_blank" rel="noopener noreferrer">
         GitHub <Arrow />
       </a>
     </header>
@@ -71,7 +72,7 @@ export default function Home() {
             <div className="hero-actions">
               <Link className="button primary" href="/work">Inspect the work <span>↓</span></Link>
               <Link className="button secondary" href="/ask">Ask the evidence <Arrow /></Link>
-              <a className="button secondary" href={site.links.linkedin} target="_blank" rel="noreferrer">
+              <a className="button secondary" href={site.links.linkedin} target="_blank" rel="noopener noreferrer">
                 LinkedIn <Arrow />
               </a>
             </div>
@@ -164,7 +165,7 @@ export default function Home() {
             <li key={signal.label}>
               <span>{String(index + 1).padStart(2, "0")}</span>
               <div><p>{signal.label}</p><small>{signal.detail}</small></div>
-              <a href={signal.href} target="_blank" rel="noreferrer">{signal.strength} / {signal.source} <Arrow /></a>
+              <a href={signal.href} target="_blank" rel="noopener noreferrer">{signal.strength} / {signal.source} <Arrow /></a>
             </li>
           ))}
         </ol>
@@ -204,7 +205,7 @@ export default function Home() {
             I care about systems that survive beyond the demo: useful interfaces,
             inspectable reasoning, strong evaluation, and software people can actually use.
           </p>
-          <a className="button primary" href={site.links.linkedin} target="_blank" rel="noreferrer">Start a conversation <Arrow /></a>
+          <a className="button primary" href={site.links.linkedin} target="_blank" rel="noopener noreferrer">Start a conversation <Arrow /></a>
         </div>
       </section>
 

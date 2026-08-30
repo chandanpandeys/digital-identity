@@ -40,24 +40,43 @@ export default function AskChandan() {
     <div className="ask-console">
       <div className="ask-status">
         <span><i /> EVIDENCE RETRIEVAL / V0.1</span>
-        <small>No generative answer layer yet. Results resolve to curated evidence nodes.</small>
+        <small id="ask-help">No generative answer layer yet. Results resolve to curated evidence nodes.</small>
       </div>
       <form className="ask-form" onSubmit={submit}>
         <label htmlFor="ask-query">Ask about projects, research, experience, or public evidence.</label>
-        <div><input id="ask-query" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="e.g. What has Chandan built around LLM infrastructure?" /><button type="submit">Resolve →</button></div>
+        <div>
+          <input
+            id="ask-query"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="e.g. What has Chandan built around LLM infrastructure?"
+            autoComplete="off"
+            aria-describedby="ask-help"
+            aria-controls="ask-results"
+          />
+          <button type="submit" aria-controls="ask-results">Resolve →</button>
+        </div>
       </form>
       <div className="ask-prompts" aria-label="Suggested questions">
-        {evidencePrompts.map((prompt) => <button key={prompt} type="button" onClick={() => choosePrompt(prompt)}>{prompt}</button>)}
+        {evidencePrompts.map((prompt) => (
+          <button key={prompt} type="button" aria-controls="ask-results" onClick={() => choosePrompt(prompt)}>{prompt}</button>
+        ))}
       </div>
       <div className="ask-query-readout"><span>QUERY</span><strong>{submitted}</strong></div>
-      <div className="ask-results">
+      <p className="sr-only" role="status" aria-live="polite">
+        Showing {results.length} evidence {results.length === 1 ? "result" : "results"} for: {submitted}
+      </p>
+      <div className="ask-results" id="ask-results">
         {results.map((node, index) => (
           <article key={node.id}>
             <header><span>0{index + 1}</span><b className={`ask-strength ${node.strength.toLowerCase().replaceAll(" ", "-")}`}>{node.strength}</b></header>
             <h2>{node.title}</h2>
             <p>{node.answer}</p>
             <div className="ask-links">
-              {node.links.map((link) => <a key={link.href} href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noreferrer" : undefined}>{link.label} ↗</a>)}
+              {node.links.map((link) => {
+                const external = link.href.startsWith("http");
+                return <a key={link.href} href={link.href} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>{link.label} ↗</a>;
+              })}
             </div>
           </article>
         ))}
