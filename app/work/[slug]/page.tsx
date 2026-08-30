@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProjectEvidenceVisual from "@/components/ProjectEvidenceVisual";
 import ProjectMedia from "@/components/ProjectMedia";
+import { site } from "@/lib/profile";
 import { getProject, projects } from "@/lib/projects";
 
 export function generateStaticParams() {
@@ -13,10 +14,26 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
+  const path = `/work/${project.slug}`;
+  const title = `${project.name} — Chandan Pandey`;
   return {
     title: project.name,
     description: project.summary,
-    alternates: { canonical: `/work/${project.slug}` },
+    alternates: { canonical: path },
+    openGraph: {
+      type: "article",
+      url: path,
+      title,
+      description: project.summary,
+      siteName: "Chandan Pandey",
+      images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${project.name} case study by Chandan Pandey` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: project.summary,
+      images: ["/opengraph-image"],
+    },
   };
 }
 
@@ -55,9 +72,24 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const nextIndex = (projects.findIndex((item) => item.slug === project.slug) + 1) % projects.length;
   const nextProject = projects[nextIndex];
   const sources = sourceLinks[project.slug] ?? [];
+  const projectUrl = `${site.canonicalUrl}/work/${project.slug}`;
+  const projectJsonLd = {
+    "@context": "https://schema.org",
+    "@type": project.github ? "SoftwareSourceCode" : "CreativeWork",
+    "@id": `${projectUrl}#project`,
+    name: project.name,
+    description: project.summary,
+    url: projectUrl,
+    author: { "@id": `${site.canonicalUrl}/#person` },
+    isPartOf: { "@id": `${site.canonicalUrl}/#profile-page` },
+    about: project.category,
+    keywords: project.stack.join(", "),
+    ...(project.github ? { codeRepository: project.github, sameAs: project.github } : {}),
+  };
 
   return (
     <main id="main" className="inner-page case-study">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd).replace(/</g, "\\u003c") }} />
       <header className="site-shell subnav">
         <Link href="/work">← Work index</Link>
         <span>{project.category.toUpperCase()} / {project.year}</span>
@@ -72,7 +104,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <p className="case-strapline">{project.strapline}</p>
         <p className="case-summary">{project.summary}</p>
         <div className="case-actions">
-          {project.github && <a className="button primary" href={project.github} target="_blank" rel="noreferrer">Inspect source ↗</a>}
+          {project.github && <a className="button primary" href={project.github} target="_blank" rel="noopener noreferrer">Inspect source ↗</a>}
           <a className="button secondary" href="#architecture">System view ↓</a>
         </div>
       </section>
@@ -156,7 +188,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             {sources.length > 0 && (
               <div className="source-links">
                 {sources.map((source) => (
-                  <a key={source.href} href={source.href} target="_blank" rel="noreferrer">
+                  <a key={source.href} href={source.href} target="_blank" rel="noopener noreferrer">
                     <span>{source.label}</span><strong>{source.title}</strong><i>↗</i>
                   </a>
                 ))}
