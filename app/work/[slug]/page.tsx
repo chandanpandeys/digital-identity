@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ProjectEvidenceVisual from "@/components/ProjectEvidenceVisual";
 import { getProject, projects } from "@/lib/projects";
 
 export function generateStaticParams() {
@@ -26,6 +27,24 @@ function EvidenceBadge({ isPublic }: { isPublic: boolean }) {
   );
 }
 
+const sourceLinks: Record<string, { label: string; title: string; href: string }[]> = {
+  bytetoken: [
+    { label: "BENCHMARK", title: "benchmark_realworld.py", href: "https://github.com/chandanpandeys/bytetoken/blob/main/benchmarks/benchmark_realworld.py" },
+    { label: "REPOSITORY", title: "ByteToken source + reproduction instructions", href: "https://github.com/chandanpandeys/bytetoken" },
+  ],
+  inferbench: [
+    { label: "PREFLIGHT", title: "Hardware fit and throughput estimation", href: "https://github.com/chandanpandeys/inferbench/blob/main/src/inferbench/preflight.py" },
+    { label: "PACKAGE", title: "CLI entry point and package metadata", href: "https://github.com/chandanpandeys/inferbench/blob/main/pyproject.toml" },
+    { label: "TESTS", title: "Benchmark test module", href: "https://github.com/chandanpandeys/inferbench/blob/main/tests/test_benchmarks.py" },
+  ],
+  dekhosuno: [
+    { label: "REPOSITORY", title: "DekhoSuno public source and feature documentation", href: "https://github.com/chandanpandeys/DekhoSuno" },
+  ],
+  oneclickallresultsbot: [
+    { label: "REPOSITORY", title: "OneClickAllResultsBot public source", href: "https://github.com/chandanpandeys/OneClickAllResultsBot" },
+  ],
+};
+
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const project = getProject(slug);
@@ -33,6 +52,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   const nextIndex = (projects.findIndex((item) => item.slug === project.slug) + 1) % projects.length;
   const nextProject = projects[nextIndex];
+  const sources = sourceLinks[project.slug] ?? [];
 
   return (
     <main id="main" className="inner-page case-study">
@@ -98,6 +118,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </section>
           )}
 
+          {project.tier === "flagship" && (
+            <section className="visual-evidence-section">
+              <p className="eyebrow">03B / VISUAL EVIDENCE</p>
+              <ProjectEvidenceVisual slug={project.slug} />
+            </section>
+          )}
+
           {project.metrics && (
             <section className="metric-section">
               <div className="architecture-heading">
@@ -122,6 +149,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             <p className="eyebrow">05 / EVIDENCE</p>
             <h2>What supports the story</h2>
             <ul className="evidence-list">{project.evidence.map((item)=><li key={item}>{item}</li>)}</ul>
+            {sources.length > 0 && (
+              <div className="source-links">
+                {sources.map((source) => (
+                  <a key={source.href} href={source.href} target="_blank" rel="noreferrer">
+                    <span>{source.label}</span><strong>{source.title}</strong><i>↗</i>
+                  </a>
+                ))}
+              </div>
+            )}
           </section>
 
           <section>
