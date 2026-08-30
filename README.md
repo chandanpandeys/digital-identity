@@ -2,6 +2,12 @@
 
 The source code and structured knowledge layer behind **chandanpandeys.me**.
 
+## Preview the current build
+
+[Open the `build/portfolio-v1` branch in StackBlitz](https://stackblitz.com/github/chandanpandeys/digital-identity/tree/build/portfolio-v1?startScript=dev)
+
+StackBlitz imports this public GitHub branch, installs the dependencies, runs `npm run dev`, and gives you a live browser preview. The GitHub repository remains the source of truth.
+
 This is not being designed as a generic portfolio template. The project has three jobs:
 
 1. Give humans a fast, evidence-backed understanding of Chandan Pandey.
