@@ -47,8 +47,8 @@ export function ContextMap() {
           </div>
         ))}
 
-        <span className="map-coordinate coordinate-a">28.6°N</span>
-        <span className="map-coordinate coordinate-b">77.2°E</span>
+        <span className="map-coordinate coordinate-a">CTX / 01</span>
+        <span className="map-coordinate coordinate-b">CTX / 02</span>
       </div>
 
       <figcaption>
