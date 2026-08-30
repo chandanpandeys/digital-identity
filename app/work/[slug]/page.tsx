@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProjectEvidenceVisual from "@/components/ProjectEvidenceVisual";
+import ProjectMedia from "@/components/ProjectMedia";
 import { getProject, projects } from "@/lib/projects";
 
 export function generateStaticParams() {
@@ -39,6 +40,7 @@ const sourceLinks: Record<string, { label: string; title: string; href: string }
   ],
   dekhosuno: [
     { label: "REPOSITORY", title: "DekhoSuno public source and feature documentation", href: "https://github.com/chandanpandeys/DekhoSuno" },
+    { label: "ARCHITECTURE", title: "Public architecture artifact", href: "https://github.com/chandanpandeys/DekhoSuno/blob/main/assets/images/architecture.png" },
   ],
   oneclickallresultsbot: [
     { label: "REPOSITORY", title: "OneClickAllResultsBot public source", href: "https://github.com/chandanpandeys/OneClickAllResultsBot" },
@@ -124,6 +126,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               <ProjectEvidenceVisual slug={project.slug} />
             </section>
           )}
+
+          <ProjectMedia slug={project.slug} />
 
           {project.metrics && (
             <section className="metric-section">
