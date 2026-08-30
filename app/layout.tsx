@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { site } from "@/lib/profile";
 import "./globals.css";
 import "./expansion.css";
+import "./case-depth.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.canonicalUrl),
