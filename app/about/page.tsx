@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { proofPoints, site, timeline } from "@/lib/profile";
+import { proofSignals, site, timeline } from "@/lib/profile";
 
 export const metadata: Metadata = {
   title: "About",
@@ -26,7 +26,11 @@ export default function AboutPage() {
         </div>
       </section>
       <section className="site-shell about-timeline"><p className="eyebrow">SELECTED TIMELINE</p>{timeline.map((item)=><article key={item.title}><span>{item.period}</span><div><h2>{item.title}</h2><p>{item.description}</p></div></article>)}</section>
-      <section className="site-shell about-proof"><p className="eyebrow">SELECTED SIGNALS</p><ul>{proofPoints.map((point)=><li key={point}>{point}</li>)}</ul><a className="button secondary" href={site.links.linkedin} target="_blank" rel="noreferrer">Full LinkedIn profile ↗</a></section>
+      <section className="site-shell about-proof">
+        <p className="eyebrow">PUBLIC EVIDENCE NODES</p>
+        <ul>{proofSignals.map((signal)=><li key={signal.label}><a href={signal.href} target="_blank" rel="noreferrer"><strong>{signal.label}</strong><span>{signal.strength} · {signal.source} ↗</span></a></li>)}</ul>
+        <div className="about-actions"><Link className="button secondary" href="/timeline">Full timeline ↗</Link><a className="button secondary" href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn profile ↗</a></div>
+      </section>
     </main>
   );
 }
