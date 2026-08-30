@@ -2,6 +2,7 @@ import { currentFocus, disciplines, now, proofSignals, site, timeline } from "@/
 import { experiences } from "@/lib/experience";
 import { projects } from "@/lib/projects";
 import { labItems } from "@/lib/lab";
+import { credentials } from "@/lib/credentials";
 import { resumeData, resumeVariants } from "@/lib/resume-data";
 
 export function GET() {
@@ -14,7 +15,7 @@ export function GET() {
   }));
 
   return Response.json({
-    schemaVersion: "1.6",
+    schemaVersion: "1.7",
     updatedAt: "2026-08-31",
     canonical: site.canonicalUrl,
     person: site,
@@ -25,12 +26,14 @@ export function GET() {
     lab: labItems,
     selectedTimeline: timeline,
     experience: experiences,
+    selectedCredentials: credentials,
     targetedResumes,
     publicEvidence: proofSignals,
     curation: {
       work: "Flagship and selected projects with enough technical depth or evidence for dedicated case studies.",
       lab: "Supporting experiments, earlier builds, and public repositories preserved without competing with flagship work.",
       now: "Only active allocation of attention; historical work belongs in Timeline and supporting experiments belong in Lab.",
+      credentials: "Selected credentials with an identified source document. Private source files are not exposed as public evidence until sharing is intentionally reviewed.",
       resume: "The HTML resume is the canonical hiring record. Targeted PDF variants are filtered views generated from a structured role-specific dataset.",
       ask: "A deterministic evidence navigator that resolves questions to curated nodes and source links before any future generative synthesis layer is added.",
     },
@@ -42,6 +45,7 @@ export function GET() {
       content: `${site.canonicalUrl}/content`,
       now: `${site.canonicalUrl}/now`,
       resume: `${site.canonicalUrl}/resume`,
+      credentials: `${site.canonicalUrl}/credentials`,
       ask: `${site.canonicalUrl}/ask`,
       evidence: `${site.canonicalUrl}/evidence.json`,
       llms: `${site.canonicalUrl}/llms.txt`,
