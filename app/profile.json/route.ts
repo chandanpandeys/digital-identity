@@ -5,7 +5,7 @@ import { labItems } from "@/lib/lab";
 
 export function GET() {
   return Response.json({
-    schemaVersion: "1.3",
+    schemaVersion: "1.4",
     updatedAt: "2026-08-31",
     canonical: site.canonicalUrl,
     person: site,
@@ -30,6 +30,7 @@ export function GET() {
       now: `${site.canonicalUrl}/now`,
       resume: `${site.canonicalUrl}/resume`,
       ask: `${site.canonicalUrl}/ask`,
+      evidence: `${site.canonicalUrl}/evidence.json`,
       llms: `${site.canonicalUrl}/llms.txt`,
     },
   }, { headers: { "cache-control": "public, max-age=3600" } });
