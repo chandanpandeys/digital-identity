@@ -1,52 +1,43 @@
 # Chandan Pandey — Digital Identity
 
-The source code, evidence graph, resume system, and machine-readable identity layer for Chandan Pandey.
+The source code, evidence graph, resume system, and machine-readable identity layer behind my portfolio.
 
-**Launch model:** free Vercel Hobby deployment using the project's stable `*.vercel.app` production domain.  
-**Current status:** active v1 development on `build/portfolio-v1`; one clean production project still needs to be created and verified.
+## What this project does
 
-## What this project is
+This site is designed to do four things well:
 
-This is not a generic portfolio template. It has four jobs:
+1. Give recruiters and engineers a fast, evidence-backed view of my work.
+2. Turn selected projects into engineering case studies rather than screenshots and skill tags.
+3. Give search engines a technically clean identity to index.
+4. Give AI systems structured context with explicit provenance and evidence strength.
 
-1. Give recruiters and engineers a fast, evidence-backed understanding of Chandan Pandey.
-2. Turn selected projects into real engineering case studies rather than screenshots and skill tags.
-3. Give search engines one technically clean canonical identity to index.
-4. Give AI systems structured, crawlable context with explicit provenance and evidence strength.
-
-The design language is editorial rather than cyberpunk: warm paper, cobalt signal color, technical grid language, restrained motion, and evidence-bearing visuals.
-
-## Preview the active branch
-
-[Open `build/portfolio-v1` in StackBlitz](https://stackblitz.com/github/chandanpandeys/digital-identity/tree/build/portfolio-v1?startScript=dev)
-
-The permanent production topology will use one clean Vercel Hobby project. A custom domain is optional and is not required for v1.
+The visual system is editorial: warm paper, cobalt accents, technical grid language, restrained motion, and evidence-bearing visuals.
 
 ## Core architecture
 
 - **Next.js 16.2.9 / React 19.2 / TypeScript**
 - App Router with static/server-first rendering
-- Custom CSS design system; no portfolio template dependency
+- Custom CSS design system
 - Evidence-first project data in `lib/projects.ts`
 - Career chronology in `lib/experience.ts`
 - Shared Ask/evidence graph in `lib/evidence.ts`
 - Selected credential records in `lib/credentials.ts`
 - Role-specific resume data in `lib/resume-data.ts`
 - Server-side PDF generation with `pdf-lib`
-- Branded metadata surfaces: generated app icon, web manifest, theme viewport, custom 404
-- GitHub Actions install → identity checks → typecheck → production build
+- Generated app icon, web manifest, Open Graph image, theme metadata, and custom 404
+- GitHub Actions: identity checks → typecheck → production build
 
 ## Information architecture
 
 - `/` — identity homepage + selected work
-- `/work` — curated flagship/selected work index
+- `/work` — curated flagship/selected work
 - `/work/[slug]` — architecture, measurements, artifacts, source links, evidence, stack
 - `/lab` — supporting experiments and earlier public work
 - `/timeline` — career, research, education, community, creator chronology
 - `/about` — the explain → research → systems through-line
-- `/content` — creator/technical-communication chapter
+- `/content` — creator and technical-communication chapter
 - `/now` — current allocation of attention
-- `/resume` — canonical web resume + three targeted PDF variants
+- `/resume` — canonical web resume + targeted PDF variants
 - `/credentials` — selected evidence-backed credentials
 - `/ask` — deterministic evidence navigator
 
@@ -64,13 +55,16 @@ The permanent production topology will use one clean Vercel Hobby project. A cus
 ## Flagship technical stories
 
 ### ByteToken
+
 Tokenizer-aware transport/context optimization for AI-agent and MCP payloads. The portfolio distinguishes raw encoding savings from compression-assisted savings and links to the reproducible public benchmark implementation.
 
 ### InferBench
+
 Local-LLM evaluation across hardware preflight, model fit, speed, memory, power/energy, quality, comparison, and reporting.
 
 ### EpitopePred
-Asynchronous computational vaccine-design workflow using Next.js, FastAPI, Celery, Redis, and scientific-tool integrations. It remains explicitly labelled **documented / first-party** until sanitized public artifacts exist.
+
+Asynchronous computational vaccine-design workflow using Next.js, FastAPI, Celery, Redis, and scientific-tool integrations. It is explicitly labelled **documented / first-party** while the research source remains private.
 
 ## Evidence model
 
@@ -78,37 +72,33 @@ The site does not flatten every claim into “verified.” Evidence is labelled 
 
 - **INSPECTABLE** — public source/repository can be opened and reviewed.
 - **PUBLIC PROFILE** — public professional record.
-- **FIRST-PARTY / DOCUMENTED** — source material exists, but it is not presented as independently public evidence.
+- **FIRST-PARTY / DOCUMENTED** — source material exists, but is not presented as independently public evidence.
 
 Private repositories and unpublished work stay private unless intentionally cleared.
 
 ## Resume system
 
-The HTML resume is the canonical hiring surface. Three one-page recruiter variants are generated server-side from structured data:
+The HTML resume is the primary hiring surface. Three one-page recruiter variants are generated server-side from structured data:
 
 - `/resume/pdf/ai-llm-engineer`
 - `/resume/pdf/ai-research-ml`
 - `/resume/pdf/ai-content-developer-educator`
 
-The PDF endpoints are downloadable but carry `X-Robots-Tag: noindex, noarchive` so contact details do not become standalone search results.
+The PDF endpoints carry `X-Robots-Tag: noindex, noarchive` so contact details do not become standalone search results.
 
 ## Search + AI identity
 
 The site includes:
 
-- automatic canonical URLs from Vercel's `VERCEL_PROJECT_PRODUCTION_URL`
-- optional `NEXT_PUBLIC_SITE_URL` override if a custom domain is added later
+- canonical URLs derived from the production deployment, with an optional custom-domain override
 - `Person` + `ProfilePage` JSON-LD
 - project-level `SoftwareSourceCode` / `CreativeWork` JSON-LD
 - credential `EducationalOccupationalCredential` JSON-LD
 - per-project Open Graph metadata
 - branded social preview image + generated app icon
-- web manifest + theme viewport metadata
-- custom 404 that routes visitors back into the identity graph
+- web manifest + theme metadata
 - explicit crawler/search surfaces
 - evidence and curation semantics in machine-readable JSON
-
-On Vercel, the stable free `*.vercel.app` production domain is the canonical identity by default. Local development falls back to `http://localhost:3000`.
 
 ## Local development
 
@@ -128,16 +118,3 @@ npm run build
 ## Design principle
 
 > Claims should have proof. Projects should have depth. A portfolio should reveal how someone thinks—not just list tools.
-
-## Release gate
-
-Before v1 is merged into `main`:
-
-- one clean Vercel Hobby project must be created from the GitHub repository
-- the stable free `*.vercel.app` production domain must be confirmed
-- production machine routes, app metadata, resume downloads, security headers, and Open Graph output must be verified
-- any credential artifact made public must have intentional sharing permissions
-- EpitopePred keeps its first-party label unless sanitized public artifacts are added later
-- Search Console / Bing setup happens after the production domain resolves
-
-A paid custom domain is intentionally **not** a v1 requirement. The active PR stays draft until the free production deployment is verified.
