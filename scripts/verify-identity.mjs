@@ -23,6 +23,7 @@ const requiredFiles = [
 
 const forbiddenIdentityStrings = [
   "chandanpandeys.me",
+  "chandanpandey.dev",
   "digital-identity-woad.vercel.app",
   "digital-identity-suia.vercel.app",
   "digital-identity-preview.vercel.app",
@@ -82,8 +83,9 @@ for (const file of scanFiles) {
 }
 
 const profile = await text("lib/profile.ts");
-if (!profile.includes("NEXT_PUBLIC_SITE_URL")) throw new Error("Canonical URL is no longer environment-driven.");
-if (!profile.includes("https://chandanpandey.dev")) throw new Error("Expected canonical fallback chandanpandey.dev is missing.");
+if (!profile.includes("VERCEL_PROJECT_PRODUCTION_URL")) throw new Error("Canonical URL must derive from Vercel's stable production domain.");
+if (!profile.includes("NEXT_PUBLIC_SITE_URL")) throw new Error("Optional custom-domain override is missing.");
+if (!profile.includes("http://localhost:3000")) throw new Error("Local canonical fallback is missing.");
 
 const layout = await text("app/layout.tsx");
 for (const marker of ["export const viewport", "themeColor: \"#2457ff\"", "Person", "ProfilePage"]) {
