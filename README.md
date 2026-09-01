@@ -2,8 +2,8 @@
 
 The source code, evidence graph, resume system, and machine-readable identity layer for Chandan Pandey.
 
-**Intended canonical domain:** `chandanpandey.dev`  
-**Current status:** active v1 development on `build/portfolio-v1`; final domain + production deployment are intentionally not live yet.
+**Launch model:** free Vercel Hobby deployment using the project's stable `*.vercel.app` production domain.  
+**Current status:** active v1 development on `build/portfolio-v1`; one clean production project still needs to be created and verified.
 
 ## What this project is
 
@@ -20,7 +20,7 @@ The design language is editorial rather than cyberpunk: warm paper, cobalt signa
 
 [Open `build/portfolio-v1` in StackBlitz](https://stackblitz.com/github/chandanpandeys/digital-identity/tree/build/portfolio-v1?startScript=dev)
 
-The permanent production topology will use one clean Vercel project after the final domain is attached.
+The permanent production topology will use one clean Vercel Hobby project. A custom domain is optional and is not required for v1.
 
 ## Core architecture
 
@@ -96,7 +96,8 @@ The PDF endpoints are downloadable but carry `X-Robots-Tag: noindex, noarchive` 
 
 The site includes:
 
-- environment-driven canonical URLs via `NEXT_PUBLIC_SITE_URL`
+- automatic canonical URLs from Vercel's `VERCEL_PROJECT_PRODUCTION_URL`
+- optional `NEXT_PUBLIC_SITE_URL` override if a custom domain is added later
 - `Person` + `ProfilePage` JSON-LD
 - project-level `SoftwareSourceCode` / `CreativeWork` JSON-LD
 - credential `EducationalOccupationalCredential` JSON-LD
@@ -107,7 +108,7 @@ The site includes:
 - explicit crawler/search surfaces
 - evidence and curation semantics in machine-readable JSON
 
-The intended fallback canonical is `https://chandanpandey.dev`, but production should set `NEXT_PUBLIC_SITE_URL` explicitly.
+On Vercel, the stable free `*.vercel.app` production domain is the canonical identity by default. Local development falls back to `http://localhost:3000`.
 
 ## Local development
 
@@ -132,11 +133,11 @@ npm run build
 
 Before v1 is merged into `main`:
 
-- final domain must be purchased/attached explicitly
-- one clean Vercel project must be created
-- production machine routes, app metadata, and Open Graph output must be verified
+- one clean Vercel Hobby project must be created from the GitHub repository
+- the stable free `*.vercel.app` production domain must be confirmed
+- production machine routes, app metadata, resume downloads, security headers, and Open Graph output must be verified
 - any credential artifact made public must have intentional sharing permissions
-- EpitopePred must either gain sanitized public artifacts or keep its first-party label
-- Search Console / Bing setup happens only after the final domain resolves
+- EpitopePred keeps its first-party label unless sanitized public artifacts are added later
+- Search Console / Bing setup happens after the production domain resolves
 
-The active PR stays draft until those release decisions are complete.
+A paid custom domain is intentionally **not** a v1 requirement. The active PR stays draft until the free production deployment is verified.
