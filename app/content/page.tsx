@@ -1,12 +1,10 @@
-import type { Metadata } from "next";
+import { verticalMetadata } from "@/lib/verticals";
+import { VerticalActions } from "@/components/VerticalActions";
+import { experiences } from "@/lib/experience";
 import Link from "next/link";
 import { site } from "@/lib/profile";
 
-export const metadata: Metadata = {
-  title: "Content & Education",
-  description: "The creator and educator chapter of Chandan Pandey: early education content, teaching, technical explanation, and AI/technology storytelling.",
-  alternates: { canonical: "/content" },
-};
+export const metadata = verticalMetadata("content");
 
 const chapters = [
   {
@@ -47,19 +45,24 @@ export default function ContentPage() {
     <main id="main" className="inner-page creator-page creator-page-v2">
       <header className="site-shell subnav"><Link href="/">← Chandan Pandey</Link><span>CONTENT / EXPLAIN</span></header>
       <section className="site-shell page-hero creator-hero">
-        <p className="eyebrow">CONTENT / EDUCATION / TECHNICAL COMMUNICATION</p>
-        <h1>Explanation is<br/><em>part of the engineering.</em></h1>
-        <p>The creator history is not a separate influencer persona. It is where I learned a skill that still shows up in research, documentation, product UX, technical content, and developer tooling: make the difficult thing legible without making it shallow.</p>
+        <p className="eyebrow">AI CONTENT & TECHNICAL COMMUNICATION</p>
+        <h1>Understand the technology.<br/><em>Make it understood.</em></h1>
+        <p>I’m Chandan Pandey, an AI Content Lead connecting technical research, hands-on engineering and clear communication. I turn AI tools and use cases into useful narratives, scripts, workflows and learning material.</p>
+        <VerticalActions vertical="content" />
       </section>
 
-      <section className="site-shell creator-ledger">
-        {chapters.map((chapter, index) => (
-          <article key={chapter.period}>
-            <span className="creator-index">{String(index + 1).padStart(2, "0")}</span>
-            <span className="creator-period">{chapter.period}</span>
-            <div><p>{chapter.label}</p><h2>{chapter.title}</h2><strong>{chapter.body}</strong></div>
-          </article>
-        ))}
+      <section className="site-shell section">
+        <div className="section-intro"><p className="eyebrow">PROFESSIONAL CONTENT EXPERIENCE</p><h2>Research to narrative to iteration.</h2><p>These are first-party career summaries, with the public professional record linked for context. Client assets and performance results are not presented as independently verified samples.</p></div>
+        <div className="vertical-cards">{experiences.filter(item => ["YAAS", "Notansun", "Brainly"].includes(item.organization)).map(item => <article key={item.organization}><p className="eyebrow">FIRST-PARTY CAREER CONTEXT · {item.period}</p><h3>{item.title} · {item.organization}</h3><p>{item.summary}</p><ul>{item.details.map(detail => <li key={detail}>{detail}</li>)}</ul></article>)}</div>
+        <a className="text-link" href={site.links.linkedin} target="_blank" rel="noopener noreferrer">Public professional profile ↗</a>
+      </section>
+      <section className="site-shell section">
+        <div className="section-intro"><p className="eyebrow">INSPECTABLE TECHNICAL COMMUNICATION</p><h2>Read how I explain the work.</h2><p>Portfolio case studies demonstrate technical explanation. They are not client campaign results or audience-growth claims.</p></div>
+        <div className="vertical-cards">
+          <article><h3>ByteToken: explaining a benchmark</h3><p>Separate raw encoding from compression, preserve the baseline, and make a technical result reproducible.</p><Link className="text-link" href="/work/bytetoken">Read the explanation ↗</Link></article>
+          <article><h3>InferBench: explaining evaluation</h3><p>Connect hardware fit, measurement and trade-offs to decisions a local-model user needs to make.</p><Link className="text-link" href="/work/inferbench">Read the case study ↗</Link></article>
+        </div>
+        <Link className="text-link" href="/lab">Explore public workflow experiments ↗</Link>
       </section>
 
       <section className="creator-quote-band">
@@ -71,10 +74,21 @@ export default function ContentPage() {
       </section>
 
       <section className="site-shell communication-section">
-        <div className="about-section-head"><p className="eyebrow">WHAT COMMUNICATION DOES INSIDE THE WORK</p><h2>Not promotion. An engineering surface.</h2></div>
+        <div className="about-section-head"><p className="eyebrow">WHAT COMMUNICATION DOES INSIDE THE WORK</p><h2>Research, structure, teach, explain.</h2></div>
         <div className="communication-grid">
           {communicationModes.map(([title, body], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{body}</p></article>)}
         </div>
+      </section>
+
+      <section className="site-shell creator-ledger" id="creator-history">
+        <div className="section-intro"><p className="eyebrow">DEEPER CONTEXT / CREATOR HISTORY</p><h2>Where explanation began.</h2><p>First-party history; archive artifacts will be linked after verification.</p></div>
+        {chapters.map((chapter, index) => (
+          <article key={chapter.period}>
+            <span className="creator-index">{String(index + 1).padStart(2, "0")}</span>
+            <span className="creator-period">{chapter.period}</span>
+            <div><p>{chapter.label}</p><h2>{chapter.title}</h2><strong>{chapter.body}</strong></div>
+          </article>
+        ))}
       </section>
 
       <section className="site-shell creator-links">

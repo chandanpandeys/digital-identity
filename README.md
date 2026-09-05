@@ -29,17 +29,18 @@ The visual system is editorial: warm paper, cobalt accents, technical grid langu
 
 ## Information architecture
 
-- `/` — identity homepage + selected work
+- `/` — umbrella identity with AI / Content / Complete entry points
+- `/ai` — AI Engineering & Research, selected technical evidence and engineering/research resumes
 - `/work` — curated flagship/selected work
 - `/work/[slug]` — architecture, measurements, artifacts, source links, evidence, stack
 - `/lab` — supporting experiments and earlier public work
 - `/timeline` — career, research, education, community, creator chronology
 - `/about` — the explain → research → systems through-line
-- `/content` — creator and technical-communication chapter
+- `/content` — AI Content & Technical Communication; professional context and explanations first, creator history at `#creator-history`
 - `/now` — current allocation of attention
 - `/resume` — canonical web resume + targeted PDF variants
 - `/credentials` — selected evidence-backed credentials
-- `/ask` — deterministic evidence navigator
+- `/ask` — deterministic evidence navigator; `?intent=ai` and `?intent=content` customize prompts, initial query and relevant-result ranking. Unknown intent falls back to Complete; source strengths never change.
 
 ### Machine-readable surfaces
 
@@ -118,3 +119,7 @@ npm run build
 ## Design principle
 
 > Claims should have proof. Projects should have depth. A portfolio should reveal how someone thinks—not just list tools.
+
+## Dual-vertical validation
+
+Run `npm run verify:identity`, `npm run typecheck`, and `npm run build`. With the production server running (`npm start`), run `node scripts/verify-verticals.mjs` to check audience routes, metadata, generated preview images, resume PDFs, Ask intent defaults and machine-readable routing. Set `TEST_ORIGIN` to test another local server address.

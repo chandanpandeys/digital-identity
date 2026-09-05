@@ -15,7 +15,7 @@ const chapters = [
     label: "EXPLAIN",
     title: "The first useful skill was making difficult things understandable.",
     body: "Before AI engineering became the center of the work, I was making student-focused education content and later answering more than 1,000 questions as a subject-matter expert. That taught me to break a problem down, expose the reasoning, and notice where another person gets stuck.",
-    links: [{ label: "Creator chapter", href: "/content" }, { label: "Full timeline", href: "/timeline" }],
+    links: [{ label: "Creator chapter", href: "/content#creator-history" }, { label: "Full timeline", href: "/timeline" }],
   },
   {
     index: "02",

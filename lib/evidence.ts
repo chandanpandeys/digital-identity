@@ -67,12 +67,13 @@ export const evidenceNodes: EvidenceNode[] = [
   },
   {
     id: "content",
-    title: "Teaching, content, and explanation",
-    answer: "The creator thread predates the AI work: educational videos while still in school, later 1,000+ student-question explanations through Brainly, workshops/mentorship, and current AI/technology content leadership. The site treats this as part of the same operating loop—learn deeply, build, then explain—rather than as a separate influencer identity.",
+    title: "AI content and technical communication",
+    answer: "The professional content thread includes AI Content Lead work at YAAS: research, scripting, workflows and performance analysis, as recorded in the career timeline. Client performance is not independently verified here. Earlier experience includes educational videos while still in school, later 1,000+ student-question explanations through Brainly, workshops/mentorship, and current AI/technology content leadership. The site treats this as part of the same operating loop—learn deeply, build, then explain—rather than as a separate influencer identity.",
     tags: ["content", "teaching", "education", "brainly", "youtube", "creator", "yaas", "mentor", "communication"],
     strength: "PUBLIC PROFILE",
     links: [
-      { label: "Creator chapter", href: "/content" },
+      { label: "Content portfolio", href: "/content" },
+      { label: "Content resume", href: "/resume/pdf/ai-content-developer-educator" },
       { label: "Timeline", href: "/timeline" },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/chandanpandeys/" },
     ],

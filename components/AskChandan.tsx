@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { verticals, type Intent } from "@/lib/verticals";
 import { FormEvent, useMemo, useState } from "react";
 import { evidenceNodes, evidencePrompts, type EvidenceNode } from "@/lib/evidence";
 
@@ -12,18 +14,19 @@ function scoreNode(query: string, node: EvidenceNode) {
   return score;
 }
 
-export default function AskChandan() {
+export default function AskChandan({ intent = "complete" }: { intent?: Intent }) {
+  const vertical = intent === "complete" ? null : verticals[intent];
   const [query, setQuery] = useState("");
-  const [submitted, setSubmitted] = useState("What AI infrastructure has Chandan built?");
+  const [submitted, setSubmitted] = useState<string>(vertical?.prompt ?? "What is publicly inspectable?");
 
   const results = useMemo(() => {
     const ranked = evidenceNodes
-      .map((node) => ({ node, score: scoreNode(submitted, node) }))
+      .map((node) => ({ node, score: scoreNode(submitted, node) + (scoreNode(submitted, node) > 0 && vertical?.nodes.some(id => id === node.id) ? 2 : 0) }))
       .sort((a, b) => b.score - a.score);
     const positive = ranked.filter((item) => item.score > 0).slice(0, 3);
-    const fallback = evidenceNodes.filter((node) => node.id === "infrastructure" || node.id === "public").slice(0, 2);
+    const fallback = evidenceNodes.filter((node) => node.id === (intent === "content" ? "content" : "infrastructure") || node.id === "public").slice(0, 2);
     return positive.length ? positive.map((item) => item.node) : fallback;
-  }, [submitted]);
+  }, [submitted, intent, vertical]);
 
   function submit(event: FormEvent) {
     event.preventDefault();
@@ -43,6 +46,7 @@ export default function AskChandan() {
         <span><i /> EVIDENCE RETRIEVAL / V0.1</span>
         <small id="ask-help">No generative answer layer yet. Results resolve to curated evidence nodes.</small>
       </div>
+      <nav className="intent-selector" aria-label="Ask Chandan intent">{(["ai", "content", "complete"] as const).map(value => <Link key={value} href={value === "complete" ? "/ask" : `/ask?intent=${value}`} aria-current={intent === value ? "page" : undefined}>{value === "ai" ? "AI" : value === "content" ? "Content" : "Complete"}</Link>)}</nav>
       <form className="ask-form" onSubmit={submit}>
         <label htmlFor="ask-query">Ask about projects, research, experience, credentials, resumes, or public evidence.</label>
         <div>
@@ -59,7 +63,7 @@ export default function AskChandan() {
         </div>
       </form>
       <div className="ask-prompts" aria-label="Suggested questions">
-        {evidencePrompts.map((prompt) => (
+        {(vertical?.prompts ?? evidencePrompts).map((prompt) => (
           <button key={prompt} type="button" aria-controls="ask-results" onClick={() => choosePrompt(prompt)}>{prompt}</button>
         ))}
       </div>

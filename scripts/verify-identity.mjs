@@ -4,6 +4,10 @@ import path from "node:path";
 const root = process.cwd();
 
 const requiredFiles = [
+  "app/ai/page.tsx",
+  "app/ai/opengraph-image.tsx",
+  "app/content/opengraph-image.tsx",
+  "lib/verticals.ts",
   "app/icon.tsx",
   "app/manifest.ts",
   "app/not-found.tsx",
@@ -108,7 +112,7 @@ if (!robots.includes('{ userAgent: "GPTBot", disallow: "/" }')) throw new Error(
 if (!robots.includes('{ userAgent: "ClaudeBot", disallow: "/" }')) throw new Error("ClaudeBot training opt-out is missing.");
 
 const sitemap = await text("app/sitemap.ts");
-for (const route of ["/work", "/lab", "/timeline", "/about", "/content", "/now", "/resume", "/credentials", "/ask"]) {
+for (const route of ["/ai", "/work", "/lab", "/timeline", "/about", "/content", "/now", "/resume", "/credentials", "/ask"]) {
   if (!sitemap.includes(`\"${route}\"`)) throw new Error(`Sitemap is missing required route: ${route}`);
 }
 
