@@ -60,7 +60,7 @@ const capabilities = [
   {
     title: "Technical communication",
     text: "AI/technology research, scripting, technical storytelling, teaching, workshops, documentation, and translating complex systems for different audiences.",
-    evidence: [{ label: "Creator chapter", href: "/content" }, { label: "Career timeline", href: "/timeline" }],
+    evidence: [{ label: "Content portfolio", href: "/content" }, { label: "Career timeline", href: "/timeline" }],
   },
 ] as const;
 
@@ -134,7 +134,7 @@ export default function ResumePage() {
         <div>{education.map(item => <article className="resume-entry" key={item.title}><span>{item.period}</span><h2>{item.title}</h2><p>{item.organization}</p><p>{item.summary}</p></article>)}</div>
 
         <aside>FULL RECORD</aside>
-        <div className="resume-entry resume-record"><h2>Need the complete chronology?</h2><p>The full timeline preserves creator work, campus/community programs, internships, education, research, and current roles without forcing every chapter into a hiring document.</p><div className="resume-record-links"><Link href="/timeline">Open full timeline ↗</Link><Link href="/content">Creator chapter ↗</Link><Link href="/work">All selected work ↗</Link></div></div>
+        <div className="resume-entry resume-record"><h2>Need the complete chronology?</h2><p>The full timeline preserves creator work, campus/community programs, internships, education, research, and current roles without forcing every chapter into a hiring document.</p><div className="resume-record-links"><Link href="/timeline">Open full timeline ↗</Link><Link href="/content#creator-history">Creator chapter ↗</Link><Link href="/work">All selected work ↗</Link></div></div>
       </section>
     </main>
   );

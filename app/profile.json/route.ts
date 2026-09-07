@@ -28,6 +28,7 @@ export function GET() {
     experience: experiences,
     selectedCredentials: credentials,
     targetedResumes,
+    verticals: { ai: { route: "/ai", resumes: ["ai-llm-engineer", "ai-research-ml"] }, content: { route: "/content", resumes: ["ai-content-developer-educator"] }, complete: "/about" },
     publicEvidence: proofSignals,
     curation: {
       work: "Flagship and selected projects with enough technical depth or evidence for dedicated case studies.",
@@ -38,6 +39,7 @@ export function GET() {
       ask: "A deterministic evidence navigator that resolves questions to curated nodes and source links before any future generative synthesis layer is added.",
     },
     routes: {
+      ai: `${site.canonicalUrl}/ai`,
       work: `${site.canonicalUrl}/work`,
       lab: `${site.canonicalUrl}/lab`,
       timeline: `${site.canonicalUrl}/timeline`,

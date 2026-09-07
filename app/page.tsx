@@ -59,10 +59,10 @@ export default function Home() {
 
         <div className="hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">AI ENGINEERING · APPLIED RESEARCH · OPEN SOURCE</p>
+            <p className="eyebrow">ONE IDENTITY · TWO PROFESSIONAL VERTICALS</p>
             <h1 id="hero-title">
-              I turn AI research into
-              <em> systems that ship.</em>
+              I build, research
+              <em> and explain AI.</em>
             </h1>
             <p className="hero-deck">
               I am Chandan Pandey—an AI engineer and builder working across LLM infrastructure,
@@ -70,8 +70,8 @@ export default function Home() {
               This site is the evidence layer behind that sentence.
             </p>
             <div className="hero-actions">
-              <Link className="button primary" href="/work">Inspect the work <span>↓</span></Link>
-              <Link className="button secondary" href="/ask">Ask the evidence <Arrow /></Link>
+              <Link className="button primary" href="/ai">Explore AI <span>↓</span></Link>
+              <Link className="button secondary" href="/content">Explore Content <Arrow /></Link>
               <a className="button secondary" href={site.links.linkedin} target="_blank" rel="noopener noreferrer">
                 LinkedIn <Arrow />
               </a>
@@ -89,6 +89,12 @@ export default function Home() {
             </span>
           ))}
         </div>
+      </section>
+
+      <section className="site-shell vertical-router" aria-label="Choose your portfolio view">
+        <Link href="/ai"><p className="eyebrow">01 / AI</p><h2>Engineering & Research</h2><p>LLM systems, evaluation, applied research and public technical evidence.</p><strong>Explore AI ↗</strong></Link>
+        <Link href="/content"><p className="eyebrow">02 / CONTENT</p><h2>Content & Communication</h2><p>AI content strategy, research synthesis, technical storytelling and developer education.</p><strong>Explore Content ↗</strong></Link>
+        <Link href="/about"><p className="eyebrow">03 / COMPLETE</p><h2>The complete identity</h2><p>How engineering, research and communication connect across one body of work.</p><strong>Meet Chandan ↗</strong></Link>
       </section>
 
       <section className="site-shell section work-section" id="work">
@@ -183,7 +189,7 @@ export default function Home() {
             </p>
             <div className="story-actions">
               <Link className="button inverse" href="/timeline">Inspect the timeline <Arrow /></Link>
-              <Link className="button inverse muted-button" href="/content">Creator chapter <Arrow /></Link>
+              <Link className="button inverse muted-button" href="/content">AI Content & Communication <Arrow /></Link>
             </div>
           </div>
           <ol className="timeline">

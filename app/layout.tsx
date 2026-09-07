@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { site } from "@/lib/profile";
 import "./globals.css";
+import "./verticals.css";
+import { PortfolioNav } from "@/components/PortfolioNav";
 import "./expansion.css";
 import "./case-depth.css";
 import "./curation.css";
@@ -21,7 +23,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(site.canonicalUrl),
   title: {
-    default: "Chandan Pandey — AI Engineer, Researcher & Builder",
+    default: "Chandan Pandey — AI Engineering, Research & Content",
     template: "%s · Chandan Pandey",
   },
   description: site.description,
@@ -43,14 +45,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "profile",
     url: site.canonicalUrl,
-    title: "Chandan Pandey — AI Engineer, Researcher & Builder",
+    title: "Chandan Pandey — AI Engineering, Research & Content",
     description: site.description,
     siteName: "Chandan Pandey",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Chandan Pandey — AI Engineer, Researcher & Builder" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Chandan Pandey — AI Engineering, Research & Content" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chandan Pandey — AI Engineer, Researcher & Builder",
+    title: "Chandan Pandey — AI Engineering, Research & Content",
     description: site.description,
     images: ["/opengraph-image"],
   },
@@ -106,6 +108,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body>
         <a className="skip-link" href="#main">Skip to content</a>
+        <PortfolioNav />
         {children}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }} />
