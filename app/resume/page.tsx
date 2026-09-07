@@ -80,7 +80,7 @@ export default function ResumePage() {
         <p className="eyebrow">AI ENGINEERING / APPLIED RESEARCH / DEVELOPER TOOLS</p>
         <h1>Build the system.<br/><em>Measure the result.</em></h1>
         <p>AI engineer and builder working across LLM infrastructure, local-model evaluation, computational research, automation, accessibility, and technical communication. This page is intentionally selective; the complete chronology lives in the timeline.</p>
-        <div className="resume-contact-row"><a href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><Link href="/ask">Ask the evidence ↗</Link></div>
+        <div className="resume-contact-row"><a href={`mailto:${site.contact.email}`}>Email ↗</a><a href={`tel:${site.contact.phone.replace(/[^+\d]/g, "")}`}>Call ↗</a><a href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><Link href="/ask">Ask the evidence ↗</Link></div>
       </section>
 
       <section className="site-shell resume-download-section" aria-labelledby="targeted-resumes-title">

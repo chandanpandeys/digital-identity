@@ -86,7 +86,7 @@ export default function AskChandan({ intent = "complete" }: { intent?: Intent })
           </article>
         ))}
       </div>
-      <p className="ask-policy"><strong>WHY THIS VERSION IS DELIBERATELY LIMITED</strong> A portfolio assistant is only useful if it can distinguish public code, public professional records, and first-party project context. V0.1 proves that retrieval/evidence contract first. A model-backed synthesis layer can be added later without weakening provenance.</p>
+      <p className="ask-policy"><strong>WHY THIS VERSION IS DELIBERATELY LIMITED</strong> A portfolio assistant is only useful if it can distinguish public code, public professional records, and first-party project context. V0.1 proves that retrieval/evidence contract first. Private source material is not indexed by this interface. A model-backed synthesis layer can be added later without weakening provenance.</p>
     </div>
   );
 }

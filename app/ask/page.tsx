@@ -21,7 +21,7 @@ export default async function AskPage({ searchParams }: { searchParams: Promise<
       </section>
       <section className="site-shell ask-shell"><AskChandan key={intent} intent={intent} /></section>
       <section className="site-shell ask-next">
-        <div><span>WANT THE RAW STRUCTURE?</span><strong>The same identity layer is machine-readable.</strong></div>
+        <div><span>MACHINE-READABLE PROFILE</span><strong>The same identity layer is machine-readable.</strong></div>
         <div><a href="/profile.json">profile.json ↗</a><a href="/llms.txt">llms.txt ↗</a></div>
       </section>
     </main>

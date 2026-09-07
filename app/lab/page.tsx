@@ -19,15 +19,15 @@ export default function LabPage() {
     <main id="main" className="inner-page lab-page">
       <header className="site-shell subnav">
         <Link href="/">← Chandan Pandey</Link>
-        <span>LAB / {labItems.length.toString().padStart(2, "0")}</span>
+        <span>EXPERIMENTS / {labItems.length.toString().padStart(2, "0")}</span>
       </header>
 
       <section className="site-shell page-hero">
-        <p className="eyebrow">LAB / EXPERIMENTS + SUPPORTING WORK</p>
+        <p className="eyebrow">EXPERIMENTS / SUPPORTING WORK</p>
         <h1>Not everything should be<br/><em>a flagship.</em></h1>
         <p>
           This is where useful experiments, earlier builds, automations, and public code live without
-          competing with the strongest case studies. The archive is part of the story; it just has a different job.
+          competing with the strongest case studies. It is a public selection, not a dump of private project history.
         </p>
       </section>
 
@@ -52,11 +52,12 @@ export default function LabPage() {
       </section>
 
       <section className="site-shell prose-grid lab-policy">
-        <aside>CURATION POLICY</aside>
+        <aside>PUBLIC SELECTION POLICY</aside>
         <div className="prose">
           <p>
             Work moves from Lab to the main Work index when the technical story is deep enough, the evidence is inspectable,
             and the project still represents the kind of engineering I want to be hired to do next.
+            Private source material is used to validate the record and is never exposed here by default.
           </p>
         </div>
       </section>

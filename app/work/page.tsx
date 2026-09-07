@@ -13,11 +13,12 @@ export default function WorkPage() {
     <main id="main" className="inner-page">
       <header className="site-shell subnav"><Link href="/">← Chandan Pandey</Link><span>WORK INDEX / {projects.length.toString().padStart(2,"0")}</span></header>
       <section className="site-shell page-hero">
-        <p className="eyebrow">WORK / CASE STUDIES</p>
+        <p className="eyebrow">SELECTED WORK / CASE STUDIES</p>
         <h1>What I built,<br/><em>why it mattered.</em></h1>
         <p>
-          Work is deliberately curated. Flagships earn their place through technical depth and inspectable evidence;
-          smaller experiments live in <Link className="inline-text-link" href="/lab">Lab ↗</Link> instead of competing for attention.
+          This is the public work I want a recruiter, collaborator, or technical reader to understand first.
+          Flagships earn their place through technical depth and inspectable evidence; smaller experiments live in
+          <Link className="inline-text-link" href="/lab">Experiments ↗</Link> when they add useful context.
         </p>
       </section>
       <section className="site-shell work-grid">
@@ -32,8 +33,8 @@ export default function WorkPage() {
         ))}
       </section>
       <section className="site-shell work-to-lab">
-        <div><p className="eyebrow">MORE / LAB</p><h2>Experiments belong somewhere useful.</h2></div>
-        <div><p>Agent workflows, earlier generative-AI builds, internship code, and archived web projects remain public without weakening the main engineering signal.</p><Link className="button secondary" href="/lab">Open Lab →</Link></div>
+        <div><p className="eyebrow">MORE / EXPERIMENTS</p><h2>Supporting work belongs somewhere useful.</h2></div>
+        <div><p>Agent workflows, earlier generative-AI builds, internship code, and archived web projects are available when they help explain how I work. Private notes, conversations, personal context, and source files stay outside the public portfolio.</p><Link className="button secondary" href="/lab">Open Experiments →</Link></div>
       </section>
     </main>
   );

@@ -1,5 +1,6 @@
 import { PDFDocument, StandardFonts, rgb, type PDFFont, type PDFPage } from "pdf-lib";
 import type { ResumeData } from "@/lib/resume-data";
+import { site } from "@/lib/profile";
 
 const PAGE_WIDTH = 595.28;
 const PAGE_HEIGHT = 841.89;
@@ -91,7 +92,7 @@ export async function buildResumePdf(data: ResumeData) {
   y -= 24;
   page.drawText(data.headline, { x: LEFT, y, size: 10.2, font: bold, color: BLUE });
   y -= 14;
-  const contact = "humanchandanpandey@gmail.com | +91 89573 65560 | linkedin.com/in/chandanpandeys | github.com/chandanpandeys | India";
+  const contact = `${site.contact.email} | ${site.contact.phone} | linkedin.com/in/chandanpandeys | github.com/chandanpandeys | ${site.location}`;
   y = drawWrapped(page, contact, LEFT, y, { font: regular, size: 7.25, width: CONTENT_WIDTH, color: MUTED, lineHeight: 8.4 });
   y -= 1;
   y = drawWrapped(page, data.summary, LEFT, y, { font: regular, size: 7.8, width: CONTENT_WIDTH, color: INK, lineHeight: 9.3 });

@@ -84,6 +84,7 @@ export default function AboutPage() {
       <section className="site-shell about-proof">
         <div className="about-section-head"><p className="eyebrow">PUBLIC EVIDENCE NODES</p><h2>Start with what can be inspected.</h2></div>
         <ul>{proofSignals.map((signal)=><li key={signal.label}><a href={signal.href} target="_blank" rel="noreferrer"><strong>{signal.label}</strong><span>{signal.strength} · {signal.source} ↗</span></a></li>)}</ul>
+        <p className="public-boundary-note"><strong>PUBLIC BOUNDARY</strong> This portfolio is a curated professional profile. Private chats, personal context, confidential source files, and unapproved account metrics are used for fact-checking only and are not published.</p>
         <div className="about-actions"><Link className="button primary" href="/work">Inspect work ↗</Link><Link className="button secondary" href="/ask">Ask the evidence ↗</Link><a className="button secondary" href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a></div>
       </section>
     </main>

@@ -211,7 +211,11 @@ export default function Home() {
             I care about systems that survive beyond the demo: useful interfaces,
             inspectable reasoning, strong evaluation, and software people can actually use.
           </p>
-          <a className="button primary" href={site.links.linkedin} target="_blank" rel="noopener noreferrer">Start a conversation <Arrow /></a>
+          <div className="hero-actions">
+            <a className="button primary" href={`mailto:${site.contact.email}`}>Email Chandan <Arrow /></a>
+            <a className="button secondary" href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <Arrow /></a>
+            <a className="button secondary" href={`tel:${site.contact.phone.replace(/[^+\d]/g, "")}`}>Call <Arrow /></a>
+          </div>
         </div>
       </section>
 

@@ -92,9 +92,9 @@ export default function ContentPage() {
       </section>
 
       <section className="site-shell creator-links">
-        <div><p className="eyebrow">CURRENT CHANNELS</p><h2>The archive becomes evidence, not nostalgia.</h2></div>
+        <div><p className="eyebrow">APPROVED CHANNELS</p><h2>Public work should earn its place.</h2></div>
         <div>
-          <p>Older creator material will be indexed selectively after channel naming, links, and source artifacts are verified. The goal is to preserve the origin story without turning the portfolio into a social-media dump.</p>
+          <p>Older creator material will be indexed selectively after channel naming, links, ownership, and source artifacts are verified. The goal is to preserve the origin story without turning the portfolio into a social-media dump. Personal accounts, private conversations, and unapproved metrics stay out of the public portfolio.</p>
           <a className="button secondary" href={site.links.instagram} target="_blank" rel="noreferrer">Instagram ↗</a>
           <a className="button secondary" href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
           <Link className="button secondary" href="/timeline">Full timeline ↗</Link>

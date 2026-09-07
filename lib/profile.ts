@@ -10,6 +10,10 @@ export const site = {
   description:
     "Chandan Pandey is an AI engineer and builder working across applied AI research, LLM systems, developer tooling, open source, accessibility, automation, and technical content.",
   location: "India",
+  contact: {
+    email: "humanchandanpandey@gmail.com",
+    phone: "+91 89573 65560",
+  },
   links: {
     github: "https://github.com/chandanpandeys",
     linkedin: "https://www.linkedin.com/in/chandanpandeys/",
