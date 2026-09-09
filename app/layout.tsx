@@ -12,12 +12,13 @@ import "./narrative.css";
 import "./now.css";
 import "./production.css";
 import "./credentials.css";
+import "./studio.css";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  colorScheme: "light",
-  themeColor: "#2457ff",
+  colorScheme: "dark",
+  themeColor: "#080a09",
 };
 
 export const metadata: Metadata = {
@@ -48,7 +49,14 @@ export const metadata: Metadata = {
     title: "Chandan Pandey — AI Engineering, Research & Content",
     description: site.description,
     siteName: "Chandan Pandey",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Chandan Pandey — AI Engineering, Research & Content" }],
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Chandan Pandey — AI Engineering, Research & Content",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -79,7 +87,12 @@ const personJsonLd = {
   image: "https://avatars.githubusercontent.com/u/126047460?v=4",
   jobTitle: "AI Engineer and Builder",
   description: site.description,
-  sameAs: [site.links.github, site.links.linkedin, site.links.instagram],
+  sameAs: [
+    site.links.github,
+    site.links.linkedin,
+    site.links.instagram,
+    site.links.youtube,
+  ],
   knowsAbout: [
     "Artificial Intelligence",
     "Machine Learning",
@@ -103,15 +116,27 @@ const profilePageJsonLd = {
   mainEntity: { "@id": `${site.canonicalUrl}/#person` },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body>
-        <a className="skip-link" href="#main">Skip to content</a>
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
         <PortfolioNav />
         {children}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(profilePageJsonLd),
+          }}
+        />
       </body>
     </html>
   );

@@ -1,39 +1,146 @@
 import Link from "next/link";
-import { projects } from "@/lib/projects";
-import { experiences } from "@/lib/experience";
-import { resumeData } from "@/lib/resume-data";
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { verticalMetadata } from "@/lib/verticals";
-import { VerticalActions } from "@/components/VerticalActions";
-
+import {
+  SectionHeading,
+  ProjectGrid,
+  SocialLinks,
+  ContactBand,
+  StudioFooter,
+} from "@/components/Studio";
 export const metadata = verticalMetadata("ai");
-const selected = ["bytetoken", "inferbench", "epitopepred", "dekhosuno"].map(slug => projects.find(project => project.slug === slug)!);
-
 export default function AIPage() {
-  return <main id="main" className="inner-page vertical-page">
-    <header className="site-shell subnav"><Link href="/">← Chandan Pandey</Link><span>AI / BUILD & RESEARCH</span></header>
-    <section className="site-shell page-hero">
-      <p className="eyebrow">AI ENGINEERING & RESEARCH</p>
-      <h1>Build the system.<br/><em>Make it inspectable.</em></h1>
-      <p>I’m Chandan Pandey, an AI engineer building LLM infrastructure, evaluation systems and applied AI. My work connects research questions to software, measurements and decisions other people can examine.</p>
-      <VerticalActions vertical="ai" />
-    </section>
-    <section className="site-shell section">
-      <div className="section-intro"><p className="eyebrow">SELECTED ENGINEERING EVIDENCE</p><h2>From infrastructure to applied research.</h2></div>
-      <div className="vertical-cards">{selected.map(project => <article key={project.slug}>
-        <p className="eyebrow">{project.status === "public" ? "PUBLIC / INSPECTABLE" : "DOCUMENTED / FIRST-PARTY"}</p>
-        <h3>{project.name}</h3><p>{project.summary}</p><p>{project.stack.join(" · ")}</p>
-        <Link className="text-link" href={`/work/${project.slug}`}>Inspect architecture & evidence ↗</Link>
-      </article>)}</div>
-    </section>
-    <section className="site-shell section">
-      <div className="section-intro"><p className="eyebrow">RESEARCH & APPLIED ML EXPERIENCE</p><h2>The work behind the systems.</h2><p>Career summaries are first-party context. Public professional records and source qualifications remain available in the full timeline and credential ledger.</p></div>
-      {experiences.filter(item => ["Amity University", "IBM SkillsBuild", "TechVidya Career"].includes(item.organization)).map(item => <article className="resume-entry" key={item.organization}><span>{item.period} · FIRST-PARTY CAREER CONTEXT</span><h3>{item.title} · {item.organization}</h3><p>{item.summary}</p></article>)}
-      <Link className="text-link" href="/timeline">Career timeline ↗</Link>
-    </section>
-    <section className="site-shell section">
-      <div className="section-intro"><p className="eyebrow">TECHNICAL WORKING SET</p><h2>Build, evaluate, explain.</h2></div>
-      <div className="working-set">{resumeData["ai-llm-engineer"].skills.map(skill => <p key={skill.label}><strong>{skill.label}</strong><span>{skill.value}</span></p>)}</div>
-      <VerticalActions vertical="ai" />
-    </section>
-  </main>;
+  return (
+    <main id="main">
+      <section className="studio-shell studio-page-hero">
+        <p className="micro">
+          <span className="status-dot" /> AI ENGINEERING & RESEARCH
+        </p>
+        <h1>
+          From a difficult
+          <br />
+          question to a<br />
+          <em>working system.</em>
+        </h1>
+        <div className="page-hero-bottom">
+          <p>
+            I’m Chandan Pandey. I explore how AI systems use context, make
+            decisions, get evaluated and become useful software.
+          </p>
+          <div className="studio-actions">
+            <Link href="#systems" className="studio-button primary">
+              Explore the systems <ArrowUpRight size={18} />
+            </Link>
+            <Link href="/resume?view=ai-llm-engineer" className="studio-button">
+              AI experience & resume <ArrowUpRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+      <section className="studio-shell studio-section" id="systems">
+        <SectionHeading
+          number="01 / INDEPENDENT EXPERIMENTS"
+          title="Built from a real question."
+          note="Public code, development status and the reasoning behind each project."
+        />
+        <ProjectGrid
+          slugs={[
+            "offerclaw",
+            "bytetoken",
+            "benchwolf",
+            "portable-ai-memory",
+            "dekhosuno",
+            "oneclickallresultsbot",
+          ]}
+        />
+      </section>
+      <section className="studio-shell studio-research">
+        <div>
+          <p className="micro">02 / RESEARCH CONTRIBUTION · AMITY UNIVERSITY</p>
+          <h2>
+            AI meets
+            <br />
+            <span>computational biology.</span>
+          </h2>
+          <p>
+            Research work around cancer genomics, neoantigen prediction,
+            immunogenicity and scientific workflows.
+          </p>
+          <p>
+            On EpitopePred, I contributed frontend, backend integration and
+            asynchronous job orchestration to a collaborative research platform.
+            My portfolio documents my contribution; ownership belongs to the
+            project.
+          </p>
+          <Link href="/work/epitopepred" className="studio-button">
+            Read my contribution <ArrowUpRight size={18} />
+          </Link>
+        </div>
+        <div className="research-steps">
+          {[
+            [
+              "01",
+              "Research inputs",
+              "Sequences, analysis strategy and scientific tools.",
+            ],
+            [
+              "02",
+              "Long-running work",
+              "FastAPI, Celery and Redis for asynchronous jobs.",
+            ],
+            [
+              "03",
+              "Usable results",
+              "Job progress, results tables and downloadable artifacts.",
+            ],
+          ].map(([n, t, d]) => (
+            <article key={n}>
+              <span className="micro">{n}</span>
+              <h3>{t}</h3>
+              <p>{d}</p>
+            </article>
+          ))}
+          <small>
+            First-party project account. No public source is claimed.
+          </small>
+        </div>
+      </section>
+      <section className="studio-shell studio-section">
+        <SectionHeading
+          number="03 / THE ENGINEERING RECORD"
+          title="Follow the details."
+        />
+        <div className="route-grid">
+          {[
+            [
+              "Experience",
+              "Research, internships and current work.",
+              "/timeline",
+            ],
+            [
+              "Credentials",
+              "Open the actual completion certificates.",
+              "/credentials",
+            ],
+            [
+              "Explore in conversation",
+              "Ask about architecture, choices and limitations.",
+              "/ask?intent=ai",
+            ],
+          ].map(([t, d, h]) => (
+            <Link href={h} key={h}>
+              <h2>{t}</h2>
+              <p>{d}</p>
+              <ArrowUpRight size={23} />
+            </Link>
+          ))}
+        </div>
+      </section>
+      <div className="studio-shell">
+        <SocialLinks />
+      </div>
+      <ContactBand intent="ai" />
+      <StudioFooter />
+    </main>
+  );
 }

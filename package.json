@@ -7,18 +7,23 @@
     "build": "next build",
     "start": "next start",
     "verify:identity": "node scripts/verify-identity.mjs",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "verify:behavior": "node --test scripts/verify-behavior.mjs"
   },
   "dependencies": {
-    "next": "16.2.9",
+    "@mlc-ai/web-llm": "^0.2.85",
+    "@phosphor-icons/react": "^2.1.10",
+    "next": "16.3.4",
     "pdf-lib": "1.17.1",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-dom": "19.2.0",
+    "three": "^0.185.1"
   },
   "devDependencies": {
     "@types/node": "22.17.2",
     "@types/react": "19.1.10",
     "@types/react-dom": "19.1.7",
+    "@types/three": "^0.185.4",
     "typescript": "5.9.2"
   }
 }

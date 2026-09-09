@@ -13,7 +13,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install --no-audit --no-fund
+      - run: npm ci --no-audit --no-fund
       - run: npm run verify:identity
       - run: npm run typecheck
+      - run: npm run verify:behavior
       - run: npm run build

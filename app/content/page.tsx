@@ -1,105 +1,277 @@
-import { verticalMetadata } from "@/lib/verticals";
-import { VerticalActions } from "@/components/VerticalActions";
-import { experiences } from "@/lib/experience";
 import Link from "next/link";
+import {
+  ArrowUpRight,
+  InstagramLogo,
+  YoutubeLogo,
+  LinkedinLogo,
+} from "@phosphor-icons/react/dist/ssr";
+import { verticalMetadata } from "@/lib/verticals";
 import { site } from "@/lib/profile";
-
+import { socialSnapshot, videos, reels } from "@/lib/social";
+import {
+  SectionHeading,
+  SocialLinks,
+  ContactBand,
+  StudioFooter,
+} from "@/components/Studio";
+import { VideoPlayer, ReelPlayer } from "@/components/MediaPlayer";
+import ChannelStats from "@/components/ChannelStats";
 export const metadata = verticalMetadata("content");
-
-const chapters = [
-  {
-    period: "2020",
-    label: "STARTED BEFORE THE TITLE",
-    title: "Learning to explain on camera.",
-    body: "The creator chapter began while I was still in school. The earliest polished videos were practical student problems—how to improve handwriting, then how to improve marks in board examinations. The production was simple; the useful skill was learning to structure an explanation for someone else.",
-  },
-  {
-    period: "2020 — 2022",
-    label: "EDUCATION CONTENT",
-    title: "From study advice to technical concepts.",
-    body: "The channel expanded into board-exam preparation, science concepts, diagrams, previous-year questions, and exam-oriented explanations for school and competitive-exam learners.",
-  },
-  {
-    period: "2023 — 2024",
-    label: "TEACHING AT SCALE",
-    title: "Explanation became a working skill.",
-    body: "As a subject-matter expert, I answered more than 1,000 student questions across mathematics, computer science, IT, and related topics. Workshops and student initiatives added live teaching, debugging, and project guidance to the same communication loop.",
-  },
-  {
-    period: "2026 — NOW",
-    label: "AI × CONTENT",
-    title: "Technical storytelling became part of the job.",
-    body: "Today the same skill is applied to AI and technology: researching tools and use cases, finding the useful angle, writing scripts and narratives, designing workflows, and using audience feedback to improve what gets explained next.",
-  },
-] as const;
-
-const communicationModes = [
-  ["Research synthesis", "Turn a large technical surface into the few distinctions, assumptions, and trade-offs that actually matter."],
-  ["Documentation", "Leave enough structure behind that another person can understand how the system works and what supports the claims."],
-  ["Teaching", "Notice where understanding breaks, then rebuild the explanation around the learner rather than around the expert."],
-  ["Product narrative", "Make interfaces, demos, scripts, and technical content communicate what the system does without hiding its limits."],
-] as const;
-
 export default function ContentPage() {
   return (
-    <main id="main" className="inner-page creator-page creator-page-v2">
-      <header className="site-shell subnav"><Link href="/">← Chandan Pandey</Link><span>CONTENT / EXPLAIN</span></header>
-      <section className="site-shell page-hero creator-hero">
-        <p className="eyebrow">AI CONTENT & TECHNICAL COMMUNICATION</p>
-        <h1>Understand the technology.<br/><em>Make it understood.</em></h1>
-        <p>I’m Chandan Pandey, an AI Content Lead connecting technical research, hands-on engineering and clear communication. I turn AI tools and use cases into useful narratives, scripts, workflows and learning material.</p>
-        <VerticalActions vertical="content" />
-      </section>
-
-      <section className="site-shell section">
-        <div className="section-intro"><p className="eyebrow">PROFESSIONAL CONTENT EXPERIENCE</p><h2>Research to narrative to iteration.</h2><p>These are first-party career summaries, with the public professional record linked for context. Client assets and performance results are not presented as independently verified samples.</p></div>
-        <div className="vertical-cards">{experiences.filter(item => ["YAAS", "Notansun", "Brainly"].includes(item.organization)).map(item => <article key={item.organization}><p className="eyebrow">FIRST-PARTY CAREER CONTEXT · {item.period}</p><h3>{item.title} · {item.organization}</h3><p>{item.summary}</p><ul>{item.details.map(detail => <li key={detail}>{detail}</li>)}</ul></article>)}</div>
-        <a className="text-link" href={site.links.linkedin} target="_blank" rel="noopener noreferrer">Public professional profile ↗</a>
-      </section>
-      <section className="site-shell section">
-        <div className="section-intro"><p className="eyebrow">INSPECTABLE TECHNICAL COMMUNICATION</p><h2>Read how I explain the work.</h2><p>Portfolio case studies demonstrate technical explanation. They are not client campaign results or audience-growth claims.</p></div>
-        <div className="vertical-cards">
-          <article><h3>ByteToken: explaining a benchmark</h3><p>Separate raw encoding from compression, preserve the baseline, and make a technical result reproducible.</p><Link className="text-link" href="/work/bytetoken">Read the explanation ↗</Link></article>
-          <article><h3>InferBench: explaining evaluation</h3><p>Connect hardware fit, measurement and trade-offs to decisions a local-model user needs to make.</p><Link className="text-link" href="/work/inferbench">Read the case study ↗</Link></article>
+    <main id="main">
+      <section className="studio-shell studio-page-hero content-hero">
+        <p className="micro">
+          <span className="status-dot" /> AI CONTENT & TECHNICAL COMMUNICATION
+        </p>
+        <h1>
+          Understand deeply.
+          <br />
+          Make it
+          <br />
+          <em>worth watching.</em>
+        </h1>
+        <div className="page-hero-bottom">
+          <p>
+            I’m Chandan Pandey. AI Content Lead at YAAS, engineer and educator.
+            I connect technical research with stories people can understand and
+            use.
+          </p>
+          <div className="studio-actions">
+            <Link className="studio-button primary" href="#reels">
+              Watch selected work <ArrowUpRight size={18} />
+            </Link>
+            <a
+              className="studio-button"
+              href={
+                "mailto:" +
+                site.contact.email +
+                "?subject=Content%20opportunity"
+              }
+            >
+              Work with me <ArrowUpRight size={18} />
+            </a>
+            <Link className="text-link" href="/ask?intent=content">
+              Ask about my content <ArrowUpRight size={18} />
+            </Link>
+          </div>
         </div>
-        <Link className="text-link" href="/lab">Explore public workflow experiments ↗</Link>
       </section>
-
-      <section className="creator-quote-band">
-        <div className="site-shell">
-          <p className="eyebrow light">THE CONNECTING QUESTION</p>
-          <blockquote>“Can I make the difficult thing legible without making it shallow?”</blockquote>
-          <p>That question connects teaching, research communication, technical content, product interfaces, documentation, and tools built for other developers.</p>
+      <div className="studio-shell">
+        <SocialLinks />
+      </div>
+      <section className="studio-shell studio-section" id="reels">
+        <SectionHeading
+          number="01 / AI & TECHNOLOGY, ON CAMERA"
+          title="From technical idea to human story."
+          note="Selected public reels from @justchandan__."
+          href={site.links.instagram}
+          label="Instagram profile"
+        />
+        <div className="reels-grid">
+          {reels.map((r) => (
+            <article key={r.id}>
+              <ReelPlayer id={r.id} title={r.title} />
+              <div className="media-caption">
+                <span className="micro">
+                  {r.topic} / {r.date}
+                </span>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
-
-      <section className="site-shell communication-section">
-        <div className="about-section-head"><p className="eyebrow">WHAT COMMUNICATION DOES INSIDE THE WORK</p><h2>Research, structure, teach, explain.</h2></div>
-        <div className="communication-grid">
-          {communicationModes.map(([title, body], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{body}</p></article>)}
-        </div>
-      </section>
-
-      <section className="site-shell creator-ledger" id="creator-history">
-        <div className="section-intro"><p className="eyebrow">DEEPER CONTEXT / CREATOR HISTORY</p><h2>Where explanation began.</h2><p>First-party history; archive artifacts will be linked after verification.</p></div>
-        {chapters.map((chapter, index) => (
-          <article key={chapter.period}>
-            <span className="creator-index">{String(index + 1).padStart(2, "0")}</span>
-            <span className="creator-period">{chapter.period}</span>
-            <div><p>{chapter.label}</p><h2>{chapter.title}</h2><strong>{chapter.body}</strong></div>
+      <section className="studio-shell studio-section">
+        <SectionHeading
+          number="02 / FIND THE WORK"
+          title="A public trail across platforms."
+          note="Dated public counts, with the source one click away."
+        />
+        <div className="channel-grid">
+          <article>
+            <InstagramLogo size={30} />
+            <h3>Instagram</h3>
+            <p>@justchandan__</p>
+            <strong className="channel-count">
+              {socialSnapshot.instagram.followers}
+              <small>followers</small>
+            </strong>
+            <span className="micro">PUBLIC SNAPSHOT · 8 SEP 2026</span>
+            <a
+              className="text-link"
+              href={site.links.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Explore the profile <ArrowUpRight size={18} />
+            </a>
           </article>
-        ))}
-      </section>
-
-      <section className="site-shell creator-links">
-        <div><p className="eyebrow">APPROVED CHANNELS</p><h2>Public work should earn its place.</h2></div>
-        <div>
-          <p>Older creator material will be indexed selectively after channel naming, links, ownership, and source artifacts are verified. The goal is to preserve the origin story without turning the portfolio into a social-media dump. Personal accounts, private conversations, and unapproved metrics stay out of the public portfolio.</p>
-          <a className="button secondary" href={site.links.instagram} target="_blank" rel="noreferrer">Instagram ↗</a>
-          <a className="button secondary" href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
-          <Link className="button secondary" href="/timeline">Full timeline ↗</Link>
+          <article>
+            <YoutubeLogo size={30} />
+            <h3>YouTube</h3>
+            <p>Chanakya Education Centre</p>
+            <ChannelStats />
+            <a
+              className="text-link"
+              href={site.links.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open the channel <ArrowUpRight size={18} />
+            </a>
+          </article>
+          <article>
+            <LinkedinLogo size={30} />
+            <h3>LinkedIn</h3>
+            <p>Chandan Pandey · @chandanpandeys</p>
+            <p className="channel-description">
+              Professional updates, project launches and the conversations
+              around the work.
+            </p>
+            <a
+              className="text-link"
+              href={site.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit my LinkedIn <ArrowUpRight size={18} />
+            </a>
+          </article>
         </div>
       </section>
+      <section className="studio-shell studio-section">
+        <SectionHeading
+          number="03 / CONTENT AS A PRACTICE"
+          title="Research. Script. Explain. Iterate."
+        />
+        <div className="content-practice">
+          <div>
+            <span className="micro">CURRENT ROLE / YAAS</span>
+            <h3>AI Content Lead</h3>
+            <p>
+              Researching AI tools and use cases, shaping scripts and
+              narratives, and building repeatable workflows from research
+              through publishing and performance analysis.
+            </p>
+            <span className="source-note">
+              Role account · First-party career record
+            </span>
+          </div>
+          <div>
+            <h3>Engineering behind the explanation</h3>
+            <p>
+              I also build the systems I spend time understanding: agents, AI
+              context tools, evaluation and automation. That gives the content a
+              practical technical foundation.
+            </p>
+            <Link href="/ai" className="text-link">
+              See the engineering <ArrowUpRight size={18} />
+            </Link>
+          </div>
+          <div>
+            <h3>Content for your team</h3>
+            <p>
+              AI explainers, technical scripts, developer education,
+              demonstrations and research-led content workflows.
+            </p>
+            <Link
+              href="/resume?view=ai-content-developer-educator"
+              className="text-link"
+            >
+              Experience & content resume <ArrowUpRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+      <section className="studio-shell studio-section" id="teaching">
+        <SectionHeading
+          number="04 / THE EDUCATOR BEHIND THE CREATOR"
+          title="It started with helping someone learn."
+          note="Original educational videos from Chanakya Education Centre."
+        />
+        <div className="video-grid">
+          {videos.map((v) => (
+            <article key={v.id}>
+              <VideoPlayer id={v.id} title={v.title} />
+              <div className="media-caption">
+                <span className="micro">{v.topic}</span>
+                <h3>{v.title}</h3>
+                <p>
+                  {v.duration} · {v.views.toLocaleString("en-IN")} views ·
+                  snapshot 8 Sep 2026
+                </p>
+                <a
+                  className="text-link"
+                  href={"https://www.youtube.com/watch?v=" + v.id}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Watch on YouTube <ArrowUpRight size={16} />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="studio-shell studio-research" id="notansun">
+        <div>
+          <p className="micro">05 / COMMUNITY & TEACHING</p>
+          <h2>
+            Notansun Zone.
+            <br />
+            <span>Learning by doing.</span>
+          </h2>
+          <p>
+            I founded Notansun to help students start building with technology.
+            The teaching record includes Python workshops, a 10-day learning
+            challenge, project exercises and participation certificates.
+          </p>
+          <p>
+            My account includes teaching students across India. Workshop
+            documents support the curriculum and program structure; attendance
+            and completion totals are not claimed here.
+          </p>
+          <a
+            className="text-link"
+            href="https://www.instagram.com/notansunzone/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Notansun on Instagram <ArrowUpRight size={18} />
+          </a>
+        </div>
+        <div className="research-steps">
+          {[
+            [
+              "WORKSHOP",
+              "Python for the real world",
+              "Python fundamentals, functions, modules and practical projects.",
+            ],
+            [
+              "PRACTICE",
+              "Build something small",
+              "Exercises included a Rock, Paper, Scissors game and text-to-speech.",
+            ],
+            [
+              "CONTINUITY",
+              "A 10-day learning challenge",
+              "Daily practice, learning resources and participation certificates.",
+            ],
+          ].map(([n, t, d]) => (
+            <article key={n}>
+              <span className="micro">{n}</span>
+              <h3>{t}</h3>
+              <p>{d}</p>
+            </article>
+          ))}
+          <small>
+            Documented in first-party workshop material. Student records remain
+            private.
+          </small>
+        </div>
+      </section>
+      <ContactBand intent="content" />
+      <StudioFooter />
     </main>
   );
 }

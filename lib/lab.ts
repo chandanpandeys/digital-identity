@@ -21,17 +21,6 @@ export const labItems: LabItem[] = [
     status: "supporting",
   },
   {
-    name: "OfferClaw",
-    category: "Agent UX / Job Search",
-    year: "2026",
-    summary:
-      "A browser-first React experiment around job discovery, application preparation, outreach, follow-up sequencing, and pipeline tracking with optional Gemini and JSearch integrations.",
-    signal:
-      "Kept in Lab because the product interaction model is interesting, while several market-effectiveness claims in its README still need stronger sourcing before they belong in a flagship case study.",
-    github: "https://github.com/chandanpandeys/offerclaw",
-    status: "experiment",
-  },
-  {
     name: "IBM Internship Projects",
     category: "Machine Learning",
     year: "2025",
