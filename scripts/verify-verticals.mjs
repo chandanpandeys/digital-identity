@@ -137,7 +137,8 @@ assert.ok(credentials.includes("1V2ZLrNg2fnQOh4pz3qqgk77L3q3htHg3"));
 assert.ok(credentials.includes("Google Student Ambassador Program"));
 assert.ok(credentials.includes("Rank 153"));
 assert.ok(credentials.includes("19 Infosys Springboard records"));
-assert.ok(credentials.includes("not public certificate verification pages"));
+assert.ok(credentials.includes("Open issuer course page"));
+assert.doesNotMatch(credentials, /certificate-issued notification|certificate-issued emails|not yet linked/i);
 assert.ok(credentials.includes("Principles of Generative AI Certification"));
 for (const certificate of ["google-ambassador", "iit-bombay-ambassador", "nec-2025"]) {
   const pdf = await get(`/certificates/${certificate}.pdf`);
@@ -155,3 +156,10 @@ assert.ok(Number.isSafeInteger(social.videos));
 console.log(
   "API and evidence checks passed: contribution, bounds, unknowns, originals, redirects and social data.",
 );
+
+// Keep discovery and publishing-process notes out of visitor-facing content.
+for (const route of ["/about", "/timeline", "/lab", "/content", "/ai", "/profile.json", "/evidence.json", "/llms.txt"]) {
+  const body = await (await get(route)).text();
+  assert.doesNotMatch(body, /certificate-issued notification|certificate-issued emails|issuer.email.supported|private conversations|fact-checking only|private source material is used|notifiedOn/i, route);
+}
+console.log("Public copy checks passed across pages and machine-readable sources.");

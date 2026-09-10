@@ -36,7 +36,7 @@ export function GET() {
       selectedTimeline: timeline,
       experience: experiences,
       selectedCredentials: credentials,
-      issuerEmailSupportedLearning: { issuer: "Infosys Springboard", evidence: "Certificate-issued notifications; course links are not public verification links", courses: springboardCourses },
+      courseCertifications: { issuer: "Infosys Springboard", courses: springboardCourses },
       targetedResumes,
       verticals: {
         ai: { route: "/ai", resumes: ["ai-llm-engineer", "ai-research-ml"] },
@@ -52,10 +52,10 @@ export function GET() {
         lab: "Supporting experiments, earlier builds, and public repositories preserved without competing with flagship work.",
         now: "Only active allocation of attention; historical work belongs in Timeline and supporting experiments belong in Lab.",
         credentials:
-          "Selected credentials with an identified source document. Private source files are not exposed as public evidence until sharing is intentionally reviewed.",
+          "Selected credentials, original certificates and issuer course links.",
         resume:
           "The HTML resume is the canonical hiring record. Targeted PDF variants are filtered views generated from a structured role-specific dataset.",
-        ask: "Curated source answers with optional free browser AI and configurable hosted Gemini synthesis. Sources retain public and first-party distinctions; no private archives are accessible.",
+        ask: "Explore projects, experience and credentials through answers linked to portfolio sources.",
       },
       routes: {
         ai: `${site.canonicalUrl}/ai`,

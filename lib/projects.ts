@@ -102,7 +102,7 @@ export const projects: Project[] = [
       "Added bounded context packs and a read-only MCP interface; cloud storage and more importers remain roadmap work.",
     ],
     evidence: [
-      "The public repository contains software and examples. Personal conversation exports are not portfolio evidence and are not published here.",
+      "The public repository includes software, documentation and usage examples.",
     ],
     stack: ["Python", "SQLite FTS5", "MCP", "Context engineering"],
     github: "https://github.com/chandanpandeys/portable-ai-memory",
@@ -192,7 +192,7 @@ export const projects: Project[] = [
       },
     ],
     sourceNote:
-      "Numbers are transcribed from docs/media/02_measured_transport_comparison.png in the public repository, reviewed 8 September 2026. This is one published Playground example, not a fresh independent benchmark. Compression-assisted results and DirectID experiments must be kept separate from text transport.",
+      "Published Playground example from the project repository. Results apply to this example; compression-assisted results, DirectID experiments and text transport use different baselines.",
     stack: [
       "Python",
       "tiktoken",
@@ -323,8 +323,8 @@ export const projects: Project[] = [
       "Optimized a dipeptide-composition path by replacing nested loops with vectorized counting; the first-party project record reports an approximately 400× improvement for that operation.",
     ],
     evidence: [
-      "Project architecture and implementation work are documented in first-party career and research records supplied for this portfolio.",
-      "The underlying project is not yet presented as a public repository, so the site distinguishes documented work from publicly inspectable code.",
+      "Research contribution spanning feature extraction, model evaluation and computational optimization.",
+      "First-party research account; source code is not publicly available.",
     ],
     architecture: [
       {
@@ -379,11 +379,11 @@ export const projects: Project[] = [
         label: "Vectorized feature path",
         baseline: "Nested-loop implementation",
         result: "~400× operation-level improvement",
-        note: "First-party project record; should remain qualified until a public benchmark artifact is published.",
+        note: "First-party project result for this operation; not an independent benchmark.",
       },
     ],
     sourceNote:
-      "EpitopePred is intentionally labelled documented work. Public screenshots, source, benchmark notebooks, or a sanitized demo should be attached before stronger verification language is used.",
+      "EpitopePred is a research contribution. Performance figures describe specific operations in the project, rather than an independently reproduced benchmark.",
     stack: [
       "Next.js",
       "FastAPI",
@@ -446,7 +446,7 @@ export const projects: Project[] = [
     ],
     evidence: [
       "Public repository is available on GitHub.",
-      "The first-party master resume records a 90% reduction in manual data-entry effort for the workflow; the site does not treat that number as independently verified.",
+      "Reported a 90% reduction in manual data-entry effort for this workflow (first-party project result).",
     ],
     stack: ["Python", "BeautifulSoup", "Requests", "Data visualization"],
     github: "https://github.com/chandanpandeys/OneClickAllResultsBot",

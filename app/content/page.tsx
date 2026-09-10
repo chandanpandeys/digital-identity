@@ -265,8 +265,7 @@ export default function ContentPage() {
             </article>
           ))}
           <small>
-            Documented in first-party workshop material. Student records remain
-            private.
+            Python workshops, practical projects and a 10-day learning challenge.
           </small>
         </div>
       </section>

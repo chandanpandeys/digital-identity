@@ -38,9 +38,9 @@ export default function TimelinePage() {
       </section>
 
       <section className="site-shell timeline-note">
-        <p className="eyebrow">SOURCE POLICY</p>
-            <p>This timeline is intentionally conservative. Dates and descriptions are distilled from first-party career records and public profiles; disputed or weakly evidenced metrics are not promoted into headline claims. Private conversations and personal context are used for validation only and are not published here.</p>
-        <Link className="button secondary" href="/resume">Open curated resume ↗</Link>
+        <p className="eyebrow">EXPLORE MY EXPERIENCE</p>
+            <p>Explore the roles, research and independent work that shaped my approach to building and explaining AI.</p>
+        <Link className="button secondary" href="/resume">Explore experience ↗</Link>
       </section>
     </main>
   );

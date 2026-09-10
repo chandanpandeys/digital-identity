@@ -61,6 +61,10 @@ final result: passed
 
 The gallery contains six original-document records, including Google Student Ambassador participation, IIT Bombay Campus Ambassador completion, NEC 2025 team Rank 153 and Internshala webinar participation. Three already-public originals are now served as unmodified PDFs with local image previews. The Google source image and desktop rendering were compared together; the whole document remains contained without stretching or cropping.
 
-Infosys Springboard has 19 issuer-email-supported records in a separate section. Notification dates and issuer course links are explicitly distinguished from public certificate-verification links. Individual Infosys PDFs remain unavailable in this release. Private messages and discovery files are not published.
+Infosys Springboard has 19 course certifications in a separate section, with links clearly labelled as issuer course pages.
 
 Final validation passed: identity (19 surfaces, 67 files), nine behavior tests, typecheck, production build (32 generated pages), and production HTTP checks including the three PDFs and PNGs. Desktop at 1440px and mobile at 390px have no horizontal overflow. The mobile Infosys grid wraps cleanly in one column. The rebuilt browser page shows direct PDF buttons and separate Drive source links. This addendum does not assert a production promotion.
+
+## Visitor copy refinement — 10 September 2026
+
+Credentials, About, Timeline, Lab, Content, project descriptions and machine-readable portfolio sources now use professional profile copy. Infosys cards show course titles and issuer course links without discovery-process notes or inferred completion dates. Research ownership and first-party performance qualifications remain intact. The refreshed certificate section was visually checked, and route-level regression assertions cover public pages and source endpoints.

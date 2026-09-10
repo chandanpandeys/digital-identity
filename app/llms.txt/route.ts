@@ -60,15 +60,15 @@ export function GET() {
     ),
     "These documents distinguish completion, participation and team results. They remain first-party records.",
     "## Infosys Springboard learning",
-    "19 certificate-issued notifications reviewed from the issuer's learning platform, dated 21–30 June 2025. Individual PDFs are not yet linked. Course URLs are not public certificate verification URLs; this does not establish internship completion. See /credentials#infosys.",
-    ...springboardCourses.map((c) => "- " + c.title + " — certificate notification " + c.notifiedOn + "; issuer course: " + c.courseUrl),
+    "19 Infosys Springboard course certifications in AI, data science, generative models, development practices and communication. Explore the courses at /credentials#infosys.",
+    ...springboardCourses.map((c) => "- " + c.title + " — issuer course: " + c.courseUrl),
     "## Ask Chandan",
-    "/ask?intent=ai and /ask?intent=content set visitor focus. Curated source answers work immediately. Optional WebLLM runs a free model in the visitor’s browser; optional hosted Gemini requires deployment configuration. AI synthesis retains citations and first-party qualifications. The assistant cannot access private chats, Drive or mail.",
+    "/ask?intent=ai and /ask?intent=content focus answers on each professional vertical. Explore projects, experience and credentials with linked sources. Optional browser AI runs on the visitor’s device.",
     "## Machine-readable identity",
     "Profile: " + site.canonicalUrl + "/profile.json",
     "Evidence: " + site.canonicalUrl + "/evidence.json",
     "## Evidence policy",
-    "Public source, public profiles and first-party records are distinct. EpitopePred is contributed research work; Chandan is not its owner. BenchWolf was previously named InferBench. Experimental and planned capabilities are not production guarantees. Benchmarks retain their baseline and scope. Social counts are dated snapshots unless explicitly marked as an API response. Private chats, student records and personal files are not published.",
+    "Public source, public profiles and first-party records are distinct. EpitopePred is contributed research work; Chandan is not its owner. BenchWolf was previously named InferBench. Experimental and planned capabilities are not production guarantees. Benchmarks retain their baseline and scope. Social counts are dated snapshots unless explicitly marked as an API response.",
   ].join("\n\n");
   return new Response(body, {
     headers: {

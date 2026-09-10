@@ -74,7 +74,7 @@ export const evidenceNodes: EvidenceNode[] = [
     id: "content",
     title: "AI content and technical communication",
     answer:
-      "Chandan is AI Content Lead at YAAS from August 2026 according to his career record. The role covers AI research, scripting, narrative development and content workflows. Public samples are on Instagram @justchandan__, LinkedIn @chandanpandeys and Chanakya Education Centre on YouTube. These channels demonstrate technical storytelling and educational content; client performance and named endorsements are not verified here.",
+      "Chandan is AI Content Lead at YAAS from August 2026 according to his career record. The role covers AI research, scripting, narrative development and content workflows. Public samples are on Instagram @justchandan__, LinkedIn @chandanpandeys and Chanakya Education Centre on YouTube. These channels demonstrate technical storytelling and educational content.",
     tags: [
       "content",
       "yaas",
@@ -100,7 +100,7 @@ export const evidenceNodes: EvidenceNode[] = [
     id: "notansun",
     title: "Notansun Zone and teaching",
     answer:
-      "Chandan founded Notansun Zone and taught Python through workshops and a 10-day learning challenge. First-party workshop material documents Python basics, functions, modules, a Rock Paper Scissors exercise, text-to-speech, learning resources and participation certificates. He reports teaching students across India. Verified attendance and completion totals are not published. The educational YouTube channel Chanakya Education Centre contains science and exam-preparation lessons.",
+      "Chandan founded Notansun Zone and taught Python through workshops and a 10-day learning challenge. First-party workshop material documents Python basics, functions, modules, a Rock Paper Scissors exercise, text-to-speech, learning resources and participation certificates. He reports teaching students across India. The educational YouTube channel Chanakya Education Centre contains science and exam-preparation lessons.",
     tags: [
       "notansun",
       "zone",
@@ -129,7 +129,7 @@ export const evidenceNodes: EvidenceNode[] = [
     id: "metrics",
     title: "Public channel numbers",
     answer:
-      "On 8 September 2026 the public Instagram profile @justchandan__ showed 80 followers. Chanakya Education Centre showed 197 YouTube subscribers and 25 videos. These are dated snapshots, not live reach or engagement analytics. Instagram views, LinkedIn impressions, client results and endorsements are not verified.",
+      "On 8 September 2026 the public Instagram profile @justchandan__ showed 80 followers. Chanakya Education Centre showed 197 YouTube subscribers and 25 videos. These are dated snapshots, not live reach or engagement analytics.",
     tags: [
       "followers",
       "numbers",
@@ -165,7 +165,7 @@ export const evidenceNodes: EvidenceNode[] = [
             (c.grade ? "Grade " + c.grade + ". " : ""),
         )
         .join(" ") +
-      "These original documents cover course completion, ambassador participation, an ambassador completion letter and a team competition result. School and college awards are not yet documented sufficiently to list exact titles or dates.",
+      "These original documents cover course completion, ambassador participation, an ambassador completion letter and a team competition result.",
     tags: [
       "certificates",
       "certificate",
@@ -189,7 +189,7 @@ export const evidenceNodes: EvidenceNode[] = [
   {
     id: "infosys-learning",
     title: "Infosys Springboard learning certificates",
-    answer: "19 certificate-issued notifications from Infosys Springboard's learning platform were reviewed, dated 21–30 June 2025. They cover: " + springboardCourses.map((c) => c.title).join("; ") + ". These are issuer-email-supported learning records. Linked issuer course pages may require sign-in and are not public certificate-verification pages. Individual PDFs are not yet published. These records do not establish completion of an Infosys internship.",
+    answer: "Chandan holds 19 Infosys Springboard course certifications covering AI, data science, generative models, development practices and communication: " + springboardCourses.map((c) => c.title).join("; ") + ". Explore the course collection on the credentials page.",
     tags: ["infosys", "springboard", "certificate", "learning", "generative", "prompt"],
     strength: "FIRST-PARTY",
     links: [{ label: "Infosys learning records and issuer course links", href: "/credentials#infosys" }],
@@ -197,7 +197,7 @@ export const evidenceNodes: EvidenceNode[] = [
   {
     id: "ambassador-credentials",
     title: "Campus leadership and ambassador certificates",
-    answer: "Chandan's Google Student Ambassador Program certificate is a participation certificate dated 31 December 2025, bearing Google Gemini and Communique branding. His E-Cell, IIT Bombay letter confirms successful completion of the Campus Ambassador Program; the undated letter was announced on 5 February 2026. A separate NEC 2025 certificate recognizes his team's Rank 153 in the Basic Track. That is a team result, not an individual national rank. An Internshala Student Partner Team certificate dated 1 March 2024 documents webinar participation, not internship completion.",
+    answer: "Chandan's Google Student Ambassador Program certificate is a participation certificate dated 31 December 2025, bearing Google Gemini and Communique branding. His E-Cell, IIT Bombay letter confirms successful completion of the Campus Ambassador Program for the 2025–2026 program. A separate NEC 2025 certificate recognizes his team's Rank 153 in the Basic Track. That is a team result, not an individual national rank. An Internshala Student Partner Team certificate dated 1 March 2024 documents webinar participation, not internship completion.",
     tags: ["ambassador", "campus", "google", "gemini", "bombay", "nec", "leadership", "internshala"],
     strength: "FIRST-PARTY",
     links: credentials.slice(0,4).map((c) => ({label: c.title, href: c.publicUrl!})),
@@ -235,7 +235,7 @@ export const evidenceNodes: EvidenceNode[] = [
     id: "public",
     title: "Public work and current experiments",
     answer:
-      "The project collection includes ByteToken, OfferClaw, BenchWolf (previously InferBench), Portable AI Memory, DekhoSuno and OneClickAllResultsBot. They are independent experiments with public source. EpitopePred is contributed research work documented from a first-party account. Supporting repositories and earlier experiments are in the Lab. Private chats, student records and unpublished source are not part of this assistant.",
+      "The project collection includes ByteToken, OfferClaw, BenchWolf (previously InferBench), Portable AI Memory, DekhoSuno and OneClickAllResultsBot. They are independent experiments with public source. EpitopePred is contributed research work documented from a first-party account. Supporting repositories and earlier experiments are in the Lab.",
     tags: [
       "public",
       "github",

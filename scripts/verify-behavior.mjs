@@ -72,8 +72,8 @@ test("content and credentials have direct evidence", () => {
 test("learning and ambassador records retain their evidence boundaries", () => {
   const infosys = retrieve("Infosys Springboard certificates")[0];
   assert.equal(infosys.id, "infosys-learning");
-  assert.match(infosys.answer, /19 certificate-issued notifications/);
-  assert.match(infosys.answer, /do not establish completion of an Infosys internship/);
+  assert.match(infosys.answer, /19 Infosys Springboard course certifications/);
+  assert.doesNotMatch(infosys.answer, /notification|issuer.email|internship completion/i);
   const ambassador = retrieve("Google campus ambassador")[0];
   assert.equal(ambassador.id, "ambassador-credentials");
   assert.match(ambassador.answer, /team's Rank 153/);

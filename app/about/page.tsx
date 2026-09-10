@@ -170,12 +170,6 @@ export default function AboutPage() {
             </li>
           ))}
         </ul>
-        <p className="public-boundary-note">
-          <strong>PUBLIC BOUNDARY</strong> This portfolio is a curated
-          professional profile. Private chats, personal context, confidential
-          source files, and unapproved account metrics are used for
-          fact-checking only and are not published.
-        </p>
         <div className="about-actions">
           <Link className="button primary" href="/work">
             Inspect work ↗

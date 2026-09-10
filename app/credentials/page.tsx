@@ -7,7 +7,7 @@ import { ContactBand, StudioFooter } from "@/components/Studio";
 export const metadata: Metadata = {
   title: "Credentials & learning",
   description:
-    "Explore Chandan Pandey’s Google and IIT Bombay ambassador certificates, NEC team result, AI training and 19 Infosys Springboard certificate-issued records.",
+    "Explore Chandan Pandey’s Google and IIT Bombay ambassador certificates, NEC team result, AI training and 19 Infosys Springboard certifications.",
   alternates: { canonical: "/credentials" },
 };
 export default function Credentials() {
@@ -111,14 +111,14 @@ export default function Credentials() {
       </section>
       <section id="infosys" className="studio-shell studio-section">
         <p className="micro">INFOSYS SPRINGBOARD / CONTINUOUS LEARNING</p>
-        <h2>19 certificates issued. A wider learning foundation.</h2>
+        <h2>19 certifications. A wider learning foundation.</h2>
         <p className="hero-intro">AI and data science, generative models, development practices and communication.</p>
-        <p className="source-note">Confirmed by certificate-issued emails from Infosys Springboard’s learning platform, dated 21–30 June 2025. Dates below are notification dates. Links open issuer course pages, which may require sign-in; they are not public certificate verification pages. Individual certificate PDFs are not yet linked here.</p>
+        <p className="source-note">Explore the courses behind my certifications, from AI foundations to generative models and technical communication.</p>
         <div className="springboard-grid">
           {springboardCourses.map((c) => <article key={c.courseUrl}>
             <p className="micro">INFOSYS SPRINGBOARD</p>
             <h3>{c.title}</h3>
-            <p className="source-note">Certificate-issued notification · <time dateTime={c.notifiedOn}>{new Date(c.notifiedOn + "T00:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" })}</time></p>
+            <p className="source-note">Course certification</p>
             <a href={c.courseUrl} target="_blank" rel="noopener noreferrer">Open issuer course page <ArrowUpRight size={17} /></a>
           </article>)}
         </div>

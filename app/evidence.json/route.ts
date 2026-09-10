@@ -8,7 +8,7 @@ export function GET() {
       updatedAt: "2026-09-08",
       canonical: `${site.canonicalUrl}/evidence.json`,
       purpose:
-        "Curated evidence for source answers, optional browser AI and configured hosted synthesis. No private conversation corpus is included.",
+        "Projects, experience and credentials for source-linked portfolio answers.",
       prompts: evidencePrompts,
       nodes: evidenceNodes,
       policy: {

@@ -101,7 +101,7 @@ function EpitopePredVisual() {
         <div>
           <span>EVIDENCE STATE</span>
           <strong>
-            architecture documented; public artifact still pending
+            Research contribution · First-party project account
           </strong>
         </div>
       </div>

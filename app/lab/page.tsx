@@ -27,7 +27,7 @@ export default function LabPage() {
         <h1>Not everything should be<br/><em>a flagship.</em></h1>
         <p>
           This is where useful experiments, earlier builds, automations, and public code live without
-          competing with the strongest case studies. It is a public selection, not a dump of private project history.
+          competing with the strongest case studies. Each project captures a different question, tool or learning experience.
         </p>
       </section>
 
@@ -52,12 +52,11 @@ export default function LabPage() {
       </section>
 
       <section className="site-shell prose-grid lab-policy">
-        <aside>PUBLIC SELECTION POLICY</aside>
+        <aside>EXPERIMENTS THAT KEEP EVOLVING</aside>
         <div className="prose">
           <p>
             Work moves from Lab to the main Work index when the technical story is deep enough, the evidence is inspectable,
             and the project still represents the kind of engineering I want to be hired to do next.
-            Private source material is used to validate the record and is never exposed here by default.
           </p>
         </div>
       </section>
