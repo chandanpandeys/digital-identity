@@ -1869,3 +1869,27 @@ img {
   .mobile-toggle { width: 38px; flex-shrink: 0; }
   .orbit-caption { left: 5%; right: 5%; }
 }
+
+/* Content work samples and hiring briefs */
+.content-index { display:flex; gap:12px 28px; flex-wrap:wrap; padding-top:24px; padding-bottom:24px; border-bottom:1px solid #303c28; }
+.content-index a { color:#c4f66b; font-size:13px; text-decoration:underline; text-underline-offset:5px; }
+.content-feature { display:grid; grid-template-columns:minmax(0, .85fr) minmax(0,1.3fr); gap:56px; align-items:center; }
+.content-feature h2,.content-brief h2 { font-size:clamp(30px,3.4vw,52px); font-weight:500; letter-spacing:-.045em; line-height:1.08; margin:22px 0; }
+.content-feature h2 em { color:#c4f66b; font-style:normal; }
+.content-feature-copy>p:not(.micro),.content-brief p { color:#a5b19a; line-height:1.75; font-size:15px; }
+.content-feature-player { min-width:0; border:1px solid #303c28; background:#11170f; }
+.feature-caption { display:flex; justify-content:space-between; gap:12px; padding:18px; flex-wrap:wrap; font-size:12px; color:#acb79e; }
+.sample-context { margin:24px 0; border-top:1px solid #303c28; }
+.sample-context>div { display:grid; grid-template-columns:78px minmax(0,1fr); gap:12px; padding:12px 0; border-bottom:1px solid #303c28; }
+.sample-context dt { font-size:11px; color:#94a188; }
+.sample-context dd { margin:0; color:#c6cfbd; font-size:13px; line-height:1.6; }
+.sample-story>p,.media-caption .lesson-description { font-size:14px; line-height:1.75; color:#a5b19a; }
+.content-brief { display:grid; grid-template-columns:1fr 1fr; gap:64px; padding-top:52px; padding-bottom:52px; border-top:1px solid #53653b; border-bottom:1px solid #53653b; }
+.brief-options { display:grid; }
+.brief-options>a { display:flex; justify-content:space-between; gap:24px; align-items:center; padding:24px 0; border-bottom:1px solid #303c28; }
+.brief-options>a:first-child { border-top:1px solid #303c28; }
+.brief-options strong { display:block; font-weight:500; font-size:23px; margin-bottom:8px; }
+.brief-options span span { display:block; font-size:14px; line-height:1.6; color:#a5b19a; }
+.brief-options svg { flex-shrink:0; color:#c4f66b; }
+.brief-options>a:hover strong,.content-index a:hover { color:#c4f66b; }
+@media(max-width:850px) { .content-feature,.content-brief { grid-template-columns:1fr; gap:28px; } .content-feature-player { grid-row:1; } }

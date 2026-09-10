@@ -68,3 +68,7 @@ Final validation passed: identity (19 surfaces, 67 files), nine behavior tests, 
 ## Visitor copy refinement — 10 September 2026
 
 Credentials, About, Timeline, Lab, Content, project descriptions and machine-readable portfolio sources now use professional profile copy. Infosys cards show course titles and issuer course links without discovery-process notes or inferred completion dates. Research ownership and first-party performance qualifications remain intact. The refreshed certificate section was visually checked, and route-level regression assertions cover public pages and source endpoints.
+
+## Content showcase — 10 September 2026
+
+Added a featured Chanakya Education Centre lesson, reel audience and format context, lesson descriptions, section navigation and three collaboration briefs. Existing dated audience counts remain unchanged. Checked 1440px desktop and 390px mobile layouts with no horizontal overflow; section anchors resolve, and the featured play control loads the expected YouTube embed. Enquiry links contain the correct recipient, subject and multiline brief without sending a message. Identity checks, nine behavior tests, typecheck, production build and HTTP/public-copy checks passed.

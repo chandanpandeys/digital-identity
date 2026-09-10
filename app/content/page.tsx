@@ -38,7 +38,7 @@ export default function ContentPage() {
             use.
           </p>
           <div className="studio-actions">
-            <Link className="studio-button primary" href="#reels">
+            <Link className="studio-button primary" href="#selected-work">
               Watch selected work <ArrowUpRight size={18} />
             </Link>
             <a
@@ -60,6 +60,26 @@ export default function ContentPage() {
       <div className="studio-shell">
         <SocialLinks />
       </div>
+      <nav className="studio-shell content-index" aria-label="Content portfolio sections">
+        <a href="#selected-work">Featured lesson</a><a href="#reels">Short-form stories</a><a href="#deliverables">For your team</a><a href="#teaching">YouTube lessons</a><a href="#notansun">Notansun</a>
+      </nav>
+      <section className="studio-shell studio-section content-feature" id="selected-work" aria-labelledby="featured-title">
+        <div className="content-feature-copy">
+          <p className="micro">SELECTED WORK / CHANAKYA EDUCATION CENTRE</p>
+          <h2 id="featured-title">A small lesson.<br /><em>A clear starting point.</em></h2>
+          <p>A two-minute introduction to drawing an LED. A concrete subject, a visual format and one task for the learner to follow.</p>
+          <dl className="sample-context">
+            <div><dt>My role</dt><dd>Educational creator · Chanakya Education Centre</dd></div>
+            <div><dt>Audience</dt><dd>Students learning science and electronics</dd></div>
+            <div><dt>Format</dt><dd>2:15 visual lesson · YouTube</dd></div>
+          </dl>
+          <a className="text-link" href="https://www.youtube.com/watch?v=Ijzjrb2UIXE" target="_blank" rel="noopener noreferrer">Watch the original lesson <ArrowUpRight size={18} /></a>
+        </div>
+        <div className="content-feature-player">
+          <VideoPlayer id={videos[0].id} title={videos[0].title} />
+          <div className="feature-caption"><span>How to draw an LED</span><span>643 views · 8 Sep 2026</span></div>
+        </div>
+      </section>
       <section className="studio-shell studio-section" id="reels">
         <SectionHeading
           number="01 / AI & TECHNOLOGY, ON CAMERA"
@@ -72,10 +92,11 @@ export default function ContentPage() {
           {reels.map((r) => (
             <article key={r.id}>
               <ReelPlayer id={r.id} title={r.title} />
-              <div className="media-caption">
-                <span className="micro">
-                  {r.topic} / {r.date}
-                </span>
+              <div className="media-caption sample-story">
+                <span className="micro">{r.topic} / {r.date}</span>
+                <h3>{r.title}</h3>
+                <p>{r.description}</p>
+                <dl className="sample-context"><div><dt>Audience</dt><dd>{r.audience}</dd></div><div><dt>Format</dt><dd>Short-form video · @justchandan__</dd></div></dl>
               </div>
             </article>
           ))}
@@ -139,7 +160,7 @@ export default function ContentPage() {
           </article>
         </div>
       </section>
-      <section className="studio-shell studio-section">
+      <section className="studio-shell studio-section" id="deliverables">
         <SectionHeading
           number="03 / CONTENT AS A PRACTICE"
           title="Research. Script. Explain. Iterate."
@@ -153,9 +174,7 @@ export default function ContentPage() {
               narratives, and building repeatable workflows from research
               through publishing and performance analysis.
             </p>
-            <span className="source-note">
-              Role account · First-party career record
-            </span>
+            <Link className="text-link" href="/timeline">Explore my experience <ArrowUpRight size={18} /></Link>
           </div>
           <div>
             <h3>Engineering behind the explanation</h3>
@@ -183,6 +202,16 @@ export default function ContentPage() {
           </div>
         </div>
       </section>
+      <section className="studio-shell content-brief" aria-labelledby="brief-title">
+        <div><p className="micro">WHAT I CAN DELIVER</p><h2 id="brief-title">Bring the difficult idea.<br />Let’s make it understandable.</h2><p>For AI teams, education brands and founders who need technical depth behind the story.</p></div>
+        <div className="brief-options">
+          {[
+            ["AI explainer", "Research, narrative outline and a clear script for a short-form or long-form video.", "AI explainer brief"],
+            ["Product walkthrough", "A focused demonstration that connects a technical feature to a useful task.", "Product walkthrough brief"],
+            ["Learning series", "A sequence of lessons, practical exercises and resources around one learning goal.", "Learning series brief"],
+          ].map(([title, detail, subject]) => <a key={title} href={"mailto:" + site.contact.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent("Hi Chandan,\n\nOur audience:\nWhat we want to explain:\nPreferred format:\nTimeline:\n\n")}><span><strong>{title}</strong><span>{detail}</span></span><ArrowUpRight size={22} /></a>)}
+        </div>
+      </section>
       <section className="studio-shell studio-section" id="teaching">
         <SectionHeading
           number="04 / THE EDUCATOR BEHIND THE CREATOR"
@@ -196,6 +225,7 @@ export default function ContentPage() {
               <div className="media-caption">
                 <span className="micro">{v.topic}</span>
                 <h3>{v.title}</h3>
+                <p className="lesson-description">{v.description}</p>
                 <p>
                   {v.duration} · {v.views.toLocaleString("en-IN")} views ·
                   snapshot 8 Sep 2026
@@ -227,9 +257,9 @@ export default function ContentPage() {
             challenge, project exercises and participation certificates.
           </p>
           <p>
-            My account includes teaching students across India. Workshop
-            documents support the curriculum and program structure; attendance
-            and completion totals are not claimed here.
+            I taught students across India, connecting Python fundamentals with
+            small projects they could build themselves—from a Rock, Paper,
+            Scissors game to text-to-speech.
           </p>
           <a
             className="text-link"
