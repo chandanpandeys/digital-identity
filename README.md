@@ -136,4 +136,6 @@ Configure `YOUTUBE_API_KEY` to refresh the public Chanakya Education Centre chan
 
 ## Public content boundaries
 
+The credential gallery includes original Google Student Ambassador participation, IIT Bombay Campus Ambassador completion and NEC 2025 team-result documents, plus Internshala webinar participation and the existing AI training certificates. Public copies of the first three PDFs and their previews are served locally. Infosys Springboard learning is a separate set of 19 certificate-issued notifications (June 2025): issuer course links are labelled as course pages, not public certificate-verification links, and the individual PDFs still require export. Mailbox contents and private notification identifiers are excluded.
+
 EpitopePred is a research contribution, not a personally owned product. BenchWolf demo output is illustrative and memory readings are system-wide. ByteToken numbers identify one published Playground example; local DirectID experiments are separate from text transport. OfferClaw and Portable AI Memory link to public software, never personal job-search or conversation data. Certificate links point only to already-public first-party originals. Unverified school awards, private registration data and raw ChatGPT exports are excluded.

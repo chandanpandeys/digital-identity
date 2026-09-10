@@ -1,5 +1,6 @@
 import { projects } from "./projects";
 import { credentials } from "./credentials";
+import { springboardCourses } from "./springboard";
 import { site } from "./profile";
 export type EvidenceNode = {
   id: string;
@@ -164,7 +165,7 @@ export const evidenceNodes: EvidenceNode[] = [
             (c.grade ? "Grade " + c.grade + ". " : ""),
         )
         .join(" ") +
-      "These are first-party completion certificates with public viewing links. School and college awards are not yet documented sufficiently to list exact titles or dates.",
+      "These original documents cover course completion, ambassador participation, an ambassador completion letter and a team competition result. School and college awards are not yet documented sufficiently to list exact titles or dates.",
     tags: [
       "certificates",
       "certificate",
@@ -184,6 +185,22 @@ export const evidenceNodes: EvidenceNode[] = [
         .filter((c) => c.publicUrl)
         .map((c) => ({ label: c.issuer, href: c.publicUrl! })),
     ],
+  },
+  {
+    id: "infosys-learning",
+    title: "Infosys Springboard learning certificates",
+    answer: "19 certificate-issued notifications from Infosys Springboard's learning platform were reviewed, dated 21–30 June 2025. They cover: " + springboardCourses.map((c) => c.title).join("; ") + ". These are issuer-email-supported learning records. Linked issuer course pages may require sign-in and are not public certificate-verification pages. Individual PDFs are not yet published. These records do not establish completion of an Infosys internship.",
+    tags: ["infosys", "springboard", "certificate", "learning", "generative", "prompt"],
+    strength: "FIRST-PARTY",
+    links: [{ label: "Infosys learning records and issuer course links", href: "/credentials#infosys" }],
+  },
+  {
+    id: "ambassador-credentials",
+    title: "Campus leadership and ambassador certificates",
+    answer: "Chandan's Google Student Ambassador Program certificate is a participation certificate dated 31 December 2025, bearing Google Gemini and Communique branding. His E-Cell, IIT Bombay letter confirms successful completion of the Campus Ambassador Program; the undated letter was announced on 5 February 2026. A separate NEC 2025 certificate recognizes his team's Rank 153 in the Basic Track. That is a team result, not an individual national rank. An Internshala Student Partner Team certificate dated 1 March 2024 documents webinar participation, not internship completion.",
+    tags: ["ambassador", "campus", "google", "gemini", "bombay", "nec", "leadership", "internshala"],
+    strength: "FIRST-PARTY",
+    links: credentials.slice(0,4).map((c) => ({label: c.title, href: c.publicUrl!})),
   },
   {
     id: "contact",

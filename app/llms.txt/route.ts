@@ -1,6 +1,7 @@
 import { site, currentFocus } from "@/lib/profile";
 import { projects } from "@/lib/projects";
 import { credentials } from "@/lib/credentials";
+import { springboardCourses } from "@/lib/springboard";
 import { resumeData, resumeVariants } from "@/lib/resume-data";
 export function GET() {
   const body = [
@@ -57,7 +58,10 @@ export function GET() {
         ". " +
         (c.publicUrl ?? ""),
     ),
-    "Only deliberately public viewing links are listed. Completion certificates remain first-party records.",
+    "These documents distinguish completion, participation and team results. They remain first-party records.",
+    "## Infosys Springboard learning",
+    "19 certificate-issued notifications reviewed from the issuer's learning platform, dated 21–30 June 2025. Individual PDFs are not yet linked. Course URLs are not public certificate verification URLs; this does not establish internship completion. See /credentials#infosys.",
+    ...springboardCourses.map((c) => "- " + c.title + " — certificate notification " + c.notifiedOn + "; issuer course: " + c.courseUrl),
     "## Ask Chandan",
     "/ask?intent=ai and /ask?intent=content set visitor focus. Curated source answers work immediately. Optional WebLLM runs a free model in the visitor’s browser; optional hosted Gemini requires deployment configuration. AI synthesis retains citations and first-party qualifications. The assistant cannot access private chats, Drive or mail.",
     "## Machine-readable identity",

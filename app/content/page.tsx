@@ -270,6 +270,12 @@ export default function ContentPage() {
           </small>
         </div>
       </section>
+      <section className="studio-shell credential-follow studio-section">
+        <p className="micro">CAMPUS LEADERSHIP, DOCUMENTED</p>
+        <h2>Participation. Outreach. A team effort.</h2>
+        <p>Google Student Ambassador participation, E-Cell IIT Bombay Campus Ambassador completion, and our team's NEC 2025 Basic Track result—with the original certificates.</p>
+        <Link className="studio-button" href="/credentials#originals">Open the certificate collection <ArrowUpRight size={18} /></Link>
+      </section>
       <ContactBand intent="content" />
       <StudioFooter />
     </main>

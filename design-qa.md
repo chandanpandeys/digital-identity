@@ -56,3 +56,11 @@ The final mobile capture has clear heading wraps, two visible CTAs, uncropped ar
 No actionable P0/P1/P2 visual findings remain. Device-dependent local AI quality, unconfigured hosted/API options and missing personal proofs remain explicitly documented above.
 
 final result: passed
+
+## Credential expansion — 10 September 2026
+
+The gallery contains six original-document records, including Google Student Ambassador participation, IIT Bombay Campus Ambassador completion, NEC 2025 team Rank 153 and Internshala webinar participation. Three already-public originals are now served as unmodified PDFs with local image previews. The Google source image and desktop rendering were compared together; the whole document remains contained without stretching or cropping.
+
+Infosys Springboard has 19 issuer-email-supported records in a separate section. Notification dates and issuer course links are explicitly distinguished from public certificate-verification links. Individual Infosys PDFs remain unavailable in this release. Private messages and discovery files are not published.
+
+Final validation passed: identity (19 surfaces, 67 files), nine behavior tests, typecheck, production build (32 generated pages), and production HTTP checks including the three PDFs and PNGs. Desktop at 1440px and mobile at 390px have no horizontal overflow. The mobile Infosys grid wraps cleanly in one column. The rebuilt browser page shows direct PDF buttons and separate Drive source links. This addendum does not assert a production promotion.

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { ArrowUpRight, Certificate } from "@phosphor-icons/react/dist/ssr";
 import { credentials } from "@/lib/credentials";
+import { springboardCourses } from "@/lib/springboard";
 import { site } from "@/lib/profile";
 import { ContactBand, StudioFooter } from "@/components/Studio";
 export const metadata: Metadata = {
   title: "Credentials & learning",
   description:
-    "Open Chandan Pandey’s documented AI completion certificates from TechVidya and SkillsBuild/Edunet.",
+    "Explore Chandan Pandey’s Google and IIT Bombay ambassador certificates, NEC team result, AI training and 19 Infosys Springboard certificate-issued records.",
   alternates: { canonical: "/credentials" },
 };
 export default function Credentials() {
@@ -23,7 +24,7 @@ export default function Credentials() {
         url: c.publicUrl,
         description: c.summary,
         recognizedBy: { "@type": "Organization", name: c.issuer },
-        credentialCategory: "Completion certificate",
+        credentialCategory: c.category ?? "Completion certificate",
         identifier: c.credentialId,
       },
     })),
@@ -46,30 +47,37 @@ export default function Credentials() {
           <em>Keep the evidence.</em>
         </h1>
         <p className="hero-intro">
-          The actual certificates, with issuer, program and dates. A starting
-          point for understanding the training behind my work.
+          AI learning, campus leadership and community participation—with the
+          original documents and the context behind each record.
         </p>
+        <div className="hero-actions">
+          <a className="studio-button primary" href="#originals">Original certificates</a>
+          <a className="studio-button" href="#infosys">19 Infosys Springboard records</a>
+        </div>
       </section>
-      <section className="studio-shell studio-section certificate-grid">
+      <section id="originals" aria-label="Original certificates" className="studio-shell studio-section certificate-grid">
         {credentials.map((c) => (
-          <article key={c.slug}>
+          <article key={c.slug} id={c.slug}>
             <div className="certificate-art">
+              {c.previewImage ? <img src={c.previewImage} alt={c.title + " — original certificate for Chandan Pandey"} loading="lazy" /> : (
               <iframe
                 src={c.publicUrl?.replace("/view", "/preview")}
                 title={c.issuer + " certificate issued to Chandan Pandey"}
                 loading="lazy"
                 allowFullScreen
               />
+              )}
             </div>
             <div className="certificate-copy">
               <p className="micro">
                 <Certificate size={17} /> {c.issuer}
               </p>
               <h2>{c.title}</h2>
+              <p className="source-note">{c.category ?? "Completion certificate"}</p>
               <p>{c.summary}</p>
               <dl>
                 <div>
-                  <dt>Program</dt>
+                  <dt>Record</dt>
                   <dd>{c.period}</dd>
                 </div>
                 {c.grade && (
@@ -87,18 +95,33 @@ export default function Credentials() {
               </dl>
               <a
                 className="studio-button primary"
-                href={c.publicUrl}
+                href={c.downloadUrl ?? c.publicUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Open original certificate <ArrowUpRight size={18} />
+                {c.downloadUrl ? "Open certificate PDF" : "Open original certificate"} <ArrowUpRight size={18} />
               </a>
+              {c.downloadUrl && <a className="studio-button" href={c.publicUrl} target="_blank" rel="noopener noreferrer">View source on Drive <ArrowUpRight size={18} /></a>}
               <p className="source-note">
                 First-party certificate · Public viewing link
               </p>
             </div>
           </article>
         ))}
+      </section>
+      <section id="infosys" className="studio-shell studio-section">
+        <p className="micro">INFOSYS SPRINGBOARD / CONTINUOUS LEARNING</p>
+        <h2>19 certificates issued. A wider learning foundation.</h2>
+        <p className="hero-intro">AI and data science, generative models, development practices and communication.</p>
+        <p className="source-note">Confirmed by certificate-issued emails from Infosys Springboard’s learning platform, dated 21–30 June 2025. Dates below are notification dates. Links open issuer course pages, which may require sign-in; they are not public certificate verification pages. Individual certificate PDFs are not yet linked here.</p>
+        <div className="springboard-grid">
+          {springboardCourses.map((c) => <article key={c.courseUrl}>
+            <p className="micro">INFOSYS SPRINGBOARD</p>
+            <h3>{c.title}</h3>
+            <p className="source-note">Certificate-issued notification · <time dateTime={c.notifiedOn}>{new Date(c.notifiedOn + "T00:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" })}</time></p>
+            <a href={c.courseUrl} target="_blank" rel="noopener noreferrer">Open issuer course page <ArrowUpRight size={17} /></a>
+          </article>)}
+        </div>
       </section>
       <section className="studio-shell credential-follow">
         <h2>Want to discuss the work behind a credential?</h2>

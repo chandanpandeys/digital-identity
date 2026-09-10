@@ -10,6 +10,7 @@ import { experiences } from "@/lib/experience";
 import { projects } from "@/lib/projects";
 import { labItems } from "@/lib/lab";
 import { credentials } from "@/lib/credentials";
+import { springboardCourses } from "@/lib/springboard";
 import { resumeData, resumeVariants } from "@/lib/resume-data";
 
 export function GET() {
@@ -24,7 +25,7 @@ export function GET() {
   return Response.json(
     {
       schemaVersion: "1.7",
-      updatedAt: "2026-09-08",
+      updatedAt: "2026-09-10",
       canonical: site.canonicalUrl,
       person: site,
       disciplines,
@@ -35,6 +36,7 @@ export function GET() {
       selectedTimeline: timeline,
       experience: experiences,
       selectedCredentials: credentials,
+      issuerEmailSupportedLearning: { issuer: "Infosys Springboard", evidence: "Certificate-issued notifications; course links are not public verification links", courses: springboardCourses },
       targetedResumes,
       verticals: {
         ai: { route: "/ai", resumes: ["ai-llm-engineer", "ai-research-ml"] },

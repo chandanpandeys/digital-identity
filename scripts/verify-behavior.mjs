@@ -17,6 +17,7 @@ for (const name of [
   "projects",
   "profile",
   "credentials",
+  "springboard",
   "resume-data",
 ]) {
   const source = await readFile(
@@ -64,8 +65,19 @@ test("content and credentials have direct evidence", () => {
     certificates.links.filter((l) =>
       l.href.startsWith("https://drive.google.com"),
     ).length,
-    2,
+    6,
   );
+});
+
+test("learning and ambassador records retain their evidence boundaries", () => {
+  const infosys = retrieve("Infosys Springboard certificates")[0];
+  assert.equal(infosys.id, "infosys-learning");
+  assert.match(infosys.answer, /19 certificate-issued notifications/);
+  assert.match(infosys.answer, /do not establish completion of an Infosys internship/);
+  const ambassador = retrieve("Google campus ambassador")[0];
+  assert.equal(ambassador.id, "ambassador-credentials");
+  assert.match(ambassador.answer, /team's Rank 153/);
+  assert.match(ambassador.answer, /participation certificate/);
 });
 test("follow-up question keeps its previous topic", () => {
   const nodes = retrieve("Tell me more", "content", [

@@ -119,7 +119,7 @@ export default function AIPage() {
             ],
             [
               "Credentials",
-              "Open the actual completion certificates.",
+              "AI course records and original certificates.",
               "/credentials",
             ],
             [

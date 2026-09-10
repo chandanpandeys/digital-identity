@@ -134,6 +134,18 @@ assert.ok(redirect.headers.get("location").endsWith("/work/benchwolf"));
 const credentials = await (await get("/credentials")).text();
 assert.ok(credentials.includes("1Mzxutr9v5h61cI76UX-AARhSDdry-_iY"));
 assert.ok(credentials.includes("1V2ZLrNg2fnQOh4pz3qqgk77L3q3htHg3"));
+assert.ok(credentials.includes("Google Student Ambassador Program"));
+assert.ok(credentials.includes("Rank 153"));
+assert.ok(credentials.includes("19 Infosys Springboard records"));
+assert.ok(credentials.includes("not public certificate verification pages"));
+assert.ok(credentials.includes("Principles of Generative AI Certification"));
+for (const certificate of ["google-ambassador", "iit-bombay-ambassador", "nec-2025"]) {
+  const pdf = await get(`/certificates/${certificate}.pdf`);
+  assert.ok(pdf.headers.get("content-type")?.includes("application/pdf"));
+  assert.ok((await pdf.arrayBuffer()).byteLength > 100000);
+  const picture = await get(`/certificates/${certificate}.png`);
+  assert.ok(picture.headers.get("content-type")?.includes("image/png"));
+}
 const research = await (await get("/work/epitopepred")).text();
 assert.ok(research.includes('"contributor":'));
 const social = await (await get("/api/social/youtube")).json();
