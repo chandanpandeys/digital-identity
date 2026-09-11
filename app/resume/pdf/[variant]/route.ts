@@ -4,7 +4,10 @@ import { isResumeVariant, resumeData } from "@/lib/resume-data";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-export async function GET(_request: Request, { params }: { params: Promise<{ variant: string }> }) {
+export async function GET(
+  request: Request,
+  { params }: { params: Promise<{ variant: string }> },
+) {
   const { variant } = await params;
   if (!isResumeVariant(variant)) {
     return new Response("Resume variant not found", { status: 404 });
@@ -16,7 +19,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ var
   return new Response(Buffer.from(bytes), {
     headers: {
       "content-type": "application/pdf",
-      "content-disposition": `attachment; filename="${data.filename}"`,
+      "content-disposition": `${new URL(request.url).searchParams.get("preview") === "1" ? "inline" : "attachment"}; filename="${data.filename}"`,
       "cache-control": "public, max-age=3600, stale-while-revalidate=86400",
       "x-content-type-options": "nosniff",
       "x-robots-tag": "noindex, noarchive",

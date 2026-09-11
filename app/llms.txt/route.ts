@@ -1,17 +1,80 @@
-import { currentFocus, site } from "@/lib/profile";
-import { experiences } from "@/lib/experience";
+import { site, currentFocus } from "@/lib/profile";
 import { projects } from "@/lib/projects";
-import { labItems } from "@/lib/lab";
 import { credentials } from "@/lib/credentials";
+import { springboardCourses } from "@/lib/springboard";
 import { resumeData, resumeVariants } from "@/lib/resume-data";
-
 export function GET() {
-  const projectLines = projects.map((project) => `- ${project.name} [${project.tier}]: ${project.strapline} (${site.canonicalUrl}/work/${project.slug})`).join("\n");
-  const labLines = labItems.map((item) => `- ${item.name} [${item.status}]: ${item.summary} (${item.github})`).join("\n");
-  const currentLines = currentFocus.map((item) => `- ${item.title} [${item.status}]: ${item.detail}`).join("\n");
-  const experienceLines = experiences.map((item) => `- ${item.period}: ${item.title}, ${item.organization} — ${item.summary}`).join("\n");
-  const credentialLines = credentials.map((credential) => `- ${credential.title} — ${credential.issuer} [${credential.evidence}]: ${credential.period}${credential.grade ? `; grade ${credential.grade}` : ""}${credential.credentialId ? `; ID ${credential.credentialId}` : ""}`).join("\n");
-  const resumeLines = resumeVariants.map((variant) => `- ${resumeData[variant].headline}: ${site.canonicalUrl}/resume/pdf/${variant}`).join("\n");
-  const body = `# ${site.name}\n\nCanonical website: ${site.canonicalUrl}\nGitHub: ${site.links.github}\nLinkedIn: ${site.links.linkedin}\nInstagram: ${site.links.instagram}\n\n## Summary\n${site.description}\n\n## Current focus\n${currentLines}\n\n## Primary routes\n- AI Engineering & Research: ${site.canonicalUrl}/ai\n- Work: ${site.canonicalUrl}/work\n- Lab: ${site.canonicalUrl}/lab\n- Ask Chandan: ${site.canonicalUrl}/ask\n- Timeline: ${site.canonicalUrl}/timeline\n- About: ${site.canonicalUrl}/about\n- AI Content & Technical Communication: ${site.canonicalUrl}/content\n- Current focus: ${site.canonicalUrl}/now\n- Resume: ${site.canonicalUrl}/resume\n- Credentials: ${site.canonicalUrl}/credentials\n\n## Targeted resume PDFs\n${resumeLines}\nThe HTML resume is the canonical hiring surface. PDF variants are generated role-specific views and are served as downloads rather than standalone search landing pages.\n\n## Selected credentials\n${credentialLines}\nThe credential page is intentionally selective. Source certificates that are not deliberately public remain first-party documented evidence and are not linked as inspectable public artifacts.\n\n## Selected work\n${projectLines}\n\n## Lab and supporting public work\n${labLines}\n\n## Experience and education\n${experienceLines}\n\n## Machine-readable identity\n- Profile: ${site.canonicalUrl}/profile.json\n- Evidence graph: ${site.canonicalUrl}/evidence.json\n\n## Ask Chandan behavior\nChoose /ask?intent=ai or /ask?intent=content for audience-specific prompts and evidence ranking; /ask shows the complete view. Both verticals represent the same person and preserve source strength. The current Ask Chandan interface is an evidence navigator, not an unconstrained generative chatbot. It maps questions onto curated public-code, public-profile, and first-party evidence nodes and exposes the supporting routes. The evidence graph is separately available at /evidence.json so this retrieval contract is machine-readable.\n\n## Evidence policy\nPublic repositories and profiles are linked where inspectable. First-party career and credential material is treated as first-party context rather than independently verified public evidence. Benchmark baselines and qualifications are preserved on case-study pages. Real project media is embedded from public repository artifacts where available. Private repositories and unpublished work are not exposed by default.\n`;
-  return new Response(body, { headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=3600", "x-robots-tag": "noindex, noarchive" } });
+  const body = [
+    "# " + site.name,
+    "Canonical website: " + site.canonicalUrl,
+    "GitHub: " + site.links.github,
+    "LinkedIn: " + site.links.linkedin,
+    "Instagram: " + site.links.instagram,
+    "YouTube: " + site.links.youtube,
+    "## Summary",
+    site.description,
+    "## Portfolio verticals",
+    "AI Engineering & Research: " + site.canonicalUrl + "/ai",
+    "AI Content & Technical Communication: " + site.canonicalUrl + "/content",
+    "Complete identity: " + site.canonicalUrl + "/about",
+    "## Current focus",
+    ...currentFocus.map((c) => "- " + c.title + ": " + c.detail),
+    "## Selected work",
+    ...projects.map(
+      (p) =>
+        "- " +
+        p.name +
+        " [" +
+        (p.role ?? "Independent experiment") +
+        "]: " +
+        p.summary +
+        " " +
+        site.canonicalUrl +
+        "/work/" +
+        p.slug,
+    ),
+    "## Targeted resume PDFs",
+    ...resumeVariants.map(
+      (v) =>
+        "- " +
+        resumeData[v].headline +
+        ": " +
+        site.canonicalUrl +
+        "/resume/pdf/" +
+        v,
+    ),
+    "Read the HTML experience first at /resume. PDFs are role-specific downloads with readable pagination.",
+    "## Selected credentials",
+    ...credentials.map(
+      (c) =>
+        "- " +
+        c.title +
+        " — " +
+        c.issuer +
+        " [" +
+        c.evidence +
+        "]: " +
+        c.period +
+        ". " +
+        (c.publicUrl ?? ""),
+    ),
+    "These documents distinguish completion, participation and team results. They remain first-party records.",
+    "## Infosys Springboard learning",
+    "19 Infosys Springboard course certifications in AI, data science, generative models, development practices and communication. Explore the courses at /credentials#infosys.",
+    ...springboardCourses.map((c) => "- " + c.title + " — issuer course: " + c.courseUrl),
+    "## Ask Chandan",
+    "/ask?intent=ai and /ask?intent=content focus answers on each professional vertical. Explore projects, experience and credentials with linked sources. Optional browser AI runs on the visitor’s device.",
+    "## Machine-readable identity",
+    "Profile: " + site.canonicalUrl + "/profile.json",
+    "Evidence: " + site.canonicalUrl + "/evidence.json",
+    "## Evidence policy",
+    "Public source, public profiles and first-party records are distinct. EpitopePred is contributed research work; Chandan is not its owner. BenchWolf was previously named InferBench. Experimental and planned capabilities are not production guarantees. Benchmarks retain their baseline and scope. Social counts are dated snapshots unless explicitly marked as an API response.",
+  ].join("\n\n");
+  return new Response(body, {
+    headers: {
+      "content-type": "text/plain; charset=utf-8",
+      "cache-control": "public, max-age=3600",
+      "x-robots-tag": "noindex, noarchive",
+    },
+  });
 }

@@ -13,9 +13,9 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#f4f1e8",
-          color: "#10110f",
-          border: "24px solid #10110f",
+          background: "#080a09",
+          color: "#eff2e9",
+          border: "24px solid #263020",
           fontFamily: "monospace",
           fontSize: 138,
           fontWeight: 800,
@@ -23,7 +23,7 @@ export default function Icon() {
         }}
       >
         <span>CP</span>
-        <span style={{ color: "#2457ff", margin: "0 14px" }}>/</span>
+        <span style={{ color: "#c4f66b", margin: "0 14px" }}>/</span>
         <span>ID</span>
       </div>
     ),

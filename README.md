@@ -11,11 +11,11 @@ This site is designed to do four things well:
 3. Give search engines a technically clean identity to index.
 4. Give AI systems structured context with explicit provenance and evidence strength.
 
-The visual system is editorial: warm paper, cobalt accents, technical grid language, restrained motion, and evidence-bearing visuals.
+The interactive studio uses graphite, acid lime, large typography, a lazy-loaded Three.js orbital sculpture, real project screenshots and embedded creator work. Reduced motion, pause controls and a static asset keep the entry experience accessible.
 
 ## Core architecture
 
-- **Next.js 16.2.9 / React 19.2 / TypeScript**
+- **Next.js 16.3.4 / React 19.2 / TypeScript**
 - App Router with static/server-first rendering
 - Custom CSS design system
 - Evidence-first project data in `lib/projects.ts`
@@ -36,11 +36,11 @@ The visual system is editorial: warm paper, cobalt accents, technical grid langu
 - `/lab` — supporting experiments and earlier public work
 - `/timeline` — career, research, education, community, creator chronology
 - `/about` — the explain → research → systems through-line
-- `/content` — AI Content & Technical Communication; professional context and explanations first, creator history at `#creator-history`
+- `/content` — AI Content & Technical Communication; professional context and explanations first, creator history at `#teaching`
 - `/now` — current allocation of attention
 - `/resume` — canonical web resume + targeted PDF variants
 - `/credentials` — selected evidence-backed credentials
-- `/ask` — deterministic evidence navigator; `?intent=ai` and `?intent=content` customize prompts, initial query and relevant-result ranking. Unknown intent falls back to Complete; source strengths never change.
+- `/ask` — conversational evidence navigator with optional free browser AI; `?intent=ai` and `?intent=content` customize prompts, suggestions and relevant-result ranking. Unknown intent falls back to Complete; source strengths never change.
 
 ### Machine-readable surfaces
 
@@ -59,7 +59,7 @@ The visual system is editorial: warm paper, cobalt accents, technical grid langu
 
 Tokenizer-aware transport/context optimization for AI-agent and MCP payloads. The portfolio distinguishes raw encoding savings from compression-assisted savings and links to the reproducible public benchmark implementation.
 
-### InferBench
+### BenchWolf
 
 Local-LLM evaluation across hardware preflight, model fit, speed, memory, power/energy, quality, comparison, and reporting.
 
@@ -79,7 +79,7 @@ Private repositories and unpublished work stay private unless intentionally clea
 
 ## Resume system
 
-The HTML resume is the primary hiring surface. Three one-page recruiter variants are generated server-side from structured data:
+The HTML resume is the primary hiring surface. Three readable recruiter variants are generated server-side from structured data:
 
 - `/resume/pdf/ai-llm-engineer`
 - `/resume/pdf/ai-research-ml`
@@ -123,3 +123,19 @@ npm run build
 ## Dual-vertical validation
 
 Run `npm run verify:identity`, `npm run typecheck`, and `npm run build`. With the production server running (`npm start`), run `node scripts/verify-verticals.mjs` to check audience routes, metadata, generated preview images, resume PDFs, Ask intent defaults and machine-readable routing. Set `TEST_ORIGIN` to test another local server address.
+
+## Optional AI and channel statistics
+
+Ask works immediately from the curated public evidence graph. Visitors may explicitly download Qwen2.5-0.5B through WebLLM for experimental local synthesis (WebGPU and several hundred MB required). Source records appear immediately while the model works. Streaming generation supports recovery after an interrupted request; model text is displayed only after the complete response passes validation. The model can produce terse or invalid responses, so source records remain available when generation times out or validation fails. Raw personal archives are never bundled or retrieved.
+
+For optional hosted synthesis, configure the server-only `GEMINI_API_KEY` and optionally `GEMINI_MODEL` (default `gemini-3.7-flash`). Visitors opt in before questions, recent messages and public evidence are sent to Google. Provider free-tier availability and quotas may change. The route has bounded input, a timeout, source/citation checks and an in-instance rate limit; use provider quotas or deployment-level limits for distributed traffic. Never expose keys in client environment variables.
+
+Configure `YOUTUBE_API_KEY` to refresh the public Chanakya Education Centre channel statistics through the official API with an hourly cache. Without it, the site clearly displays dated public snapshots. Instagram/LinkedIn reach, private analytics and professional endorsements require authorized evidence; none are invented.
+
+`npm run verify:behavior` checks retrieval, follow-ups, contribution wording, synthesis validation and resume variant handling. `node scripts/verify-verticals.mjs` checks the running production surfaces.
+
+## Public content boundaries
+
+The credential gallery includes Google Student Ambassador participation, IIT Bombay Campus Ambassador completion, NEC 2025 team recognition, Internshala webinar participation and AI training certificates. Three original PDFs have local previews and direct viewing links. A separate Infosys Springboard section features 19 course certifications with clearly labelled issuer course links.
+
+EpitopePred is a research contribution, not a personally owned product. BenchWolf demo output is illustrative and memory readings are system-wide. ByteToken numbers identify one published Playground example; local DirectID experiments are separate from text transport. OfferClaw and Portable AI Memory link to public software, never personal job-search or conversation data. Certificate links point only to already-public first-party originals. Unverified school awards, private registration data and raw ChatGPT exports are excluded.

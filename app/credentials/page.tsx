@@ -1,74 +1,137 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { ArrowUpRight, Certificate } from "@phosphor-icons/react/dist/ssr";
 import { credentials } from "@/lib/credentials";
+import { springboardCourses } from "@/lib/springboard";
 import { site } from "@/lib/profile";
-
+import { ContactBand, StudioFooter } from "@/components/Studio";
 export const metadata: Metadata = {
-  title: "Credentials",
-  description: "Selected evidence-backed AI and technical credentials for Chandan Pandey.",
+  title: "Credentials & learning",
+  description:
+    "Explore Chandan Pandey’s Google and IIT Bombay ambassador certificates, NEC team result, AI training and 19 Infosys Springboard certifications.",
   alternates: { canonical: "/credentials" },
 };
-
-export default function CredentialsPage() {
-  const credentialJsonLd = {
+export default function Credentials() {
+  const json = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "@id": `${site.canonicalUrl}/credentials#credential-list`,
-    name: "Selected credentials for Chandan Pandey",
-    itemListElement: credentials.map((credential, index) => ({
+    name: "Chandan Pandey — documented credentials",
+    itemListElement: credentials.map((c, i) => ({
       "@type": "ListItem",
-      position: index + 1,
+      position: i + 1,
       item: {
         "@type": "EducationalOccupationalCredential",
-        name: credential.title,
-        description: credential.summary,
-        recognizedBy: { "@type": "Organization", name: credential.issuer },
-        credentialCategory: "Certificate",
-        ...(credential.credentialId ? { identifier: credential.credentialId } : {}),
+        name: c.title,
+        url: c.publicUrl,
+        description: c.summary,
+        recognizedBy: { "@type": "Organization", name: c.issuer },
+        credentialCategory: c.category ?? "Completion certificate",
+        identifier: c.credentialId,
       },
     })),
   };
-
   return (
-    <main id="main" className="inner-page credentials-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(credentialJsonLd).replace(/</g, "\\u003c") }} />
-      <header className="site-shell subnav"><Link href="/">← Chandan Pandey</Link><span>CREDENTIALS / SELECTED EVIDENCE</span></header>
-
-      <section className="site-shell page-hero credentials-hero">
-        <p className="eyebrow">SELECTED / DOCUMENTED</p>
-        <h1>Credentials without<br/><em>the badge wall.</em></h1>
-        <p>Only credentials with a source record strong enough to inspect during the portfolio build appear here. This is deliberately not an exhaustive list of every course or participation certificate.</p>
+    <main id="main">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(json).replace(/</g, "\\u003c"),
+        }}
+      />
+      <section className="studio-shell studio-page-hero">
+        <p className="micro">CREDENTIALS & CONTINUOUS LEARNING</p>
+        <h1>
+          Learn it.
+          <br />
+          Use it.
+          <br />
+          <em>Keep the evidence.</em>
+        </h1>
+        <p className="hero-intro">
+          AI learning, campus leadership and community participation—with the
+          original documents and the context behind each record.
+        </p>
+        <div className="hero-actions">
+          <a className="studio-button primary" href="#originals">Original certificates</a>
+          <a className="studio-button" href="#infosys">19 Infosys Springboard records</a>
+        </div>
       </section>
-
-      <section className="site-shell credential-ledger" aria-label="Selected credentials">
-        {credentials.map((credential, index) => (
-          <article className="credential-entry" key={credential.slug}>
-            <div className="credential-index"><span>{String(index + 1).padStart(2, "0")}</span><b>{credential.evidence}</b></div>
-            <div className="credential-main">
-              <p>{credential.issuer}</p>
-              <h2>{credential.title}</h2>
-              <strong>{credential.period}</strong>
-              <span>{credential.summary}</span>
+      <section id="originals" aria-label="Original certificates" className="studio-shell studio-section certificate-grid">
+        {credentials.map((c) => (
+          <article key={c.slug} id={c.slug}>
+            <div className="certificate-art">
+              {c.previewImage ? <img src={c.previewImage} alt={c.title + " — original certificate for Chandan Pandey"} loading="lazy" /> : (
+              <iframe
+                src={c.publicUrl?.replace("/view", "/preview")}
+                title={c.issuer + " certificate issued to Chandan Pandey"}
+                loading="lazy"
+                allowFullScreen
+              />
+              )}
             </div>
-            <dl className="credential-meta">
-              {credential.issued && <><dt>Issued</dt><dd>{credential.issued}</dd></>}
-              {credential.grade && <><dt>Grade</dt><dd>{credential.grade}</dd></>}
-              {credential.credentialId && <><dt>Credential ID</dt><dd>{credential.credentialId}</dd></>}
-              <dt>Public artifact</dt><dd>{credential.publicUrl ? "Available" : "Not published"}</dd>
-            </dl>
+            <div className="certificate-copy">
+              <p className="micro">
+                <Certificate size={17} /> {c.issuer}
+              </p>
+              <h2>{c.title}</h2>
+              <p className="source-note">{c.category ?? "Completion certificate"}</p>
+              <p>{c.summary}</p>
+              <dl>
+                <div>
+                  <dt>Record</dt>
+                  <dd>{c.period}</dd>
+                </div>
+                {c.grade && (
+                  <div>
+                    <dt>Grade</dt>
+                    <dd>{c.grade}</dd>
+                  </div>
+                )}
+                {c.credentialId && (
+                  <div>
+                    <dt>Credential ID</dt>
+                    <dd>{c.credentialId}</dd>
+                  </div>
+                )}
+              </dl>
+              <a
+                className="studio-button primary"
+                href={c.downloadUrl ?? c.publicUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {c.downloadUrl ? "Open certificate PDF" : "Open original certificate"} <ArrowUpRight size={18} />
+              </a>
+              {c.downloadUrl && <a className="studio-button" href={c.publicUrl} target="_blank" rel="noopener noreferrer">View source on Drive <ArrowUpRight size={18} /></a>}
+              <p className="source-note">
+                First-party certificate · Public viewing link
+              </p>
+            </div>
           </article>
         ))}
       </section>
-
-      <section className="site-shell credential-policy">
-        <div><p className="eyebrow">EVIDENCE POLICY</p><h2>Documented does not mean public.</h2></div>
-        <p>The source certificates for the records above are held as first-party documents. They are not linked from the public site until their sharing permissions and presentation are intentionally reviewed. Public repositories and public professional records continue to use stronger inspectable/public labels elsewhere in the portfolio.</p>
+      <section id="infosys" className="studio-shell studio-section">
+        <p className="micro">INFOSYS SPRINGBOARD / CONTINUOUS LEARNING</p>
+        <h2>19 certifications. A wider learning foundation.</h2>
+        <p className="hero-intro">AI and data science, generative models, development practices and communication.</p>
+        <p className="source-note">Explore the courses behind my certifications, from AI foundations to generative models and technical communication.</p>
+        <div className="springboard-grid">
+          {springboardCourses.map((c) => <article key={c.courseUrl}>
+            <p className="micro">INFOSYS SPRINGBOARD</p>
+            <h3>{c.title}</h3>
+            <p className="source-note">Course certification</p>
+            <a href={c.courseUrl} target="_blank" rel="noopener noreferrer">Open issuer course page <ArrowUpRight size={17} /></a>
+          </article>)}
+        </div>
       </section>
-
-      <section className="site-shell ask-next">
-        <div><span>CONTINUE</span><strong>Credentials support the story; the work remains the primary evidence.</strong></div>
-        <div><Link href="/resume">Resume ↗</Link><Link href="/work">Work ↗</Link><Link href="/timeline">Timeline ↗</Link></div>
+      <section className="studio-shell credential-follow">
+        <h2>Want to discuss the work behind a credential?</h2>
+        <p>
+          Explore the project collection, or reach me at{" "}
+          <a href={"mailto:" + site.contact.email}>{site.contact.email}</a>.
+        </p>
       </section>
+      <ContactBand />
+      <StudioFooter />
     </main>
   );
 }

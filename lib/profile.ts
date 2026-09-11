@@ -1,7 +1,11 @@
 const vercelProductionUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   : undefined;
-const canonicalUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? vercelProductionUrl ?? "http://localhost:3000").replace(/\/$/, "");
+const canonicalUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  vercelProductionUrl ??
+  "http://localhost:3000"
+).replace(/\/$/, "");
 
 export const site = {
   name: "Chandan Pandey",
@@ -10,10 +14,15 @@ export const site = {
   description:
     "Chandan Pandey is an AI engineer and builder working across applied AI research, LLM systems, developer tooling, open source, accessibility, automation, and technical content.",
   location: "India",
+  contact: {
+    email: "humanchandanpandey@gmail.com",
+    phone: "+91 89573 65560",
+  },
   links: {
     github: "https://github.com/chandanpandeys",
     linkedin: "https://www.linkedin.com/in/chandanpandeys/",
-    instagram: "https://www.instagram.com/Chandan__/",
+    instagram: "https://www.instagram.com/justchandan__/",
+    youtube: "https://www.youtube.com/c/ChanakyaEducationCentre",
   },
 } as const;
 
@@ -36,11 +45,15 @@ export const currentFocus = [
   {
     code: "01",
     label: "OPEN SOURCE / AI INFRA",
-    title: "ByteToken + InferBench",
-    signal: "Shipping ByteToken and InferBench in public",
+    title: "ByteToken + BenchWolf",
+    signal: "Shipping ByteToken and BenchWolf in public",
     status: "PUBLIC / ACTIVE",
-    detail: "Turning two technical questions into inspectable developer tools: denser tokenizer-aware transport for agent payloads, and practical local-LLM evaluation across fit, speed, memory, power, and quality.",
-    links: [{ label: "ByteToken", href: "/work/bytetoken" }, { label: "InferBench", href: "/work/inferbench" }],
+    detail:
+      "Turning two technical questions into inspectable developer tools: denser tokenizer-aware transport for agent payloads, and practical local-LLM evaluation across fit, speed, memory, power, and quality.",
+    links: [
+      { label: "ByteToken", href: "/work/bytetoken" },
+      { label: "BenchWolf", href: "/work/benchwolf" },
+    ],
   },
   {
     code: "02",
@@ -48,8 +61,12 @@ export const currentFocus = [
     title: "YAAS",
     signal: "Leading AI and technology content at YAAS",
     status: "CURRENT ROLE",
-    detail: "Researching AI tools, technologies, and practical use cases; shaping scripts and narratives; and building repeatable workflows from research through publishing and performance analysis.",
-    links: [{ label: "Career record", href: "/timeline" }, { label: "Communication layer", href: "/content" }],
+    detail:
+      "Researching AI tools, technologies, and practical use cases; shaping scripts and narratives; and building repeatable workflows from research through publishing and performance analysis.",
+    links: [
+      { label: "Career record", href: "/timeline" },
+      { label: "Communication layer", href: "/content" },
+    ],
   },
   {
     code: "03",
@@ -57,8 +74,13 @@ export const currentFocus = [
     title: "Digital Identity",
     signal: "Turning private experiments into public, documented software",
     status: "IN PROGRESS",
-    detail: "Cleaning the project history, separating flagship work from experiments, publishing evidence-backed case studies, and making the public identity readable by recruiters, developers, search engines, and AI systems.",
-    links: [{ label: "Work", href: "/work" }, { label: "Lab", href: "/lab" }, { label: "Evidence graph", href: "/ask" }],
+    detail:
+      "Cleaning the project history, separating flagship work from experiments, publishing evidence-backed case studies, and making the public identity readable by recruiters, developers, search engines, and AI systems.",
+    links: [
+      { label: "Work", href: "/work" },
+      { label: "Lab", href: "/lab" },
+      { label: "Evidence graph", href: "/ask" },
+    ],
   },
 ] as const;
 
@@ -94,49 +116,56 @@ export const timeline = [
 export const proofSignals = [
   {
     label: "Public code identity",
-    detail: "Open-source repositories, developer tooling, experiments, and implementation history.",
+    detail:
+      "Open-source repositories, developer tooling, experiments, and implementation history.",
     source: "GitHub",
     href: site.links.github,
     strength: "PUBLIC",
   },
   {
     label: "Professional record",
-    detail: "Career roles, research experience, campus programs, education, and professional narrative.",
+    detail:
+      "Career roles, research experience, campus programs, education, and professional narrative.",
     source: "LinkedIn",
     href: site.links.linkedin,
     strength: "PUBLIC PROFILE",
   },
   {
     label: "ByteToken",
-    detail: "Tokenizer-aware transport and context optimization work with implementation and benchmark material.",
+    detail:
+      "Tokenizer-aware transport and context optimization work with implementation and benchmark material.",
     source: "Repository",
     href: "https://github.com/chandanpandeys/bytetoken",
     strength: "INSPECTABLE",
   },
   {
-    label: "InferBench",
-    detail: "Public local-LLM evaluation tooling covering hardware preflight, speed, memory, power/energy, quality, comparison, and reporting.",
+    label: "BenchWolf",
+    detail:
+      "Public local-LLM evaluation tooling covering hardware preflight, speed, memory, power/energy, quality, comparison, and reporting.",
     source: "Repository",
-    href: "https://github.com/chandanpandeys/inferbench",
+    href: "https://github.com/chandanpandeys/benchwolf",
     strength: "INSPECTABLE",
   },
   {
     label: "DekhoSuno",
-    detail: "Public Flutter accessibility project combining Gemini, OCR, speech, computer vision, sensors, and accessible interaction flows.",
+    detail:
+      "Public Flutter accessibility project combining Gemini, OCR, speech, computer vision, sensors, and accessible interaction flows.",
     source: "Repository",
     href: "https://github.com/chandanpandeys/DekhoSuno",
     strength: "INSPECTABLE",
   },
   {
     label: "OneClickAllResultsBot",
-    detail: "Public automation project for batch academic-result retrieval and comparative analysis.",
+    detail:
+      "Public automation project for batch academic-result retrieval and comparative analysis.",
     source: "Repository",
     href: "https://github.com/chandanpandeys/OneClickAllResultsBot",
     strength: "INSPECTABLE",
   },
   {
     label: "IBM internship work",
-    detail: "Public project repository associated with applied AI/ML internship work.",
+    detail:
+      "Public project repository associated with applied AI/ML internship work.",
     source: "Repository",
     href: "https://github.com/chandanpandeys/IBMInternshipProjects",
     strength: "PUBLIC",

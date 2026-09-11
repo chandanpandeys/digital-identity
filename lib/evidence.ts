@@ -1,3 +1,7 @@
+import { projects } from "./projects";
+import { credentials } from "./credentials";
+import { springboardCourses } from "./springboard";
+import { site } from "./profile";
 export type EvidenceNode = {
   id: string;
   title: string;
@@ -6,113 +10,252 @@ export type EvidenceNode = {
   strength: "INSPECTABLE" | "PUBLIC PROFILE" | "FIRST-PARTY";
   links: { label: string; href: string }[];
 };
-
 export const evidencePrompts = [
-  "What AI infrastructure has Chandan built?",
-  "What research has he done?",
-  "Show me accessibility work",
-  "What is publicly inspectable?",
-  "What credentials are documented?",
-  "Which resume should I use?",
-  "Does he have teaching experience?",
+  "What AI systems has Chandan built?",
+  "What did he contribute to EpitopePred?",
+  "Show me his content and teaching",
+  "What certificates can I open?",
+  "What is he working on now?",
+  "How can I contact him?",
 ] as const;
-
 export const evidenceNodes: EvidenceNode[] = [
-  {
-    id: "infrastructure",
-    title: "AI infrastructure and evaluation",
-    answer: "The strongest public infrastructure stories are ByteToken and InferBench. ByteToken explores tokenizer-aware, lossless transport for agent/MCP payloads and publishes reproducible token-count benchmarks. InferBench is a Python CLI for local-LLM fit and evaluation across hardware preflight, speed, memory, power/energy, quality, reporting, and comparison.",
-    tags: ["ai", "infrastructure", "llm", "agent", "mcp", "token", "bytetoken", "inferbench", "evaluation", "benchmark", "developer tools"],
-    strength: "INSPECTABLE",
-    links: [
-      { label: "ByteToken case study", href: "/work/bytetoken" },
-      { label: "InferBench case study", href: "/work/inferbench" },
-      { label: "ByteToken source", href: "https://github.com/chandanpandeys/bytetoken" },
-      { label: "InferBench source", href: "https://github.com/chandanpandeys/inferbench" },
+  ...projects.map((p) => ({
+    id: p.slug,
+    title: p.name,
+    answer:
+      p.summary +
+      " " +
+      p.work.join(" ") +
+      " " +
+      (p.sourceNote ?? "") +
+      " Status: " +
+      (p.stage ??
+        (p.status === "public"
+          ? "Public source; experimental work."
+          : "First-party documented contribution.")),
+    tags: [
+      p.slug,
+      p.name.toLowerCase(),
+      p.category.toLowerCase(),
+      ...p.stack.map((s) => s.toLowerCase()),
+      p.role === "Research contributor" ? "research" : "project",
     ],
-  },
+    strength:
+      p.status === "public"
+        ? ("INSPECTABLE" as const)
+        : ("FIRST-PARTY" as const),
+    links: [
+      { label: p.name + " story", href: "/work/" + p.slug },
+      ...(p.github ? [{ label: "Public source", href: p.github }] : []),
+      ...(p.demo ? [{ label: "Open project", href: p.demo }] : []),
+    ],
+  })),
   {
     id: "research",
-    title: "Applied AI research and computational biology",
-    answer: "The research thread includes applied AI/ML work around cancer genomics, neoantigen prediction, immunogenicity, sequence-oriented modelling, and computational vaccine workflows. EpitopePred is the clearest system story: a Next.js/FastAPI interface backed by asynchronous Celery/Redis scientific jobs and an immunoinformatics toolchain. The portfolio deliberately labels this as documented first-party work until sanitized public artifacts are released.",
-    tags: ["research", "cancer", "vaccine", "neoantigen", "computational biology", "bioinformatics", "epitope", "amity", "machine learning"],
+    title: "AI research at Amity",
+    answer:
+      "Chandan worked on applied AI/ML around cancer genomics, neoantigen prediction, immunogenicity and computational vaccine workflows at Amity University during 2025–2026. He contributed engineering and integration work to EpitopePred; he is not its owner. Exact tenure months and independently reproducible research benchmarks are not in the public record here.",
+    tags: [
+      "research",
+      "amity",
+      "biology",
+      "cancer",
+      "neoantigen",
+      "experience",
+      "tenure",
+    ],
     strength: "FIRST-PARTY",
     links: [
-      { label: "EpitopePred case study", href: "/work/epitopepred" },
-      { label: "Career timeline", href: "/timeline" },
-      { label: "Professional profile", href: "https://www.linkedin.com/in/chandanpandeys/" },
-    ],
-  },
-  {
-    id: "accessibility",
-    title: "Applied AI for accessibility",
-    answer: "DekhoSuno is the main public accessibility project. It is a Flutter app organized around hearing- and visually-impaired workflows, combining Gemini, ML Kit, OCR, speech-to-text, TTS, camera input, wake-word interaction, sensors, and geolocation. The repository also publishes its own architecture, flowchart, and technology-map assets.",
-    tags: ["accessibility", "dekhosuno", "flutter", "gemini", "ocr", "speech", "vision", "mobile", "ml kit"],
-    strength: "INSPECTABLE",
-    links: [
-      { label: "DekhoSuno case study", href: "/work/dekhosuno" },
-      { label: "DekhoSuno source", href: "https://github.com/chandanpandeys/DekhoSuno" },
-    ],
-  },
-  {
-    id: "automation",
-    title: "Automation and agent workflows",
-    answer: "The portfolio separates serious case studies from smaller experiments. Public supporting work includes OneClickAllResultsBot for batch academic-result retrieval, an n8n AI content workflow with a human approval gate and multi-platform publishing, and OfferClaw as an experimental job-search agent interface. These live in Work or Lab according to evidence depth, not novelty alone.",
-    tags: ["automation", "agent", "n8n", "workflow", "oneclick", "results", "offerclaw", "content automation"],
-    strength: "INSPECTABLE",
-    links: [
-      { label: "OneClick case study", href: "/work/oneclickallresultsbot" },
-      { label: "Lab", href: "/lab" },
+      { label: "Research contribution", href: "/work/epitopepred" },
+      { label: "Career record", href: "/timeline" },
     ],
   },
   {
     id: "content",
     title: "AI content and technical communication",
-    answer: "The professional content thread includes AI Content Lead work at YAAS: research, scripting, workflows and performance analysis, as recorded in the career timeline. Client performance is not independently verified here. Earlier experience includes educational videos while still in school, later 1,000+ student-question explanations through Brainly, workshops/mentorship, and current AI/technology content leadership. The site treats this as part of the same operating loop—learn deeply, build, then explain—rather than as a separate influencer identity.",
-    tags: ["content", "teaching", "education", "brainly", "youtube", "creator", "yaas", "mentor", "communication"],
+    answer:
+      "Chandan is AI Content Lead at YAAS from August 2026 according to his career record. The role covers AI research, scripting, narrative development and content workflows. Public samples are on Instagram @justchandan__, LinkedIn @chandanpandeys and Chanakya Education Centre on YouTube. These channels demonstrate technical storytelling and educational content.",
+    tags: [
+      "content",
+      "yaas",
+      "communication",
+      "creator",
+      "script",
+      "storytelling",
+      "social",
+      "instagram",
+      "linkedin",
+      "youtube",
+      "hire",
+      "fit",
+    ],
+    strength: "FIRST-PARTY",
+    links: [
+      { label: "Content portfolio and videos", href: "/content" },
+      { label: "Instagram", href: site.links.instagram },
+      { label: "LinkedIn", href: site.links.linkedin },
+    ],
+  },
+  {
+    id: "notansun",
+    title: "Notansun Zone and teaching",
+    answer:
+      "Chandan founded Notansun Zone and taught Python through workshops and a 10-day learning challenge. First-party workshop material documents Python basics, functions, modules, a Rock Paper Scissors exercise, text-to-speech, learning resources and participation certificates. He reports teaching students across India. The educational YouTube channel Chanakya Education Centre contains science and exam-preparation lessons.",
+    tags: [
+      "notansun",
+      "zone",
+      "teaching",
+      "workshop",
+      "education",
+      "mentor",
+      "students",
+      "python",
+      "youtube",
+      "challenge",
+    ],
+    strength: "FIRST-PARTY",
+    links: [
+      {
+        label: "Teaching story and original videos",
+        href: "/content#teaching",
+      },
+      {
+        label: "Notansun profile",
+        href: "https://www.instagram.com/notansunzone/",
+      },
+    ],
+  },
+  {
+    id: "metrics",
+    title: "Public channel numbers",
+    answer:
+      "On 8 September 2026 the public Instagram profile @justchandan__ showed 80 followers. Chanakya Education Centre showed 197 YouTube subscribers and 25 videos. These are dated snapshots, not live reach or engagement analytics.",
+    tags: [
+      "followers",
+      "numbers",
+      "metrics",
+      "views",
+      "reach",
+      "impressions",
+      "analytics",
+      "subscribers",
+      "performance",
+      "endorsement",
+    ],
     strength: "PUBLIC PROFILE",
     links: [
-      { label: "Content portfolio", href: "/content" },
-      { label: "Content resume", href: "/resume/pdf/ai-content-developer-educator" },
-      { label: "Timeline", href: "/timeline" },
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/chandanpandeys/" },
+      { label: "Channel snapshots", href: "/content#reels" },
+      { label: "YouTube channel", href: site.links.youtube },
+      { label: "Instagram", href: site.links.instagram },
     ],
   },
   {
     id: "credentials",
-    title: "Selected documented credentials",
-    answer: "The credential layer is intentionally selective rather than a badge wall. Current source-backed records include a SkillsBuild/Edunet Artificial Intelligence completion certificate dated 19 July 2025 and a TechVidya Career Artificial Intelligence certificate covering 9 September–20 December 2024 with grade A. The source documents remain first-party evidence and are not exposed as public artifacts until sharing is intentionally reviewed.",
-    tags: ["credential", "credentials", "certificate", "certificates", "skillsbuild", "edunet", "techvidya", "course", "training", "grade"],
+    title: "Certificates you can inspect",
+    answer:
+      credentials
+        .map(
+          (c) =>
+            c.title +
+            " — " +
+            c.issuer +
+            ". " +
+            c.period +
+            ". " +
+            (c.grade ? "Grade " + c.grade + ". " : ""),
+        )
+        .join(" ") +
+      "These original documents cover course completion, ambassador participation, an ambassador completion letter and a team competition result.",
+    tags: [
+      "certificates",
+      "certificate",
+      "credentials",
+      "award",
+      "academic",
+      "grade",
+      "techvidya",
+      "skillsbuild",
+      "edunet",
+      "training",
+    ],
     strength: "FIRST-PARTY",
     links: [
-      { label: "Credential ledger", href: "/credentials" },
-      { label: "Resume", href: "/resume" },
-      { label: "Timeline", href: "/timeline" },
+      { label: "Certificate gallery", href: "/credentials" },
+      ...credentials
+        .filter((c) => c.publicUrl)
+        .map((c) => ({ label: c.issuer, href: c.publicUrl! })),
     ],
   },
   {
-    id: "resumes",
-    title: "Role-specific resume views",
-    answer: "The website keeps one canonical web resume and generates three one-page hiring variants from structured data: AI/LLM Engineer, AI Research/ML, and AI Content/Developer Educator. The PDFs are downloadable recruiter views, while the web resume remains the canonical indexable record.",
-    tags: ["resume", "resumes", "cv", "job", "hiring", "recruiter", "llm engineer", "ai research", "machine learning", "ai content", "developer educator"],
+    id: "infosys-learning",
+    title: "Infosys Springboard learning certificates",
+    answer: "Chandan holds 19 Infosys Springboard course certifications covering AI, data science, generative models, development practices and communication: " + springboardCourses.map((c) => c.title).join("; ") + ". Explore the course collection on the credentials page.",
+    tags: ["infosys", "springboard", "certificate", "learning", "generative", "prompt"],
+    strength: "FIRST-PARTY",
+    links: [{ label: "Infosys learning records and issuer course links", href: "/credentials#infosys" }],
+  },
+  {
+    id: "ambassador-credentials",
+    title: "Campus leadership and ambassador certificates",
+    answer: "Chandan's Google Student Ambassador Program certificate is a participation certificate dated 31 December 2025, bearing Google Gemini and Communique branding. His E-Cell, IIT Bombay letter confirms successful completion of the Campus Ambassador Program for the 2025–2026 program. A separate NEC 2025 certificate recognizes his team's Rank 153 in the Basic Track. That is a team result, not an individual national rank. An Internshala Student Partner Team certificate dated 1 March 2024 documents webinar participation, not internship completion.",
+    tags: ["ambassador", "campus", "google", "gemini", "bombay", "nec", "leadership", "internshala"],
+    strength: "FIRST-PARTY",
+    links: credentials.slice(0,4).map((c) => ({label: c.title, href: c.publicUrl!})),
+  },
+  {
+    id: "contact",
+    title: "Work with Chandan",
+    answer:
+      "Chandan is based in India and works across AI engineering, research and technical content. Contact him at " +
+      site.contact.email +
+      " or " +
+      site.contact.phone +
+      ". Use the AI engineering resume for engineering roles, research resume for applied ML roles, and content resume for technical communication. Current availability and compensation should be confirmed directly.",
+    tags: [
+      "contact",
+      "email",
+      "phone",
+      "hire",
+      "hiring",
+      "resume",
+      "cv",
+      "role",
+      "fit",
+      "availability",
+      "salary",
+    ],
     strength: "FIRST-PARTY",
     links: [
-      { label: "Resume hub", href: "/resume" },
-      { label: "AI / LLM Engineer PDF", href: "/resume/pdf/ai-llm-engineer" },
-      { label: "AI Research / ML PDF", href: "/resume/pdf/ai-research-ml" },
-      { label: "AI Content / Developer Educator PDF", href: "/resume/pdf/ai-content-developer-educator" },
+      { label: "Experience and resumes", href: "/resume" },
+      { label: "Email Chandan", href: "mailto:" + site.contact.email },
+      { label: "LinkedIn", href: site.links.linkedin },
     ],
   },
   {
     id: "public",
-    title: "What is publicly inspectable right now?",
-    answer: "The strongest public evidence currently includes ByteToken, InferBench, DekhoSuno, OneClickAllResultsBot, IBM internship projects, the automation repository, OfferClaw, AI PPT Generator, and the portfolio source itself. Private or unpublished repositories are intentionally excluded from public evidence until they are cleaned and explicitly released.",
-    tags: ["public", "github", "inspectable", "source", "repository", "evidence", "projects"],
+    title: "Public work and current experiments",
+    answer:
+      "The project collection includes ByteToken, OfferClaw, BenchWolf (previously InferBench), Portable AI Memory, DekhoSuno and OneClickAllResultsBot. They are independent experiments with public source. EpitopePred is contributed research work documented from a first-party account. Supporting repositories and earlier experiments are in the Lab.",
+    tags: [
+      "public",
+      "github",
+      "projects",
+      "systems",
+      "built",
+      "now",
+      "current",
+      "working",
+      "infrastructure",
+      "engineer",
+      "ai",
+      "source",
+      "inspectable",
+    ],
     strength: "INSPECTABLE",
     links: [
-      { label: "Work index", href: "/work" },
-      { label: "Lab", href: "/lab" },
-      { label: "GitHub", href: "https://github.com/chandanpandeys" },
+      { label: "Project stories", href: "/work" },
+      { label: "Earlier experiments", href: "/lab" },
+      { label: "GitHub", href: site.links.github },
     ],
   },
 ];
