@@ -77,7 +77,7 @@ export default function ContentPage() {
         </div>
         <div className="content-feature-player">
           <VideoPlayer id={videos[0].id} title={videos[0].title} />
-          <div className="feature-caption"><span>How to draw an LED</span><span>643 views · 8 Sep 2026</span></div>
+          <div className="feature-caption"><span>{videos[0].title}</span><span>Chanakya Education Centre · YouTube</span></div>
         </div>
       </section>
       <section className="studio-shell studio-section" id="reels">
@@ -227,8 +227,7 @@ export default function ContentPage() {
                 <h3>{v.title}</h3>
                 <p className="lesson-description">{v.description}</p>
                 <p>
-                  {v.duration} · {v.views.toLocaleString("en-IN")} views ·
-                  snapshot 8 Sep 2026
+                  {v.duration}{v.views !== null && <> · {v.views.toLocaleString("en-IN")} views · count recorded 8 Sep 2026</>}
                 </p>
                 <a
                   className="text-link"

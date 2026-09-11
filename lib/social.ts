@@ -18,7 +18,7 @@ export const videos = [
     topic: "Visual explanation · Electronics",
     description: "A focused visual lesson for students learning to draw an electronic component.",
     duration: "2:15",
-    views: 643,
+    views: null,
   },
   {
     id: "6rtXcrYLRFc",
