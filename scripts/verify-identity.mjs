@@ -101,6 +101,13 @@ for (const file of scanFiles) {
     continue;
   }
   for (const forbidden of forbiddenIdentityStrings) {
+    // The README links to the current public portfolio. Application metadata
+    // must still derive its origin from the deployment or custom-domain setting.
+    if (
+      file === "README.md" &&
+      forbidden === "digital-identity-woad.vercel.app"
+    )
+      continue;
     if (contents.includes(forbidden)) {
       throw new Error(`Stale identity URL found in ${file}: ${forbidden}`);
     }
